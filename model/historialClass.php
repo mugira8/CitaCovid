@@ -1,18 +1,18 @@
 <?php
 class historialClass
 {
-    public $cod_historial;
-    public $Tipo;
-    public $Num_Dosis;
-    public $Fecha;
-    public $TIS;
+    private $cod_historial;
+    private $Tipo;
+    private $Num_Dosis;
+    private $Fecha;
+    private $TIS;
 
     
 
     /**
      * Get the value of cod_historial
      */ 
-    public function getCod_historial()
+    private function getCod_historial()
     {
         return $this->cod_historial;
     }
@@ -22,7 +22,7 @@ class historialClass
      *
      * @return  self
      */ 
-    public function setCod_historial($cod_historial)
+    private function setCod_historial($cod_historial)
     {
         $this->cod_historial = $cod_historial;
 
@@ -32,7 +32,7 @@ class historialClass
     /**
      * Get the value of Tipo
      */ 
-    public function getTipo()
+    private function getTipo()
     {
         return $this->Tipo;
     }
@@ -42,7 +42,7 @@ class historialClass
      *
      * @return  self
      */ 
-    public function setTipo($Tipo)
+    private function setTipo($Tipo)
     {
         $this->Tipo = $Tipo;
 
@@ -52,7 +52,7 @@ class historialClass
     /**
      * Get the value of Num_Dosis
      */ 
-    public function getNum_Dosis()
+    private function getNum_Dosis()
     {
         return $this->Num_Dosis;
     }
@@ -62,7 +62,7 @@ class historialClass
      *
      * @return  self
      */ 
-    public function setNum_Dosis($Num_Dosis)
+    private function setNum_Dosis($Num_Dosis)
     {
         $this->Num_Dosis = $Num_Dosis;
 
@@ -72,7 +72,7 @@ class historialClass
     /**
      * Get the value of Fecha
      */ 
-    public function getFecha()
+    private function getFecha()
     {
         return $this->Fecha;
     }
@@ -82,7 +82,7 @@ class historialClass
      *
      * @return  self
      */ 
-    public function setFecha($Fecha)
+    private function setFecha($Fecha)
     {
         $this->Fecha = $Fecha;
 
@@ -92,7 +92,7 @@ class historialClass
     /**
      * Get the value of TIS
      */ 
-    public function getTIS()
+    private function getTIS()
     {
         return $this->TIS;
     }
@@ -102,7 +102,7 @@ class historialClass
      *
      * @return  self
      */ 
-    public function setTIS($TIS)
+    private function setTIS($TIS)
     {
         $this->TIS = $TIS;
 

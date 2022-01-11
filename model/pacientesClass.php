@@ -1,20 +1,20 @@
 <?php
 class pacientesClass
 {
-    public $TIS;
-    public $Fecha_PCR_pos;
-    public $Fecha_Nacimiento;
-    public $Nombre;
-    public $Apellido;
-    public $Edad;
-    public $cod_centro;
+    private $TIS;
+    private $Fecha_PCR_pos;
+    private $Fecha_Nacimiento;
+    private $Nombre;
+    private $Apellido;
+    private $Edad;
+    private $cod_centro;
 
     
 
     /**
      * Get the value of TIS
      */ 
-    public function getTIS()
+    private function getTIS()
     {
         return $this->TIS;
     }
@@ -24,7 +24,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setTIS($TIS)
+    private function setTIS($TIS)
     {
         $this->TIS = $TIS;
 
@@ -34,7 +34,7 @@ class pacientesClass
     /**
      * Get the value of Fecha_PCR_pos
      */ 
-    public function getFecha_PCR_pos()
+    private function getFecha_PCR_pos()
     {
         return $this->Fecha_PCR_pos;
     }
@@ -44,7 +44,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setFecha_PCR_pos($Fecha_PCR_pos)
+    private function setFecha_PCR_pos($Fecha_PCR_pos)
     {
         $this->Fecha_PCR_pos = $Fecha_PCR_pos;
 
@@ -54,7 +54,7 @@ class pacientesClass
     /**
      * Get the value of Fecha_Nacimiento
      */ 
-    public function getFecha_Nacimiento()
+    private function getFecha_Nacimiento()
     {
         return $this->Fecha_Nacimiento;
     }
@@ -64,7 +64,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setFecha_Nacimiento($Fecha_Nacimiento)
+    private function setFecha_Nacimiento($Fecha_Nacimiento)
     {
         $this->Fecha_Nacimiento = $Fecha_Nacimiento;
 
@@ -74,7 +74,7 @@ class pacientesClass
     /**
      * Get the value of Nombre
      */ 
-    public function getNombre()
+    private function getNombre()
     {
         return $this->Nombre;
     }
@@ -84,7 +84,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setNombre($Nombre)
+    private function setNombre($Nombre)
     {
         $this->Nombre = $Nombre;
 
@@ -94,7 +94,7 @@ class pacientesClass
     /**
      * Get the value of Apellido
      */ 
-    public function getApellido()
+    private function getApellido()
     {
         return $this->Apellido;
     }
@@ -104,7 +104,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setApellido($Apellido)
+    private function setApellido($Apellido)
     {
         $this->Apellido = $Apellido;
 
@@ -114,7 +114,7 @@ class pacientesClass
     /**
      * Get the value of Edad
      */ 
-    public function getEdad()
+    private function getEdad()
     {
         return $this->Edad;
     }
@@ -124,7 +124,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setEdad($Edad)
+    private function setEdad($Edad)
     {
         $this->Edad = $Edad;
 
@@ -134,7 +134,7 @@ class pacientesClass
     /**
      * Get the value of cod_centro
      */ 
-    public function getCod_centro()
+    private function getCod_centro()
     {
         return $this->cod_centro;
     }
@@ -144,7 +144,7 @@ class pacientesClass
      *
      * @return  self
      */ 
-    public function setCod_centro($cod_centro)
+    private function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
 

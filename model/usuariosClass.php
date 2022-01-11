@@ -1,17 +1,17 @@
 <?php
 class usuariosClass
 {
-    public $cod_usuario;
-    public $Correo;
-    public $Contraseña;
-    public $Tipo;
-    public $cod_centro;
+    private $cod_usuario;
+    private $Correo;
+    private $Contraseña;
+    private $Tipo;
+    private $cod_centro;
 
 
     /**
      * Get the value of cod_usuario
      */ 
-    public function getCod_usuario()
+    private function getCod_usuario()
     {
         return $this->cod_usuario;
     }
@@ -21,7 +21,7 @@ class usuariosClass
      *
      * @return  self
      */ 
-    public function setCod_usuario($cod_usuario)
+    private function setCod_usuario($cod_usuario)
     {
         $this->cod_usuario = $cod_usuario;
 
@@ -31,7 +31,7 @@ class usuariosClass
     /**
      * Get the value of Correo
      */ 
-    public function getCorreo()
+    private function getCorreo()
     {
         return $this->Correo;
     }
@@ -41,7 +41,7 @@ class usuariosClass
      *
      * @return  self
      */ 
-    public function setCorreo($Correo)
+    private function setCorreo($Correo)
     {
         $this->Correo = $Correo;
 
@@ -51,7 +51,7 @@ class usuariosClass
     /**
      * Get the value of Contraseña
      */ 
-    public function getContraseña()
+    private function getContraseña()
     {
         return $this->Contraseña;
     }
@@ -61,7 +61,7 @@ class usuariosClass
      *
      * @return  self
      */ 
-    public function setContraseña($Contraseña)
+    private function setContraseña($Contraseña)
     {
         $this->Contraseña = $Contraseña;
 
@@ -71,7 +71,7 @@ class usuariosClass
     /**
      * Get the value of Tipo
      */ 
-    public function getTipo()
+    private function getTipo()
     {
         return $this->Tipo;
     }
@@ -81,7 +81,7 @@ class usuariosClass
      *
      * @return  self
      */ 
-    public function setTipo($Tipo)
+    private function setTipo($Tipo)
     {
         $this->Tipo = $Tipo;
 
@@ -91,7 +91,7 @@ class usuariosClass
     /**
      * Get the value of cod_centro
      */ 
-    public function getCod_centro()
+    private function getCod_centro()
     {
         return $this->cod_centro;
     }
@@ -101,7 +101,7 @@ class usuariosClass
      *
      * @return  self
      */ 
-    public function setCod_centro($cod_centro)
+    private function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
 
