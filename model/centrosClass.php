@@ -15,9 +15,6 @@ class centrosClass
     public $Domingo;
 
 
-    
-
-
     /**
      * Get the value of cod_centro
      */ 
