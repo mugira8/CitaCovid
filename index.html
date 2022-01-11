@@ -1,19 +1,128 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <title>Document</title>
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/css/index.css">
+    <link rel="stylesheet" href="view/css/general.css">
+    <link rel="icon" href="view/images/icon.png">
+    <title>Umbrella Corp.</title>
+    <link rel="shortcut icon" href="view/images/umbrella_pequeño.png">
 </head>
+
 <body>
-<!--SCRIPTS-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
+    <div id="navbar"></div>
+    <!--PARALLAX-->
+    <div class="parallax">
+        <div class="paraCont banca p-3">
+            <h1>Vacunate con nosotros</h1>
+        </div>
+    </div>
+
+    <!--CONTENT-->
+    <div class="container p-3">
+        <div class="nuevosModelos text-center p-3">
+            <span>TE PUEDE INTERESAR</span>
+        </div>
+        <div class="row row-cols-md-3 g-4 text-center">
+            <div class="col">
+
+                <div class="card h-100">
+                    <img src="view/images/donar_sangre.jpg" class="card-img-top ">
+                    <div class="card-body">
+                        <h5 class="card-title ">Quiero donar</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="view/images/euskera.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title ">Uso del euskera</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="view/images/investigacion.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title ">Investigacion e Inovacion</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!--CAROUSEL-->
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-img"
+                        style="background-image: url(https://www.osakidetza.euskadi.eus/images/ab84-osakidetza-como-actuo-covid-es.jpg);">
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="carousel-img"
+                        style="background-image: url(https://www.osakidetza.euskadi.eus/images/ab84-osakidetza-taller-online-tabaco.png);">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-img"
+                        style="background-image: url(https://www.osakidetza.euskadi.eus/images/ab84-banner-vac-infantil-covid.jpg);">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!--CAROUSEL-->
+
+        <div class="card mb-3 my-4">
+            <div class="row g-0">
+                <div class="col-md-3"
+                    style="background-image: url('https://estaticos-cdn.elperiodico.com/clip/80d7458c-d3b6-4d30-be6f-947a23feb454_alta-libre-aspect-ratio_default_0.jpg'); background-position:left; background-size: contain; background-repeat: no-repeat;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">Vacunas <span class="badge bg-danger ">New</span></h5>
+                        <p class="card-text"><b> Nueva era de la vacunacion</b> </p>
+                        <p class="card-text">Somos un servicio de Osakidetza y Departamento de Salud que ofrecemos información y formación a la ciudadanía, 
+                            con el fin de lograr una actitud responsable y activa en torno a tu salud y enfermedad.</p>
+                    </div>
+                </div>
+                <div class="col-md-3"
+                    style="background-image: url('https://i.blogs.es/511e1e/mufid-majnun-nw1zd9zumpy-unsplash/450_1000.jpg'); background-position:right; background-size: contain; background-repeat: no-repeat;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT-->
+
+
+
+    <footer id="footer" class="bg-dark"></footer>
+
+    <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
+    <script src="view/js/insert.js"></script>
+    <script src="view/js/jsFunctions.js"></script>
+
 </body>
+
 </html>

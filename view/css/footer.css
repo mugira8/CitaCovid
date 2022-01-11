@@ -1,0 +1,24 @@
+#hr{
+    height: 3px;
+    margin: unset;
+}
+#container{
+    justify-content: space-evenly;
+    font-size: 13;
+}
+.title{
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: #666e76;
+}
+a:hover{
+    color: #798189;
+}
+#enlaces{
+    font-size: 13;
+}
+#copy{
+    font-size: 12;
+}

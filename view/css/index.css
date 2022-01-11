@@ -1,0 +1,98 @@
+@font-face {
+    font-family: champagne;
+    src: url("../fonts/Champagne\ &\ Limousines.ttf");
+}
+
+nav {
+    background-image: url(../images/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    content: "✔";
+}
+
+.invalid {
+    color: red;
+}
+
+.nuevosModelos span {
+    color: #262626;
+    overflow: hidden;   
+    border-right: .10em solid #FF8D8D;
+    white-space: nowrap;   
+    margin: 0 auto;   
+    letter-spacing: .4rem;   
+    font-size: 20px;
+  }
+.parallax {
+    height: 50%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: red;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/vacunacion.jpeg");
+}
+
+.paraCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+    height: 20rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    font-family: text;
+    font-family: text;
+}
+
+.parallax a:hover {
+    display: block;
+    color: white;
+}
+
+.invalid:before {
+    position: relative;
+    content: "✖";
+}
+
+.card-img-top {
+    height: 15vw;
+    object-fit: cover;
+}
+
+.carousel-img {
+    height: 650px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-light2 {
+    background-color: rgba(238, 238, 238, 0.493);
+}
+
+.pd {
+    font-family: text;
+    background-color: rgba(255, 255, 255, 0.247);
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
