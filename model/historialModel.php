@@ -41,7 +41,7 @@ class historialModel extends historialClass {
 
             $historial->cod_historial = $row['cod_historial'];
             $historial->Tipo = $row['Tipo'];
-            $historial->Cantidad = $row['Cantidad'];
+            $historial->Num_Dosis = $row['Num_Dosis'];
             $historial->Fecha = $row['Fecha'];
             $historial->TIS = $row['TIS'];
 

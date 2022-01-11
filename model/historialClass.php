@@ -3,7 +3,7 @@ class historialClass
 {
     public $cod_historial;
     public $Tipo;
-    public $Cantidad;
+    public $Num_Dosis;
     public $Fecha;
     public $TIS;
 
@@ -50,21 +50,21 @@ class historialClass
     }
 
     /**
-     * Get the value of Cantidad
+     * Get the value of Num_Dosis
      */ 
-    public function getCantidad()
+    public function getNum_Dosis()
     {
-        return $this->Cantidad;
+        return $this->Num_Dosis;
     }
 
     /**
-     * Set the value of Cantidad
+     * Set the value of Num_Dosis
      *
      * @return  self
      */ 
-    public function setCantidad($Cantidad)
+    public function setNum_Dosis($Num_Dosis)
     {
-        $this->Cantidad = $Cantidad;
+        $this->Num_Dosis = $Num_Dosis;
 
         return $this;
     }
