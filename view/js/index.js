@@ -36,7 +36,7 @@ fetch("view/js/articulos.json").then(Response => Response.json()).then(data =>{
                     <h5 class="card-title">`+ data[i].titulo +` `+ esNuevo +`</h5>
                     <p class="card-text"><b>`+ data[i].subtitulo +`</b> </p>
                     <p class="card-text"> `+ data[i].descripcion + ` </p>
-                 </div>
+                </div>
             </div>
         </div>
     </div>`;
