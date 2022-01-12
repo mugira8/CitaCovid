@@ -1,24 +1,24 @@
 <?php
 class centrosClass
 {
-    public $cod_centro;
-    public $Nombre;
-    public $Municipio;
-    public $Hora_apertura;
-    public $Hora_cierre;
-    public $Lunes;
-    public $Martes;
-    public $Miercoles;
-    public $Jueves;
-    public $Viernes;
-    public $Sabado;
-    public $Domingo;
+    private $cod_centro;
+    private $Nombre;
+    private $Municipio;
+    private $Hora_apertura;
+    private $Hora_cierre;
+    private $Lunes;
+    private $Martes;
+    private $Miercoles;
+    private $Jueves;
+    private $Viernes;
+    private $Sabado;
+    private $Domingo;
 
 
     /**
      * Get the value of cod_centro
      */ 
-    public function getCod_centro()
+    private function getCod_centro()
     {
         return $this->cod_centro;
     }
@@ -28,7 +28,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setCod_centro($cod_centro)
+    private function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
 
@@ -38,7 +38,7 @@ class centrosClass
     /**
      * Get the value of Nombre
      */ 
-    public function getNombre()
+    private function getNombre()
     {
         return $this->Nombre;
     }
@@ -48,7 +48,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setNombre($Nombre)
+    private function setNombre($Nombre)
     {
         $this->Nombre = $Nombre;
 
@@ -58,7 +58,7 @@ class centrosClass
     /**
      * Get the value of Municipio
      */ 
-    public function getMunicipio()
+    private function getMunicipio()
     {
         return $this->Municipio;
     }
@@ -68,7 +68,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setMunicipio($Municipio)
+    private function setMunicipio($Municipio)
     {
         $this->Municipio = $Municipio;
 
@@ -78,7 +78,7 @@ class centrosClass
     /**
      * Get the value of Hora_apertura
      */ 
-    public function getHora_apertura()
+    private function getHora_apertura()
     {
         return $this->Hora_apertura;
     }
@@ -88,7 +88,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setHora_apertura($Hora_apertura)
+    private function setHora_apertura($Hora_apertura)
     {
         $this->Hora_apertura = $Hora_apertura;
 
@@ -98,7 +98,7 @@ class centrosClass
     /**
      * Get the value of Hora_cierre
      */ 
-    public function getHora_cierre()
+    private function getHora_cierre()
     {
         return $this->Hora_cierre;
     }
@@ -108,7 +108,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setHora_cierre($Hora_cierre)
+    private function setHora_cierre($Hora_cierre)
     {
         $this->Hora_cierre = $Hora_cierre;
 
@@ -118,7 +118,7 @@ class centrosClass
     /**
      * Get the value of Lunes
      */ 
-    public function getLunes()
+    private function getLunes()
     {
         return $this->Lunes;
     }
@@ -128,7 +128,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setLunes($Lunes)
+    private function setLunes($Lunes)
     {
         $this->Lunes = $Lunes;
 
@@ -138,7 +138,7 @@ class centrosClass
     /**
      * Get the value of Martes
      */ 
-    public function getMartes()
+    private function getMartes()
     {
         return $this->Martes;
     }
@@ -148,7 +148,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setMartes($Martes)
+    private function setMartes($Martes)
     {
         $this->Martes = $Martes;
 
@@ -158,7 +158,7 @@ class centrosClass
     /**
      * Get the value of Miercoles
      */ 
-    public function getMiercoles()
+    private function getMiercoles()
     {
         return $this->Miercoles;
     }
@@ -168,7 +168,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setMiercoles($Miercoles)
+    private function setMiercoles($Miercoles)
     {
         $this->Miercoles = $Miercoles;
 
@@ -178,7 +178,7 @@ class centrosClass
     /**
      * Get the value of Jueves
      */ 
-    public function getJueves()
+    private function getJueves()
     {
         return $this->Jueves;
     }
@@ -188,7 +188,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setJueves($Jueves)
+    private function setJueves($Jueves)
     {
         $this->Jueves = $Jueves;
 
@@ -198,7 +198,7 @@ class centrosClass
     /**
      * Get the value of Viernes
      */ 
-    public function getViernes()
+    private function getViernes()
     {
         return $this->Viernes;
     }
@@ -208,7 +208,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setViernes($Viernes)
+    private function setViernes($Viernes)
     {
         $this->Viernes = $Viernes;
 
@@ -218,7 +218,7 @@ class centrosClass
     /**
      * Get the value of Sabado
      */ 
-    public function getSabado()
+    private function getSabado()
     {
         return $this->Sabado;
     }
@@ -228,7 +228,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setSabado($Sabado)
+    private function setSabado($Sabado)
     {
         $this->Sabado = $Sabado;
 
@@ -238,7 +238,7 @@ class centrosClass
     /**
      * Get the value of Domingo
      */ 
-    public function getDomingo()
+    private function getDomingo()
     {
         return $this->Domingo;
     }
@@ -248,7 +248,7 @@ class centrosClass
      *
      * @return  self
      */ 
-    public function setDomingo($Domingo)
+    private function setDomingo($Domingo)
     {
         $this->Domingo = $Domingo;
 

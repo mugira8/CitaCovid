@@ -1,18 +1,18 @@
 <?php
 class citasClass
 {
-    public $cod_cita;
-    public $Fecha;
-    public $Horas;
-    public $Tipo_vacuna;
-    public $cod_centro;
-    public $TIS;
+    private $cod_cita;
+    private $Fecha;
+    private $Horas;
+    private $Tipo_vacuna;
+    private $cod_centro;
+    private $TIS;
     
 
     /**
      * Get the value of cod_cita
      */ 
-    public function getCod_cita()
+    private function getCod_cita()
     {
         return $this->cod_cita;
     }
@@ -22,7 +22,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setCod_cita($cod_cita)
+    private function setCod_cita($cod_cita)
     {
         $this->cod_cita = $cod_cita;
 
@@ -32,7 +32,7 @@ class citasClass
     /**
      * Get the value of Fecha
      */ 
-    public function getFecha()
+    private function getFecha()
     {
         return $this->Fecha;
     }
@@ -42,7 +42,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setFecha($Fecha)
+    private function setFecha($Fecha)
     {
         $this->Fecha = $Fecha;
 
@@ -52,7 +52,7 @@ class citasClass
     /**
      * Get the value of Horas
      */ 
-    public function getHoras()
+    private function getHoras()
     {
         return $this->Horas;
     }
@@ -62,7 +62,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setHoras($Horas)
+    private function setHoras($Horas)
     {
         $this->Horas = $Horas;
 
@@ -72,7 +72,7 @@ class citasClass
     /**
      * Get the value of Tipo_vacuna
      */ 
-    public function getTipo_vacuna()
+    private function getTipo_vacuna()
     {
         return $this->Tipo_vacuna;
     }
@@ -82,7 +82,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setTipo_vacuna($Tipo_vacuna)
+    private function setTipo_vacuna($Tipo_vacuna)
     {
         $this->Tipo_vacuna = $Tipo_vacuna;
 
@@ -92,7 +92,7 @@ class citasClass
     /**
      * Get the value of cod_centro
      */ 
-    public function getCod_centro()
+    private function getCod_centro()
     {
         return $this->cod_centro;
     }
@@ -102,7 +102,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setCod_centro($cod_centro)
+    private function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
 
@@ -112,7 +112,7 @@ class citasClass
     /**
      * Get the value of TIS
      */ 
-    public function getTIS()
+    private function getTIS()
     {
         return $this->TIS;
     }
@@ -122,7 +122,7 @@ class citasClass
      *
      * @return  self
      */ 
-    public function setTIS($TIS)
+    private function setTIS($TIS)
     {
         $this->TIS = $TIS;
 
