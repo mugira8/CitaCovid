@@ -7,7 +7,7 @@ class pacientesModel extends pacientesClass {
 
     private $link;
         
-    private function OpenConnect() {
+    public function OpenConnect() {
         $konDat = new connect_data();
         try {
             $this->link=new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
@@ -19,13 +19,13 @@ class pacientesModel extends pacientesClass {
         $this->link->set_charset("utf8");
     }                   
     	 
-    private function CloseConnect() {
+    public function CloseConnect() {
         mysqli_close($this->link);
     }
 
 
 //LISTAR DATOS DE PACIENTES
-    private function setList() {
+    public function setList() {
 
         $this->OpenConnect();
 
@@ -55,5 +55,23 @@ class pacientesModel extends pacientesClass {
         return $list;
     }
 
+    public function findPacinete(){
+        $this->OpenConnect();
+
+        $tis=$this->tis;
+        $fecha_naci=$this->fecha_naci;
+
+        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha_naci'";
+        $result = $this->link->query($sql);
+
+        $userExists=false;
+        if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {
+            $pacienteExists=true;
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+		return $pacienteExists;
+    }
+
 }//fin
-?>
