@@ -9,7 +9,7 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid rgb(180, 178, 178);
     text-align: left;
     padding: 8px;
 }
@@ -29,12 +29,24 @@ table td {
 .nombre{
     margin-top: 35px;
     margin-left: 30px;
+    border: 2px solid black;
+}
+.nombre::-webkit-input-placeholder {
+    text-align: center;
 }
 .apellido{
     margin-top: 35px;
     margin-left: 30px;
+    border: 2px solid black;
+}
+.apellido::-webkit-input-placeholder {
+    text-align: center;
 }
 .tis{
     margin-top: 35px;
     margin-left: 30px;
+    border: 2px solid black;
+}
+.tis::-webkit-input-placeholder {
+    text-align: center;
 }
