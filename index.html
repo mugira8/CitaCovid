@@ -1,9 +1,10 @@
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="view/js/angular.min.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
@@ -24,7 +25,7 @@
     </div>
 
     <!--CONTENT-->
-    <div class="container p-3">
+    <div class="container p-3" ng-controller="mainController">
         <div class="nuevosModelos text-center p-3">
             <span>TE PUEDE INTERESAR</span>
         </div>
@@ -73,9 +74,28 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        
         <!--CAROUSEL-->
-        <div id="cardGroup">
-           <!-- Se inserta desde index.js -->
+        <div id="cardGroup" ng-repeat="item in articulo">
+
+
+           <div class="card mb-3 my-4">
+            <div class="row g-0">
+                <div class="col-md-3"
+                    style="background-image: url({{item.imagen}}); background-position:left; background-size: contain; background-repeat: no-repeat;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.titulo}}</h5>
+                        <p class="card-text"><b> {{item.subtitulo}} </b> </p>
+                        <p class="card-text"> {{item.descripcion}} </p>
+                    </div>
+                </div>
+                <div class="col-md-3"
+                    style="background-image: url({{item.imagen2}}); background-position:right; background-size: contain; background-repeat: no-repeat;">
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 

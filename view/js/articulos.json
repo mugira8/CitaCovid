@@ -3,18 +3,21 @@
         "imagen":"https://estaticos-cdn.elperiodico.com/clip/80d7458c-d3b6-4d30-be6f-947a23feb454_alta-libre-aspect-ratio_default_0.jpg", 
         "titulo":"Vacunas", 
         "subtitulo":"Nueva era de la vacunacion", 
-        "descripcion":"Somos un servicio de Osakidetza y Departamento de Salud que ofrecemos información y formación a la ciudadanía, con el fin de lograr una actitud responsable y activa en torno a tu salud y enfermedad."
+        "descripcion":"Somos un servicio de Osakidetza y Departamento de Salud que ofrecemos información y formación a la ciudadanía, con el fin de lograr una actitud responsable y activa en torno a tu salud y enfermedad.",
+        "imagen2":"https://s03.s3c.es/imag/_v0/770x420/4/e/2/vacuna-janssen-espana-dreamstime.jpg"
     },
     {
         "imagen":"https://static4.abc.es/media/deportes/2022/01/12/1444072226-k9lB--620x349@abc.jpg", 
         "titulo":"Djokovic admite haber acudido a una entrevista sabiendo que tenía Covid", 
         "subtitulo":"El tenista dice que la equivocación en el documento de viaje a Australia fue un «error humano»", 
-        "descripcion":"El número uno del tenis mundial, Novak Djokovic, admitió haberse reunido con un periodista cuando sabía que estaba contagiado de covid-19, y lo calificó como un «error de criterio»."
+        "descripcion":"El número uno del tenis mundial, Novak Djokovic, admitió haberse reunido con un periodista cuando sabía que estaba contagiado de covid-19, y lo calificó como un «error de criterio».",
+        "imagen2":"https://static1.elcorreo.com/www/multimedia/202201/09/media/cortadas/djokovic09-kUtH-U160484218703X5H-624x400@El%20Correo.jpg"
     },
     {
         "imagen":"https://static3.elcorreo.com/www/multimedia/202112/30/media/cortadas/frogafroga-U120341398809aFE-U160399778023WAB-624x385@El%20Correo-ElCorreo.jpg", 
         "titulo":"Osakidetza hará más antígenos que PCR para confirmar los positivos", 
         "subtitulo":"Los asintomáticos y leves se harán la prueba en hospitales o centros externos para liberar a los ambulatorios, que se ceñirán a pacientes con síntomas y vulnerables", 
-        "descripcion":"Me pedian suscribirme para leer el articulo y no me da la gana.<br>-TotsugeKevin, domador de delfines, 2022"
+        "descripcion":"Me pedian suscribirme para leer el articulo y no me da la gana. -TotsugeKevin, domador de delfines, 2022",
+        "imagen2":"https://www.grupotrc.com/images/Section_800x500_Portfolio_Osakidetza-Foto1.jpg"
     }
 ]
