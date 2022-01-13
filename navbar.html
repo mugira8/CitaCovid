@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="view/css/modalEditPerfil.css">
+
 <nav class="navbar fw-bold navbar-expand-lg navbar-light bg-light2 p-2 ">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarOptions"
@@ -19,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar Perfil</a>
+                </li>
             </ul>
         </div>
 
@@ -36,3 +41,51 @@
         </form>
     </div>
 </nav>
+
+        <!--MODAL EDITAR PERFIL-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="izquierda">
+                       
+                        <div class="miPerfil">
+                            <h2>Mi Perfil</h2>
+                        </div>
+    
+                        <div class="inputs">
+    
+                            <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
+                            
+                            <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
+        
+                            <input type="text" class="inputEdit" id="edad" placeholder="Edad">
+    
+                        </div>
+    
+                        <div class="botones">
+                            <button class="btnEditarPerfil">Editar Perfil</button>
+                            
+                            <button class="btnConfirmar">Confirmar</button>
+                        </div>
+    
+                    </div>
+    
+                    <div class="derecha">
+                        
+                        <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
+    
+                        <div class="botonesFoto">
+                            <input class="inputFile" type="file">
+                            <button class="btnEnviar">Enviar</button>
+                        </div>
+                    </div>
+    
+                </div>
+              </div>
+            </div>
+          </div>
