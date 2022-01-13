@@ -1,0 +1,40 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.seccionCentral{
+    height: 400px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table th {
+    text-align: center;
+}
+
+table td {
+    text-align: center;
+}
+
+.miCuenta{
+    height: 100px;
+}
+
+.nombre{
+    margin-top: 35px;
+    margin-left: 30px;
+}
+.apellido{
+    margin-top: 35px;
+    margin-left: 30px;
+}
+.tis{
+    margin-top: 35px;
+    margin-left: 30px;
+}
