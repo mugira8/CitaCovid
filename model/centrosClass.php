@@ -1,18 +1,18 @@
 <?php
 class centrosClass
 {
-    public $cod_centro;
-    public $Nombre;
-    public $Municipio;
-    public $Hora_apertura;
-    public $Hora_cierre;
-    public $Lunes;
-    public $Martes;
-    public $Miercoles;
-    public $Jueves;
-    public $Viernes;
-    public $Sabado;
-    public $Domingo;
+    protected $cod_centro;
+    protected $Nombre;
+    protected $Municipio;
+    protected $Hora_apertura;
+    protected $Hora_cierre;
+    protected $Lunes;
+    protected $Martes;
+    protected $Miercoles;
+    protected $Jueves;
+    protected $Viernes;
+    protected $Sabado;
+    protected $Domingo;
 
 
     /**

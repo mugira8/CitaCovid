@@ -1,12 +1,12 @@
 <?php
 class citasClass
 {
-    public $cod_cita;
-    public $Fecha;
-    public $Horas;
-    public $Tipo_vacuna;
-    public $cod_centro;
-    public $TIS;
+    protected $cod_cita;
+    protected $Fecha;
+    protected $Horas;
+    protected $Tipo_vacuna;
+    protected $cod_centro;
+    protected $TIS;
     
 
     /**

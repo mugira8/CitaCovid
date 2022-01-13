@@ -55,5 +55,23 @@ class pacientesModel extends pacientesClass {
         return $list;
     }
 
+    public function findPacinete(){
+        $this->OpenConnect();
+
+        $tis=$this->tis;
+        $fecha_naci=$this->fecha_naci;
+
+        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha_naci'";
+        $result = $this->link->query($sql);
+
+        $userExists=false;
+        if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {
+            $pacienteExists=true;
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+		return $pacienteExists;
+    }
+
 }//fin
-?>
