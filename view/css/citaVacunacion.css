@@ -1,0 +1,12 @@
+.contenedorPrincipal{
+    height: 600px;
+    background-color:aqua;
+    display: flex;
+    align-content: center;
+}
+.contenedor1{
+    background-color: rebeccapurple;
+    height: 40px;}
+.contenedor2{
+    background-color: bisque;
+    height: 20px;}
