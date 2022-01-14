@@ -7,7 +7,7 @@ class usuariosModel extends usuariosClass {
 
     private $link;
         
-    private function OpenConnect() {
+    public function OpenConnect() {
         $konDat = new connect_data();
         try {
             $this->link=new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
@@ -19,13 +19,13 @@ class usuariosModel extends usuariosClass {
         $this->link->set_charset("utf8");
     }                   
     	 
-    private function CloseConnect() {
+    public function CloseConnect() {
         mysqli_close($this->link);
     }
 
 
 //LISTAR DATOS DE USUARIOS
-    private function setList() {
+    public function setList() {
 
         $this->OpenConnect();
 

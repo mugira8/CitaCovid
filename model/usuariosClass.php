@@ -1,11 +1,11 @@
 <?php
 class usuariosClass
 {
-    private $cod_usuario;
-    private $Correo;
-    private $Contrasena;
-    private $Tipo;
-    private $cod_centro;
+    protected $cod_usuario;
+    protected $Correo;
+    protected $Contrasena;
+    protected $Tipo;
+    protected $cod_centro;
 
 
     /**

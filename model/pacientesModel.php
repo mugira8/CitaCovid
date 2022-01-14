@@ -7,7 +7,7 @@ class pacientesModel extends pacientesClass {
 
     private $link;
         
-    private function OpenConnect() {
+    public function OpenConnect() {
         $konDat = new connect_data();
         try {
             $this->link=new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
@@ -19,7 +19,7 @@ class pacientesModel extends pacientesClass {
         $this->link->set_charset("utf8");
     }                   
     	 
-    private function CloseConnect() {
+    public function CloseConnect() {
         mysqli_close($this->link);
     }
 
@@ -58,7 +58,7 @@ class pacientesModel extends pacientesClass {
 
     public function update(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $this->OpenConnect();  
         
         $TIS=$this->TIS;
         $Fecha_PCR_pos=$this->Fecha_PCR_pos;

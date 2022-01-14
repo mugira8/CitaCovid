@@ -7,7 +7,7 @@ class centrosModel extends centrosClass {
 
     private $link;
         
-    private function OpenConnect() {
+    public function OpenConnect() {
         $konDat = new connect_data();
         try {
             $this->link=new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
@@ -19,13 +19,13 @@ class centrosModel extends centrosClass {
         $this->link->set_charset("utf8");
     }                   
     	 
-    private function CloseConnect() {
+    public function CloseConnect() {
         mysqli_close($this->link);
     }
 
 
 //LISTAR DATOS DE CENTROS
-    private function setList() {
+     function setList() {
 
         $this->OpenConnect();
 

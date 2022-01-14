@@ -1,11 +1,11 @@
 <?php
 class historialClass
 {
-    private $cod_historial;
-    private $Tipo;
-    private $Num_Dosis;
-    private $Fecha;
-    private $TIS;
+    protected $cod_historial;
+    protected $Tipo;
+    protected $Num_Dosis;
+    protected $Fecha;
+    protected $TIS;
 
     
 

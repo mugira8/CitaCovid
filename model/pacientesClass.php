@@ -1,14 +1,14 @@
 <?php
 class pacientesClass
 {
-    private $TIS;
-    private $Fecha_PCR_pos;
-    private $Fecha_Nacimiento;
-    private $Nombre;
-    private $Apellido;
-    private $Edad;
-    private $Perfil;
-    private $cod_centro;
+    protected $TIS;
+    protected $Fecha_PCR_pos;
+    protected $Fecha_Nacimiento;
+    protected $Nombre;
+    protected $Apellido;
+    protected $Edad;
+    protected $Perfil;
+    protected $cod_centro;
 
     
 
