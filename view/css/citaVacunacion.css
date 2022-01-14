@@ -2,6 +2,7 @@
     height: 600px;
     background-color:aqua;
     display: flex;
+    text-align: center;
     align-content: center;
 }
 .contenedor1{
