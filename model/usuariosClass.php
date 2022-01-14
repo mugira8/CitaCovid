@@ -3,10 +3,11 @@ class usuariosClass
 {
     protected $cod_usuario;
     protected $Correo;
-    protected $Contraseña;
+    protected $Contrasena;
     protected $Tipo;
     protected $cod_centro;
 
+    
 
     /**
      * Get the value of cod_usuario
@@ -49,21 +50,21 @@ class usuariosClass
     }
 
     /**
-     * Get the value of Contraseña
+     * Get the value of Contrasena
      */ 
-    public function getContraseña()
+    public function getContrasena()
     {
-        return $this->Contraseña;
+        return $this->Contrasena;
     }
 
     /**
-     * Set the value of Contraseña
+     * Set the value of Contrasena
      *
      * @return  self
      */ 
-    public function setContraseña($Contraseña)
+    public function setContrasena($Contrasena)
     {
-        $this->Contraseña = $Contraseña;
+        $this->Contrasena = $Contrasena;
 
         return $this;
     }
