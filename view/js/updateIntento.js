@@ -1,36 +1,33 @@
 var savedFileBase64;
 var filename;
 var filesize;
+document.addEventListener("DOMContentLoaded", function(){
+    
+    //loadUser();
+    loadPacientes();
 
-document.addEventListener("DOMContentLoaded", function (event) {
-	
-	loadPacientes();
-	
-		
-	document.getElementById("selectUpdate").addEventListener('change',
+	// document.getElementById("selectUpdate").addEventListener('change',
 			
-			()=>showData("update"));
+	// 		()=>showData("update"));
 	
-	document.getElementById("btnExecUpdate").addEventListener('click', execUpdate);	
+	// document.getElementById("btnExecUpdate").addEventListener('click', execUpdate);	
 
 });//cierre DOM
 
 function loadPacientes(){	
-	
-	var url = "controller/cIndex.php";
 
-	fetch(url, {
-	  method: 'GET', // or 'POST'
-	})
-	.then(res => res.json()).then(result => {
-		
+	fetch("controller/cIndex.php",{
+        method: 'GET'
+    })//cierre fetch
+	.then(response => response.json()).then(result => {
 			console.log('Success:', result.list);
+		console.log("hpa")
 			
 			var pacientes = result.list;
 
+
        		var newRow ="<h2>Pacientes</h2>";
   			newRow +="<table > ";
-			newRow +="<tr><th>ID</th><th>TITULO</th><th>ANIO</th><th>DIRECTOR</th><th>CARTEL</th></tr>";
        		
 			for (let i = 0; i < pacientes.length; i++) {
 					
@@ -46,7 +43,7 @@ function loadPacientes(){
        		newRow +="</table>";   
        		document.getElementById("tablaPaciente").innerHTML = newRow; // add
        		
-       		var lista=loadSelect(pacientes);;
+       		//var lista=loadSelect(pacientes);;
        		//document.getElementById("selectUpdate").innerHTML=lista;
        		
        		

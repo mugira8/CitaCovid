@@ -2,19 +2,22 @@
 
 include_once ("../model/pacientesModel.php");
 
-if (!session_start()){
+// if (!session_start()){
     
-    session_start();
-} 
+//     session_start();
+// } 
 
 $pacientes= new pacientesModel();
 
 $response=array();
 
-$response['list']=$pacientes->setList(); // returns the list 
+$response['list'] = $pacientes -> setList(); // returns the list 
 
-$response['error']="no error";
+$response['list'] = $list; 
+$response['error'] = "not error"; 
 
 echo json_encode($response); // pasar de php a json
 
-unset ($pacientes);
+unset ($list);
+
+?>
