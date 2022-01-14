@@ -1,5 +1,5 @@
 .contenedorPrincipal{
-    height: 600px;
+    height: 400px;
     background-color:aqua;
     display: flex;
     text-align: center;
@@ -7,7 +7,13 @@
 }
 .contenedor1{
     background-color: rebeccapurple;
-    height: 40px;}
+    height: auto;
+}
 .contenedor2{
     background-color: bisque;
-    height: 20px;}
+    height: auto;
+}
+
+.coso{
+    margin: 20px;
+}
