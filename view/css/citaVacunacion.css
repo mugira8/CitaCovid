@@ -1,4 +1,5 @@
 .contenedorPrincipal{
+    margin-top: 20px;
     height: 400px;
     background-color:aqua;
     display: flex;
