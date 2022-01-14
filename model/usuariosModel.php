@@ -41,7 +41,7 @@ class usuariosModel extends usuariosClass {
 
             $usuarios->cod_usuario = $row['cod_usuario'];
             $usuarios->Correo = $row['Correo'];
-            $usuarios->Contraseña = $row['Contraseña'];
+            $usuarios->Contrasena = $row['Contrasena'];
             $usuarios->Tipo = $row['Tipo'];
             $usuarios->cod_centro = $row['cod_centro'];
 

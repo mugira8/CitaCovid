@@ -3,7 +3,7 @@ class usuariosClass
 {
     private $cod_usuario;
     private $Correo;
-    private $Contraseña;
+    private $Contrasena;
     private $Tipo;
     private $cod_centro;
 
@@ -49,21 +49,21 @@ class usuariosClass
     }
 
     /**
-     * Get the value of Contraseña
+     * Get the value of Contrasena
      */ 
-    private function getContraseña()
+    private function getContrasena()
     {
-        return $this->Contraseña;
+        return $this->Contrasena;
     }
 
     /**
-     * Set the value of Contraseña
+     * Set the value of Contrasena
      *
      * @return  self
      */ 
-    private function setContraseña($Contraseña)
+    private function setContrasena($Contrasena)
     {
-        $this->Contraseña = $Contraseña;
+        $this->Contrasena = $Contrasena;
 
         return $this;
     }

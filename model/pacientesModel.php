@@ -25,7 +25,7 @@ class pacientesModel extends pacientesClass {
 
 
 //LISTAR DATOS DE PACIENTES
-    private function setList() {
+    public function setList() {
 
         $this->OpenConnect();
 
@@ -54,6 +54,40 @@ class pacientesModel extends pacientesClass {
         $this->CloseConnect();
         return $list;
     }
+
+
+    public function update(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $TIS=$this->TIS;
+        $Fecha_PCR_pos=$this->Fecha_PCR_pos;
+        $Fecha_Nacimiento=$this->Fecha_Nacimiento;
+        $Nombre=$this->Nombre;
+        $Apellido=$this->Apellido;
+        $Edad=$this->Edad;
+        $Perfil=$this->Perfil;
+        $cod_centro=$this->cod_centro;
+        
+        if ($Perfil =="") { $Perfil ="view/images/default.jpg";}
+        
+        
+        $sql="update pacientes
+                set TIS='$TIS',Fecha_PCR_pos=$Fecha_PCR_pos, Fecha_Nacimiento=$Fecha_Nacimiento,
+                 Nombre='$Nombre', Apellido='$Apellido', Edad='$Edad', Perfil='$Perfil', cod_centro='$cod_centro' 
+                 where TIS=$TIS";
+        
+        if ($this->link->query($sql))  // true if success
+        //$this->link->affected_rows;  number of inserted rows
+        {
+            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+        } else {
+            return "Error updating ". $sql ."   ". $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
+
 
 }//fin
 ?>

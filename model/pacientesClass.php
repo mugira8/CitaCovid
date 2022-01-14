@@ -7,6 +7,7 @@ class pacientesClass
     private $Nombre;
     private $Apellido;
     private $Edad;
+    private $Perfil;
     private $cod_centro;
 
     
@@ -147,6 +148,26 @@ class pacientesClass
     private function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Perfil
+     */ 
+    public function getPerfil()
+    {
+        return $this->Perfil;
+    }
+
+    /**
+     * Set the value of Perfil
+     *
+     * @return  self
+     */ 
+    public function setPerfil($Perfil)
+    {
+        $this->Perfil = $Perfil;
 
         return $this;
     }
