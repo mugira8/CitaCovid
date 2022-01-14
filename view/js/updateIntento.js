@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 });//cierre DOM
 
-function loadFilms(){	
+function loadPacientes(){	
 	
 	var url = "controller/cIndex.php";
 
@@ -44,57 +44,67 @@ function loadFilms(){
 								+"</tr>";	
 			}
        		newRow +="</table>";   
-       		document.getElementById("tableFilms").innerHTML = newRow; // add
-       		document.getElementById("numVisits").value=result.numVisits;
+       		document.getElementById("tablaPaciente").innerHTML = newRow; // add
        		
        		var lista=loadSelect(pacientes);;
-       		document.getElementById("selectDelete").innerHTML=lista;
-       		document.getElementById("selectUpdate").innerHTML=lista;
+       		//document.getElementById("selectUpdate").innerHTML=lista;
        		
-       		var directors= result.directors;
        		
-       		var listaDirectors=loadDirectors(directors);
-       		
-       		document.getElementById("SelectDirectorInsert").innerHTML=listaDirectors;
 	})
 	.catch(error => console.error('Error status:', error));	
 };
 
 
-function execUpdate(){
-	
-	var idPelicula=document.querySelector("#update .idPelicula").value;
-	
-	var TituloPelicula=document.querySelector("#update .TituloPelicula").value;
-	var Anio=document.querySelector("#update .Anio").value;
-	var Director=document.querySelector("#update .SelectDirector").value ;
-	
-	var url = "controller/cPeliculaUpdate.php";
-	var data = { 'idPelicula':idPelicula,'TituloPelicula':TituloPelicula,
-			'Anio':Anio,'Director':Director,'filename':filename,
-			'savedFileBase64': savedFileBase64};
+//esto se tiene que mirar con el tis del login
+function loadSelect(pacientes)
+{
+	var newRow ="<option>--Select--></option>";
+	for (let i = 0; i < pacientes.length; i++) 
+	{
+		var datuak = pacientes[i].TIS +"-"+ pacientes[i].Fecha_PCR_pos +"-"+ pacientes[i].Fecha_Nacimiento +"-"+ pacientes[i].Nombre +"-"+ pacientes[i].Apellido +"-"+ pacientes[i].Edad +"-"+ pacientes[i].Perfil;
+		
+		newRow +="<option value='"+pacientes[i].TIS+"'>"+datuak+"</option>"; 
+	}
+	return newRow;
+}
 
-	fetch(url, {
-	  method: 'POST', // or 'POST'
-	  body: JSON.stringify(data), // data can be `string` or {object}!
-	  headers:{'Content-Type': 'application/json'}  // input data
-	  })
-	.then(res => res.json()).then(result => {
+
+
+
+// function execUpdate(){
 	
-       		console.log(result.error);
-       		alert(result.error);
-       		loadFilms();
-			document.getElementById("update").style.display="none";
+// 	var idPelicula=document.querySelector("#update .idPelicula").value;
+	
+// 	var TituloPelicula=document.querySelector("#update .TituloPelicula").value;
+// 	var Anio=document.querySelector("#update .Anio").value;
+// 	var Director=document.querySelector("#update .SelectDirector").value ;
+	
+// 	var url = "controller/cPeliculaUpdate.php";
+// 	var data = { 'idPelicula':idPelicula,'TituloPelicula':TituloPelicula,
+// 			'Anio':Anio,'Director':Director,'filename':filename,
+// 			'savedFileBase64': savedFileBase64};
+
+// 	fetch(url, {
+// 	  method: 'POST', // or 'POST'
+// 	  body: JSON.stringify(data), // data can be `string` or {object}!
+// 	  headers:{'Content-Type': 'application/json'}  // input data
+// 	  })
+// 	.then(res => res.json()).then(result => {
+	
+//        		console.log(result.error);
+//        		alert(result.error);
+//        		loadFilms();
+// 			document.getElementById("update").style.display="none";
 			
-			var inputs = document.querySelectorAll("#update input");
-			for (let i = 0; i < inputs.length; i++) {
-				inputs[i].value = "";
-			}
-			var imgs=document.querySelectorAll("#update img");
-			for (let i = 0; i < imgs.length; i++) {
-				imgs[i].setAttribute('src','');
-			}
-       	}
-    )
-	.catch(error => console.error('Error status:', error));
-};
+// 			var inputs = document.querySelectorAll("#update input");
+// 			for (let i = 0; i < inputs.length; i++) {
+// 				inputs[i].value = "";
+// 			}
+// 			var imgs=document.querySelectorAll("#update img");
+// 			for (let i = 0; i < imgs.length; i++) {
+// 				imgs[i].setAttribute('src','');
+// 			}
+//        	}
+//     )
+// 	.catch(error => console.error('Error status:', error));
+// };

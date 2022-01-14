@@ -15,7 +15,7 @@ $Perfil=$data['filename'];
 $savedFileBase64=$data['savedFileBase64'];
 
 
-$fileBase64 = explode(',', $savedFileBase64)[1]; //parte dcha de la coma
+$fileBase64 = explode(',', $savedFileBase64)[1]; 
 
 // Se convierte de base64 a binario/texto para almacenarlo
 $file = base64_decode($fileBase64);
