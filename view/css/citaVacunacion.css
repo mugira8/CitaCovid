@@ -1,0 +1,19 @@
+.contenedorPrincipal{
+    height: 400px;
+    background-color:aqua;
+    display: flex;
+    text-align: center;
+    align-content: center;
+}
+.contenedor1{
+    background-color: rebeccapurple;
+    height: auto;
+}
+.contenedor2{
+    background-color: bisque;
+    height: auto;
+}
+
+.coso{
+    margin: 20px;
+}

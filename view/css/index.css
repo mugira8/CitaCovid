@@ -96,3 +96,47 @@ nav {
 .modal-footer {
     justify-content: space-between;
 }
+
+
+/* mediaquery para distintos dispositivos */
+@media screen and (max-width: 1920px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 650px;
+    }
+}
+@media screen and (max-width: 1250px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 550px;
+    }
+}
+@media screen and (max-width: 1000px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 350px;
+    }
+}
+@media screen and (max-width: 800px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 350px;
+    }
+}
+@media screen and (max-width: 770px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 250px;
+    }
+}
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .carousel-img{
+        width: 100%;
+        height: 250px;
+    }
+}
+@media screen and (max-width: 480px) and (min-width: 0px){
+    .carousel-img{
+        display: none;
+    }
+}
