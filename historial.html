@@ -20,10 +20,11 @@
     <div id="navbar"></div>
 
     <!--Seccion Central-->
-    <div class="miCuenta">
-        <input type="text" class="nombre" disabled placeholder="Nombre">
-        <input type="text" class="apellido" disabled placeholder="Apellido">
-        <input type="text" class="tis" disabled placeholder="TIS">
+    <div ng-controller="miControlador">
+    <div class="miCuenta" ng-repeat="item in lista">
+        <input type="text" class="nombre" disabled placeholder="Nombre">{{item.Nombre}}
+        <input type="text" class="apellido" disabled placeholder="Apellido">{{item.Apellido}}
+        <input type="text" class="tis" disabled placeholder="TIS">{{item.Tis}}
     </div>
     
     <div class="seccionCentral">
@@ -33,12 +34,13 @@
           <th>Numero de Dosis</th>
           <th>Fecha</th>
         </tr>
-        <tr>
-            <td>aa</td>
-            <td>aa</td>
-            <td>aa</td>
+        <tr ng-repeat="item in lista">
+            <td>{{item.Tipo}}</td>
+            <td>{{item.Num_dosis}}</td>
+            <td>{{item.Fecha}}</td>
         </tr>
       </table>
+    </div>
     </div>
     
     <footer id="footer" class="bg-light2"></footer>
