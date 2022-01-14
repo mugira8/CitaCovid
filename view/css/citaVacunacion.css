@@ -11,7 +11,15 @@
 }
 .contenedor2{
     background-color: bisque;
-    height: auto;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-style: solid;
+    border-radius: 7px;
+}
+
+#inputFecha{
+    width: 75%;
 }
 
 .coso{
