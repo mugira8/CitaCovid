@@ -49,11 +49,6 @@ class historialModel extends historialClass {
         return get_object_vars($this);
     }
 
-    public function ObjVars()
-    {
-        return get_object_vars($this);
-    }
-
     public function setList()
     {
         $this->OpenConnect();  
@@ -77,6 +72,11 @@ class historialModel extends historialClass {
         mysqli_free_result($result);
         $this->CloseConnect();
         return $list;
+    }
+
+    public function ObjVars()
+    {
+        return get_object_vars($this);
     }
 }
 ?>
