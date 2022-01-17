@@ -97,12 +97,12 @@
                         <h2>Mi Perfil</h2>
                     </div>
                     <div class="inputs" ng-repeat = "item in lista">
-                        <input type="text" class="inputEdit" id="nombre" placeholder="{{item.Nombre}}">
-                        <input type="text" class="inputEdit" id="apellido" placeholder="{{item.Apellido}}">
-                        <input type="text" class="inputEdit" id="edad" placeholder="{{item.Fecha_Nacimiento}}">
+                        <input type="text" disabled class="inputEdit" id="nombre" placeholder="{{item.Nombre}} ">
+                        <input type="text" disabled class="inputEdit" id="apellido" placeholder="{{item.Apellido}}">
+                        <input type="text" disabled class="inputEdit" id="edad" placeholder="{{item.Fecha_Nacimiento}}">
                     </div>
                     <div class="botones">
-                        <button class="btnEditarPerfil">Editar Perfil</button>
+                        <button class="btnEditarPerfil" ng-click="habilitarEdit()">Editar Perfil</button>
                         <button class="btnConfirmar">Confirmar</button>
                     </div>
                 </div>
