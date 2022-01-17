@@ -4,7 +4,6 @@ class usuariosClass
     protected $cod_usuario;
     protected $Correo;
     protected $Contrasena;
-    protected $Tipo;
     protected $cod_centro;
 
     
@@ -65,26 +64,6 @@ class usuariosClass
     public function setContrasena($Contrasena)
     {
         $this->Contrasena = $Contrasena;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Tipo
-     */ 
-    public function getTipo()
-    {
-        return $this->Tipo;
-    }
-
-    /**
-     * Set the value of Tipo
-     *
-     * @return  self
-     */ 
-    public function setTipo($Tipo)
-    {
-        $this->Tipo = $Tipo;
 
         return $this;
     }
