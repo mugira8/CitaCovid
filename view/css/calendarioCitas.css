@@ -8324,17 +8324,17 @@ h1, h2, h3, h4, h5,
   transition: .2s ease all;
   color: white;
   border: none;
-  background: #7e0cf5; }
+  background: red; }
   .button.button-white {
     background: #fff;
-    color: #000; }
+    color: red; }
   .button:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: none; }
 
 #cancel-button {
-  background: #cd4dcc; }
+  background: red; }
 
 #add-button {
   display: block;
@@ -8412,7 +8412,7 @@ h1, h2, h3, h4, h5,
   position: relative; }
 
 .table-date:not(.nil):hover {
-  border-color: #cd4dcc; }
+  border-color: red; }
 
 .event-date {
   border-color: #7e0cf5;
@@ -8429,11 +8429,11 @@ h1, h2, h3, h4, h5,
     background: #28a745; }
 
 .active-date {
-  background: #cd4dcc;
+  background: red;
   color: #fff; }
 
 .event-date.active-date {
-  background: #7e0cf5; }
+  background: red; }
 
 /* input dialog */
 .dialog {
