@@ -1,3 +1,4 @@
+<html lang="en" ng-app='miApp'></html>
 <link rel="stylesheet" href="view/css/modalEditPerfil.css">
 
 <nav class="navbar fw-bold navbar-expand-lg navbar-light bg-light2 p-2 ">
@@ -84,7 +85,7 @@
 
 
 <!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true">
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true" ng-controller = "miControlador">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -95,10 +96,10 @@
                     <div class="miPerfil">
                         <h2>Mi Perfil</h2>
                     </div>
-                    <div class="inputs">
-                        <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
-                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
-                        <input type="text" class="inputEdit" id="edad" placeholder="Edad">
+                    <div class="inputs" ng-repeat = "item in lista">
+                        <input type="text" class="inputEdit" id="nombre" placeholder="{{item.Nombre}}">
+                        <input type="text" class="inputEdit" id="apellido" placeholder="{{item.Apellido}}">
+                        <input type="text" class="inputEdit" id="edad" placeholder="{{item.Fecha_Nacimiento}}">
                     </div>
                     <div class="botones">
                         <button class="btnEditarPerfil">Editar Perfil</button>
@@ -116,3 +117,4 @@
         </div>
     </div>
 </div>
+</html>
