@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
     </div>
 
     <!--CONTENT-->
-    <div class="container p-3">
+    <div class="container p-3" ng-controller="mainController">
         <div class="nuevosModelos text-center p-3">
             <span>TE PUEDE INTERESAR</span>
         </div>
@@ -64,6 +64,13 @@
         <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div id="myCarouselInner" class="carousel-inner">
                 <!-- Se inserta desde index.js -->
+
+                        <div class="carousel-item " ng-repeat="item in imagen" ng-class="{'active':$first}">
+                            <div class="carousel-img"
+                                style="background-image: url({{item}});">
+                            </div>
+                        </div>
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
                 data-bs-slide="prev">
@@ -76,9 +83,26 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        
         <!--CAROUSEL-->
-        <div id="cardGroup">
-           <!-- Se inserta desde index.js -->
+        <div id="cardGroup" ng-repeat="item in articulo">
+           <div class="card mb-3 my-4">
+            <div class="row g-0">
+                <div class="col-md-3"
+                    style="background-image: url({{item.imagen}}); background-position:left; background-size: contain; background-repeat: no-repeat;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.titulo}}</h5>
+                        <p class="card-text"><b> {{item.subtitulo}}</b></p>
+                        <p class="card-text"> {{item.descripcion}}</p>
+                    </div>
+                </div>
+                <div class="col-md-3"
+                    style="background-image: url({{item.imagen2}}); background-position:right; background-size: contain; background-repeat: no-repeat;">
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 
