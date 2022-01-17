@@ -53,7 +53,7 @@ class centrosModel extends centrosClass {
             $centro->Domingo = $row['Domingo'];
 
 
-            array_push($list, $centro);
+            array_push($list, get_object_vars($centro));
         }
         mysqli_free_result($result);
         $this->CloseConnect();

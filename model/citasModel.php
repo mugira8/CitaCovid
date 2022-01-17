@@ -43,15 +43,40 @@ class citasModel extends citasClass {
             $citas->Fecha = $row['Fecha'];
             $citas->Horas = $row['Horas'];
             $citas->Tipo_vacuna = $row['Tipo_vacuna'];
-            $citas->cod_citas = $row['cod_citas'];
+            $citas->cod_centro = $row['cod_centro'];
             $citas->TIS = $row['TIS'];
 
 
-            array_push($list, $citas);
+            array_push($list, get_object_vars($citas));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
         return $list;
+    }
+    
+    public function insert(){
+        
+        $this->OpenConnect();
+        $cod_cita=$this->cod_cita;
+        $Fecha=$this->Fecha;
+        $Horas=$this->Horas;
+        $Tipo_vacuna=$this->Tipo_vacuna;
+        $cod_centro=$this->cod_centro;
+        $TIS=$this->TIS;
+        
+        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `Tipo_vacuna`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$Tipo_vacuna', '$cod_centro', '$TIS')";
+        
+        $this->link->query($sql);
+        
+        if ($this->link->affected_rows == 1)
+        {
+            return $sql."La cita se ha creado con exito: ".$this->link->affected_rows;
+        } else {
+            return $sql."Fallo al insertar una cita nueva: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+        
     }
 
 }//fin
