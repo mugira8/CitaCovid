@@ -53,28 +53,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-danger" id="exampleModalLabel">LOGIN</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="mb-3">
-                        <label class="form-label">TIS</label>
-                        <input type="text" class="form-control" id="tis" name="tis" placeholder="Username" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_naci" name="fecha_naci"
-                            placeholder="Password" />
-                    </div>
-                    <!--
-                           <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe" />
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                    -->
-                    <div class="modal-footer d-block">
-                        <p class="float-start">Not yet account <a href="#" class="text-danger">Sign Up</a></p>
-                        <button type="submit" class="btn btn-warning float-end">Submit</button>
+                    <div class="row g-3 justify-content-center">
+                        <div>
+                            <label class="form-label">TIS</label>
+                            <input type="text" class="form-control insertTis" placeholder="" value="">
+                        </div>
+                        <div>
+                            <label class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control insertFeccha" placeholder="" value="" step="any">
+                        </div>
+                        <!--Fin del formulario-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal"
+                                id="modalBotonCerrar">Cerrar</button>
+                            <button id="botonLogin" class="col-3 btn btn-primary" onclick="login()" type="submit">Enviar</button>
+                        </div>
                     </div>
                 </form>
             </div>
