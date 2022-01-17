@@ -1,17 +1,15 @@
 .contenedorPrincipal{
     margin-top: 20px;
-    height: 400px;
-    background-color:aqua;
+    height: 500px;
+    background-color: white;
     display: flex;
     text-align: center;
     align-content: center;
 }
 .contenedor1{
-    background-color: rebeccapurple;
     height: auto;
 }
 .contenedor2{
-    background-color: bisque;
     height: auto;
 }
 

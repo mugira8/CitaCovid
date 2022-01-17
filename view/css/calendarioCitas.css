@@ -8194,7 +8194,7 @@ h1, h2, h3, h4, h5,
   overflow-y: scroll;
   height: 100%;
   width: 50%;
-  float: right;
+ 
   margin: 0px auto;
   display: inline-block;
   padding: 0px;
@@ -8247,12 +8247,12 @@ h1, h2, h3, h4, h5,
   position: relative;
   margin: 0 auto;
   height: 100%;
-  width: 50%;
+  width: 80%;
   background: #fff;
   font: 13px Helvetica, Arial, san-serif;
   display: inline-block;
   padding: 20px;
-  float: left; }
+}
   @media (max-width: 991.98px) {
     .calendar-container {
       padding: 0; } }
