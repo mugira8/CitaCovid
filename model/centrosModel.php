@@ -25,7 +25,11 @@ class centrosModel extends centrosClass {
 
 
 //LISTAR DATOS DE CENTROS
+<<<<<<< HEAD
      function setList() {
+=======
+    public function setList() {
+>>>>>>> origin/main
 
         $this->OpenConnect();
 

@@ -2,7 +2,11 @@
 class historialClass
 {
     protected $cod_historial;
+<<<<<<< HEAD
     protected $Tipo;
+=======
+    protected $Tipo_vacuna;
+>>>>>>> origin/main
     protected $Num_Dosis;
     protected $Fecha;
     protected $TIS;
@@ -30,21 +34,29 @@ class historialClass
     }
 
     /**
-     * Get the value of Tipo
+     * Get the value of Tipo_vacuna
      */ 
+<<<<<<< HEAD
     public function getTipo()
+=======
+    public function getTipo_vacuna()
+>>>>>>> origin/main
     {
-        return $this->Tipo;
+        return $this->Tipo_vacuna;
     }
 
     /**
-     * Set the value of Tipo
+     * Set the value of Tipo_vacuna
      *
      * @return  self
      */ 
+<<<<<<< HEAD
     public function setTipo($Tipo)
+=======
+    public function setTipo_vacuna($Tipo_vacuna)
+>>>>>>> origin/main
     {
-        $this->Tipo = $Tipo;
+        $this->Tipo_vacuna = $Tipo_vacuna;
 
         return $this;
     }

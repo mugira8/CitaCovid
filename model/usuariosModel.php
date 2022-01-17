@@ -52,5 +52,23 @@ class usuariosModel extends usuariosClass {
         return $list;
     }
 
+    public function findUser(){
+        $this->OpenConnect();
+
+        $correo=$this->correo;
+        $contrtasena=$this->contrasena;
+
+        $sql = "SELECT * FROM usuarios WHERE";
+
+        $result = $this->link->query($sql);
+
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {
+            $usuarioExists = true;
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $usuarioExists;
+    }
 }//fin
 ?>

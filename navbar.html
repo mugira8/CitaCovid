@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="view/css/modalEditPerfil.css">
+
 <nav class="navbar fw-bold navbar-expand-lg navbar-light bg-light2 p-2 ">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarOptions"
@@ -19,8 +21,98 @@
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar
+                        Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="historial.html">Ver historial</a>
+                </li>
             </ul>
         </div>
 
+        <!-- Login/registro -->
+        <form class="d-flex m-0 align-items-center">
+            <i class="fa fa-user-circle fa-lg" role="button" data-bs-toggle="dropdown"></i>
+            <p id="nomUsu" data-bs-toggle="modal" data-bs-target="#loginModal" class="m-1 text-dark">Login</p>
+            <ul class="dropdown-menu dropdown-menu-end ">
+                <li><a id="ddLg" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar
+                        sesion</a>
+                </li>
+                <li><a id="ddReg" class="dropdown-item" data-bs-toggle="modal"
+                        data-bs-target="#register">Registrarse</a></li>
+                <li><a id="ddLo" class="dropdown-item" style="display: none;" onclick="logout()">Log Out</a></li>
+            </ul>
+        </form>
+    </div>
+</nav>
+
+<!--Modal login-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel">LOGIN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">TIS</label>
+                        <input type="text" class="form-control" id="tis" name="tis" placeholder="Username" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_naci" name="fecha_naci"
+                            placeholder="Password" />
+                    </div>
+                    <!--
+                           <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe" />
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+                    -->
+                    <div class="modal-footer d-block">
+                        <p class="float-start">Not yet account <a href="#" class="text-danger">Sign Up</a></p>
+                        <button type="submit" class="btn btn-warning float-end">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<!--MODAL EDITAR PERFIL-->
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="izquierda">
+                    <div class="miPerfil">
+                        <h2>Mi Perfil</h2>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
+                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
+                        <input type="text" class="inputEdit" id="edad" placeholder="Edad">
+                    </div>
+                    <div class="botones">
+                        <button class="btnEditarPerfil">Editar Perfil</button>
+                        <button class="btnConfirmar">Confirmar</button>
+                    </div>
+                </div>
+                <div class="derecha">
+                    <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
+                    <div class="botonesFoto">
+                        <input class="inputFile" type="file">
+                        <button class="btnEnviar">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

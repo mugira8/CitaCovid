@@ -7,18 +7,21 @@
     font-size: 13;
 }
 .title{
-    color: white;
+    color: red;
 }
 a{
     text-decoration: none;
-    color: #666e76;
+    color: #7a0000;
 }
 a:hover{
-    color: #798189;
+    color: #7a0000;
 }
 #enlaces{
     font-size: 13;
 }
 #copy{
     font-size: 12;
+}
+h6{
+    color: red;
 }

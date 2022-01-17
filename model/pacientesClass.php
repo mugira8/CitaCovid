@@ -6,11 +6,15 @@ class pacientesClass
     protected $Fecha_Nacimiento;
     protected $Nombre;
     protected $Apellido;
+<<<<<<< HEAD
     protected $Edad;
     protected $Perfil;
     protected $cod_centro;
 
     
+=======
+    protected $cod_centro;
+>>>>>>> origin/main
 
     /**
      * Get the value of TIS
@@ -113,6 +117,7 @@ class pacientesClass
     }
 
     /**
+<<<<<<< HEAD
      * Get the value of Edad
      */ 
     public function getEdad()
@@ -133,6 +138,8 @@ class pacientesClass
     }
 
     /**
+=======
+>>>>>>> origin/main
      * Get the value of cod_centro
      */ 
     public function getCod_centro()

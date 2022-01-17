@@ -7,6 +7,7 @@ class usuariosClass
     protected $Tipo;
     protected $cod_centro;
 
+    
 
     /**
      * Get the value of cod_usuario

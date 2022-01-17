@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='miApp'>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="view/css/index.css">
+    <link rel="stylesheet" href="view/css/general.css">
+    <link rel="stylesheet" href="view/css/historial.css">
+    <link rel="icon" href="view/images/icon.png">
+    <title>Mi Historial</title>
+    <link rel="shortcut icon" href="view/images/icon.png">
+</head>
+<body>
+    
+    <div id="navbar"></div>
+
+    <!--Seccion Central-->
+    <div ng-controller="miControlador">
+    <div class="miCuenta" ng-repeat="item in lista">
+        <input type="text" class="nombre" disabled placeholder="{{item.Nombre}}">
+        <input type="text" class="apellido" disabled placeholder="{{item.Apellido}}">
+        <input type="text" class="tis" disabled placeholder="{{item.Tis}}">
+    </div>
+    
+    <div class="seccionCentral">
+    <table>
+        <tr>
+          <th>Tipo Vacuna</th>
+          <th>Numero de Dosis</th>
+          <th>Fecha</th>
+        </tr>
+        <tr ng-repeat="item in lista">
+            <td>{{item.Tipo}}</td>
+            <td>{{item.Num_dosis}}</td>
+            <td>{{item.Fecha}}</td>
+        </tr>
+      </table>
+    </div>
+    </div>
+    
+    <footer id="footer" class="bg-light2"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
+    <script src="view/js/insert.js"></script>
+    <script src="view/js/index.js"></script>
+</body>
+</html>
