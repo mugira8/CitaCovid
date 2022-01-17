@@ -55,7 +55,6 @@ class pacientesModel extends pacientesClass {
         return $list;
     }
 
-<<<<<<< HEAD
 
     public function update(){
         
@@ -90,7 +89,6 @@ class pacientesModel extends pacientesClass {
     }
 
 
-=======
     public function findPacinete(){
         $this->OpenConnect();
 
@@ -110,5 +108,4 @@ class pacientesModel extends pacientesClass {
 		return $pacienteExists;
     }
 
->>>>>>> origin/main
 }//fin

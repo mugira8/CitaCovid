@@ -6,15 +6,8 @@ class pacientesClass
     protected $Fecha_Nacimiento;
     protected $Nombre;
     protected $Apellido;
-<<<<<<< HEAD
     protected $Edad;
-    protected $Perfil;
     protected $cod_centro;
-
-    
-=======
-    protected $cod_centro;
->>>>>>> origin/main
 
     /**
      * Get the value of TIS
@@ -117,29 +110,6 @@ class pacientesClass
     }
 
     /**
-<<<<<<< HEAD
-     * Get the value of Edad
-     */ 
-    public function getEdad()
-    {
-        return $this->Edad;
-    }
-
-    /**
-     * Set the value of Edad
-     *
-     * @return  self
-     */ 
-    public function setEdad($Edad)
-    {
-        $this->Edad = $Edad;
-
-        return $this;
-    }
-
-    /**
-=======
->>>>>>> origin/main
      * Get the value of cod_centro
      */ 
     public function getCod_centro()
@@ -175,6 +145,26 @@ class pacientesClass
     public function setPerfil($Perfil)
     {
         $this->Perfil = $Perfil;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Edad
+     */ 
+    public function getEdad()
+    {
+        return $this->Edad;
+    }
+
+    /**
+     * Set the value of Edad
+     *
+     * @return  self
+     */ 
+    public function setEdad($Edad)
+    {
+        $this->Edad = $Edad;
 
         return $this;
     }

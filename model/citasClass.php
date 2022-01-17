@@ -4,11 +4,7 @@ class citasClass
     protected $cod_cita;
     protected $Fecha;
     protected $Horas;
-<<<<<<< HEAD
-    protected $Tipo_vacuna;
-=======
     protected $cod_vacuna;
->>>>>>> origin/main
     protected $cod_centro;
     protected $TIS;
     
@@ -77,11 +73,7 @@ class citasClass
     /**
      * Get the value of cod_vacuna
      */ 
-<<<<<<< HEAD
-    public function getTipo_vacuna()
-=======
     public function getCod_vacuna()
->>>>>>> origin/main
     {
         return $this->cod_vacuna;
     }
@@ -91,11 +83,7 @@ class citasClass
      *
      * @return  self
      */ 
-<<<<<<< HEAD
-    public function setTipo_vacuna($Tipo_vacuna)
-=======
     public function setCod_vacuna($cod_vacuna)
->>>>>>> origin/main
     {
         $this->cod_vacuna = $cod_vacuna;
 
