@@ -53,8 +53,8 @@ class historialModel extends historialClass {
     {
         $this->OpenConnect();  
         
-        $sql = "SELECT `Tipo_vacuna`, `Num_Dosis`, `Fecha` FROM `historial`"; 
-        
+        $sql = "SELECT Tipo_vacuna, Num_Dosis, Fecha FROM historial"; 
+
         $result = $this->link->query($sql);
         
         $list=array();

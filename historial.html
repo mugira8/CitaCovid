@@ -20,7 +20,8 @@
 
     <!--Seccion Central-->
     <div ng-controller="miControlador">
-    <div class="miCuenta" ng-repeat="item in lista">
+        {{mezua}}
+    <div class="miCuenta" >
         <input type="text" class="nombre" disabled placeholder="{{item.Nombre}}">
         <input type="text" class="apellido" disabled placeholder="{{item.Apellido}}">
         <input type="text" class="tis" disabled placeholder="{{item.Tis}}">
@@ -34,8 +35,8 @@
           <th>Fecha</th>
         </tr>
         <tr ng-repeat="item in lista">
-            <td>{{item.Tipo}}</td>
-            <td>{{item.Num_dosis}}</td>
+            <td>{{item.Tipo_vacuna}}</td>
+            <td>{{item.Num_Dosis}}</td>
             <td>{{item.Fecha}}</td>
         </tr>
       </table>
@@ -50,5 +51,6 @@
     <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
     <script src="view/js/insert.js"></script>
     <script src="view/js/index.js"></script>
+    <script src="view/js/historial.js"></script>
 </body>
 </html>
