@@ -89,7 +89,7 @@ class pacientesModel extends pacientesClass {
     }
 
 
-    public function findPacinete(){
+    public function findPaciente(){
         $this->OpenConnect();
 
         $tis=$this->tis;

@@ -2,7 +2,7 @@
 require_once '../model/usuarioModel.php';
 
 $response=array();
-$usuario= new usuarioModel();
+$usuario= new usuariosModel();
 
 session_start();
 
