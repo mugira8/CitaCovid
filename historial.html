@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='miApp'>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,34 +16,35 @@
     <title>Mi Historial</title>
     <link rel="shortcut icon" href="view/images/icon.png">
 </head>
+
 <body>
-    
+
     <div id="navbar"></div>
 
     <!--Seccion Central-->
     <div ng-controller="miControlador">
-    <div class="miCuenta" ng-repeat="item in lista">
-        <input type="text" class="nombre" disabled placeholder="{{item.Nombre}}">
-        <input type="text" class="apellido" disabled placeholder="{{item.Apellido}}">
-        <input type="text" class="tis" disabled placeholder="{{item.Tis}}">
+        <div class="miCuenta" ng-repeat="item in lista">
+            <input type="text" class="nombre" disabled placeholder="{{item.Nombre}}">
+            <input type="text" class="apellido" disabled placeholder="{{item.Apellido}}">
+            <input type="text" class="tis" disabled placeholder="{{item.Tis}}">
+        </div>
+
+        <div class="seccionCentral">
+            <table>
+                <tr>
+                    <th>Tipo Vacuna</th>
+                    <th>Numero de Dosis</th>
+                    <th>Fecha</th>
+                </tr>
+                <tr ng-repeat="item in lista">
+                    <td>{{item.Tipo}}</td>
+                    <td>{{item.Num_dosis}}</td>
+                    <td>{{item.Fecha}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    
-    <div class="seccionCentral">
-    <table>
-        <tr>
-          <th>Tipo Vacuna</th>
-          <th>Numero de Dosis</th>
-          <th>Fecha</th>
-        </tr>
-        <tr ng-repeat="item in lista">
-            <td>{{item.Tipo}}</td>
-            <td>{{item.Num_dosis}}</td>
-            <td>{{item.Fecha}}</td>
-        </tr>
-      </table>
-    </div>
-    </div>
-    
+
     <footer id="footer" class="bg-light2"></footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -52,4 +54,5 @@
     <script src="view/js/insert.js"></script>
     <script src="view/js/index.js"></script>
 </body>
+
 </html>

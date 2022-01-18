@@ -30,7 +30,7 @@
             <span>TE PUEDE INTERESAR</span>
         </div>
         <div class="row row-cols-md-3 g-4 text-center">
-            
+
             <div class="col">
                 <div class="card h-100">
                     <img src="view/images/donar_sangre.jpg" class="card-img-top img-fluid">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col">
                 <div class="card h-100">
                     <img src="view/images/euskera.jpg" class="card-img-top img-fluid">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col">
                 <div class="card h-100">
                     <img src="view/images/investigacion.jpg" class="card-img-top img-fluid">
@@ -59,51 +59,48 @@
             </div>
 
         </div>
-        
+
         <br>
         <!--CAROUSEL-->
         <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div id="myCarouselInner" class="carousel-inner">
                 <!-- Se inserta desde index.js -->
 
-                        <div class="carousel-item " ng-repeat="item in imagen" ng-class="{'active':$first}">
-                            <div class="carousel-img"
-                                style="background-image: url({{item}});">
-                            </div>
-                        </div>
+                <div class="carousel-item " ng-repeat="item in imagen" ng-class="{'active':$first}">
+                    <div class="carousel-img" style="background-image: url({{item}});">
+                    </div>
+                </div>
 
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
+
         <!--CAROUSEL-->
         <div id="cardGroup" ng-repeat="item in articulo">
-           <div class="card mb-3 my-4">
-            <div class="row g-0">
-                <div class="col-md-3"
-                    style="background-image: url({{item.imagen}}); background-position:left; background-size: contain; background-repeat: no-repeat;">
-                </div>
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">{{item.titulo}}</h5>
-                        <p class="card-text"><b> {{item.subtitulo}}</b></p>
-                        <p class="card-text"> {{item.descripcion}}</p>
+            <div class="card mb-3 my-4">
+                <div class="row g-0">
+                    <div class="col-md-3"
+                        style="background-image: url({{item.imagen}}); background-position:left; background-size: contain; background-repeat: no-repeat;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">{{item.titulo}}</h5>
+                            <p class="card-text"><b> {{item.subtitulo}}</b></p>
+                            <p class="card-text"> {{item.descripcion}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3"
+                        style="background-image: url({{item.imagen2}}); background-position:right; background-size: contain; background-repeat: no-repeat;">
                     </div>
                 </div>
-                <div class="col-md-3"
-                    style="background-image: url({{item.imagen2}}); background-position:right; background-size: contain; background-repeat: no-repeat;">
-                </div>
             </div>
-        </div>
         </div>
     </div>
 

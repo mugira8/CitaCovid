@@ -1,27 +1,27 @@
-#hr{
-    height: 3px;
-    margin: unset;
+#hr {
+  height: 3px;
+  margin: unset;
 }
-#container{
-    justify-content: space-evenly;
-    font-size: 13;
+#container {
+  justify-content: space-evenly;
+  font-size: 13;
 }
-.title{
-    color: red;
+.title {
+  color: red;
 }
-a{
-    text-decoration: none;
-    color: #7a0000;
+a {
+  text-decoration: none;
+  color: #7a0000;
 }
-a:hover{
-    color: #7a0000;
+a:hover {
+  color: #7a0000;
 }
-#enlaces{
-    font-size: 13;
+#enlaces {
+  font-size: 13;
 }
-#copy{
-    font-size: 12;
+#copy {
+  font-size: 12;
 }
-h6{
-    color: red;
+h6 {
+  color: red;
 }
