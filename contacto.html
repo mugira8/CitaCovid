@@ -51,24 +51,23 @@
 
        
         <!--Formulario contacto-->
-            <div id="formContacto" class="bg-light">
+            <div id="formContacto">
                 <section>
                     <div class="container">
                       <div class="row">
                         <div class="col-lg-6 col-sm-12">
                             
-                            <!--tlf osakidetza-->
+                           <center><!--tlf osakidetza-->
                             <div class="row w-100 mt-3" >
                                 <div class=" mb-2 col-lg-6 col-sm-12">
                                     <img class=" h-75 d-inline-block imgContenedor" src="https://www.osakidetza.euskadi.eus/contenidos/informacion/osk_corp_contacta_osakidetza/es_def/images/ab-84-osakidetza-contacta-consejo-sanitario.jpg" alt="">
                                 </div>
 
-                                <div class=".back row mb-2 col-lg-6 col-sm-12 align-content-center "> 
-                                    <p class="info2 a text-danger ">Consejo Sanitario</p>
-                                    <p class="info2 b text-danger ">900 20 30 40</p>
+                                <div class="back row mb-2 col-lg-6 col-sm-12 align-content-center "> 
+                                    <p class="info2 a text-danger ">Consejo Sanitario <br> 900 20 30 40</p>
                                 </div>
                             </div>
-
+                          </center> 
 
                         </div>
                         <div class="col-lg-6 col-sm-12">
@@ -79,7 +78,7 @@
                         <center><strong>
                             <h3 class="es">Contáctanos</h3>
                           </strong></center>
-                        <hr class="w-75 align-content-center">
+                        <hr>
                       </div>
 
 
@@ -88,48 +87,39 @@
                         <form role="form" id="formulario" action="?" method="POST" onsubmit="formRelleno()">
                           <div class="form-group">
                             <label class="control-label es" for="Nombre">Nombre</label>
-                            <label class="control-label eu" for="Nombre">Izena</label>
                             <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Introduzca su nombre"
                               required />
                           </div>
                           <div class="form-group">
                             <label class="control-label es" for="Correo">Dirección de Correo Electrónico</label>
-                            <label class="control-label eu" for="Correo">Posta Elektronikoa</label>
                             <input type="email" class="form-control" id="Correo" name="Correo"
                               placeholder="Introduzca su correo electrónico" required />
                           </div>
                           <div class="form-group">
                             <label class="control-label es" for="Motivo" name="Mcontacto">Motivo de Contacto</label>
-                            <label class="control-label eu" for="Motivo" name="Mcontacto">Kontaktuaren arrazoia</label>
                             <select name="MotivoS" id="MotivoS" onchange="mostrar()" class="form-control">
                               <option class="es" value="Viaje" id="Viaje" selected disabled>Escoge una opción</option>
-                              <option class="eu" value="Viaje" id="Viaje" selected disabled>Aukeratu bat</option>
+
                               <option class="es" value="Productos" id="Productos">Productos</option>
-                              <option class="eu" value="Productos" id="Productos">Produktuak</option>
                               <option class="es" value="Drones">Drones</option>
-                              <option class="eu" value="Drones">Droneak</option>
                               <option class="es" value="Web">Web</option>
-                              <option class="eu" value="Web">Web</option>
+
                               <option class="es" value="Otro">Otro...</option>
-                              <option class="eu" value="Otro">Beste bat...</option>
                             </select>
                           </div>
                           <div></div>
                           <div class="form-group" style="display: none;" id="motivo">
                             <label class="control-label es" for="MasMotivo">Motivo</label>
-                            <label class="control-label eu" for="MasMotivo">Arrazoi</label>
                             <input class="form-control" for="MasMotivo" name="MasMotivo" type="text" id="MasMotivo2"
                               placeholder="Motivo adjunto" />
                           </div>
                           <div class="form-group">
                             <label class="control-label es" for="Mensaje">Mensaje</label>
-                            <label class="control-label eu" for="Mensaje">Mezua</label>
                             <textarea rows="5" cols="30" class="form-control" id="Mensaje" name="Mensaje"
                               placeholder="Introduzca su mensaje"></textarea>
                           </div><br>
                           <div class="form-group">
                             <button type="submit" class="btn btn-primary es" value="Enviar" id="btnEnviar">Enviar</button>
-                            <button type="submit" class="btn btn-primary eu" value="Enviar" id="btnEnviar">Bidali</button>
                             <input type="reset" class="btn btn-default" value="Limpiar">
                           </div>
                           <div id="respuesta" style="display: none;"></div>

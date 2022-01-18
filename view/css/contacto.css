@@ -44,12 +44,15 @@
     font-size: 25px;
 }
 .back{
-    height: 30px;
-    background-color: white;
+    margin-top: 100px;
+
+    height: 150px;
+    background-color: rgba(211, 199, 199, 0.8);
+    border-radius: 3px;
 
 }
 .info2{
-    margin-top: -100px;
+    
     font-weight: bolder;
     font-size: 25px;
 }
@@ -63,6 +66,7 @@
     }
     
     .a{
+        margin-top: -100px;
         position: absolute;
         top: 50%;
         left: 50%;
