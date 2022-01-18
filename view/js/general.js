@@ -129,4 +129,16 @@ function logout() {
             window.location.href = "index.html";
         }
     })
+
+
+    /*EDITAR PERFIL ANGULAR JS*/
+    var MyApp = angular.module('myApp', []);
+
+    MyApp.controller('controlador',['$scope','$http', function($scope,$http){
+
+        $scope.habilitarEdit = function() {
+            console.log("hola");
+        }
+    
+    }]);
 }

@@ -10,6 +10,8 @@ $http.get("view/js/articulos.json").then(function(response){
     $scope.articulo = response.data;
     $scope.imagen = imagenesCarrusel;
 });
+
 }]);
+
 
 //var esNuevo = `<span class="badge bg-danger ">New</span>`;
