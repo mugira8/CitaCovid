@@ -1,20 +1,29 @@
-.contenedorPrincipal{
-    margin-top: 20px;
-    height: 400px;
-    background-color:aqua;
-    display: flex;
-    text-align: center;
-    align-content: center;
+.contenedorPrincipal {
+  margin-top: 20px;
+  height: auto;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
 }
-.contenedor1{
-    background-color: rebeccapurple;
-    height: auto;
+.contenedor1 {
+  display: flex;
+  height: auto;
 }
-.contenedor2{
-    background-color: bisque;
-    height: auto;
+.contenedor2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  height: auto;
 }
 
-.coso{
-    margin: 20px;
+.campo {
+  margin: 20px;
+}
+
+.boton{
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-bottom: 50px;
 }

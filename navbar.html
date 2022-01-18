@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="view/css/modalEditPerfil.css">
+<link rel="stylesheet" href="view/css/panelAdmin.css">
 
 <nav class="navbar fw-bold navbar-expand-lg navbar-light bg-light2 p-2 ">
     <div class="container-fluid">
@@ -22,11 +23,14 @@
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar
                         Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="historial.html">Ver historial</a>
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
             </ul>
         </div>
@@ -47,66 +51,133 @@
     </div>
 </nav>
 
-<!--Modal login-->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalLabel">LOGIN</h5>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row g-3 justify-content-center">
-                        <div>
-                            <label class="form-label">TIS</label>
-                            <input type="text" class="form-control insertTis" placeholder="" value="">
-                        </div>
-                        <div>
-                            <label class="form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control insertFecha" placeholder="" value="" step="any">
-                        </div>
-                        <!--Fin del formulario-->
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                id="modalBotonCerrar">Cerrar</button>
-                            <button id="botonLogin" class="col-3 btn btn-primary" onclick="login()">Enviar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <div class="izquierda">
+
                     <div class="miPerfil">
                         <h2>Mi Perfil</h2>
                     </div>
+
                     <div class="inputs">
+
                         <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
+
                         <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
+
                         <input type="text" class="inputEdit" id="edad" placeholder="Edad">
+
                     </div>
+
                     <div class="botones">
                         <button class="btnEditarPerfil">Editar Perfil</button>
+
                         <button class="btnConfirmar">Confirmar</button>
                     </div>
+
                 </div>
+
                 <div class="derecha">
+
                     <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
+
                     <div class="botonesFoto">
                         <input class="inputFile" type="file">
                         <button class="btnEnviar">Enviar</button>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal panel de admin -->
+<div class="modal fade" id="panelAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="contenedor container">
+
+                    <div class="col-10 col-md-6">
+                        <!-- selecctor de centro -->
+                        <select class="form-select campo" aria-label="Default select example" id="centros">
+                            <option selected>Seleccione un centro</option>
+                            <option value="1">A</option>
+                            <option value="2">ornamentado</option>
+                            <option value="3">arboleda arbolosa</option>
+                        </select>
+
+                        <!-- nombre y municipio -->
+                        <small>Nombre del centro</small>
+                        <input type="text" class="form-control campo" id="nombreCentro">
+                        <small>municipio</small>
+                        <input type="text" class="form-control campo" id="municipio">
+                    </div>
+
+                    <div class="col-10 col-lg-6">
+                        <div class="contenedor container">
+                            <!-- dias de vacunaccion -->
+                            <div class="col-12 col-md-6">
+                                <small>Dias de Vacunacion</small>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkLunes">
+                                    <label class="form-check-label" for="flexCheckDefault1">Lunes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkMartes">
+                                    <label class="form-check-label" for="flexCheckDefault2">Martes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkMiercoles">
+                                    <label class="form-check-label" for="flexCheckDefault3">Miercoles</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkJueves">
+                                    <label class="form-check-label" for="flexCheckDefault4">Jueves</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkViernes">
+                                    <label class="form-check-label" for="flexCheckDefault5">Viernes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkSabado">
+                                    <label class="form-check-label" for="flexCheckDefault6">Sabado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkDomingo">
+                                    <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
+                                </div>
+                            </div>
+                            
+                            <!-- horario -->
+                            <div class="col-12 col-md-6">
+                                <small>Horario</small>
+                                <p><small>apertura</small>
+                                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+                                </p>
+                                <p><small>Cierre</small>
+                                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
     </div>
