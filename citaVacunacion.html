@@ -8,33 +8,90 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="view/css/general.css">
   <link rel="stylesheet" href="view/css/citaVacunacion.css">
+  <link rel="stylesheet" href="view/css/navbar.css">
   <link rel="icon" href="view/images/icon.png">
   <title>Umbrella Corp.</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="view/css/calendarioCitas.css">
+
+  <script>(function (w, d) {
+      !function (e, t, r, a, s) {
+        e[r] = e[r] || {}, e[r].executed = [], e.zaraz = { deferred: [] }; var n = t.getElementsByTagName("title")[0]; e[r].c = t.cookie, n && (e[r].t = t.getElementsByTagName("title")[0].text), e[r].w = e.screen.width, e[r].h = e.screen.height, e[r].j = e.innerHeight, e[r].e = e.innerWidth, e[r].l = e.location.href, e[r].r = t.referrer, e[r].k = e.screen.colorDepth, e[r].n = t.characterSet, e[r].o = (new Date).getTimezoneOffset(),//
+          e[s] = e[s] || [], e.zaraz._preTrack = [], e.zaraz.track = (t, r) => e.zaraz._preTrack.push([t, r]), e[s].push({ "zaraz.start": (new Date).getTime() }); var i = t.getElementsByTagName(a)[0], o = t.createElement(a); o.defer = !0, o.src = "/cdn-cgi/zaraz/s.js?" + new URLSearchParams(e[r]).toString(), i.parentNode.insertBefore(o, i)
+      }(w, d, "zarazData", "script", "dataLayer");
+    })(window, document);</script>
+
 </head>
 
 <body>
 
   <div id="navbar"></div>
 
-<!-- campo para ver la dosis que toque -->
+  <!-- campo para ver la dosis que toque -->
   <div class="container contenedorPrincipal">
-      
-          <div class="col-6 contenedor1">
-            hola
+
+    <div class="col-12 col-md-6 contenedor1">
+
+      <div class="calendar-container">
+        <div class="calendar">
+          <div class="year-header">
+            <span class="left-button fa fa-chevron-left" id="prev"> </span>
+            <span class="year" id="label"></span>
+            <span class="right-button fa fa-chevron-right" id="next"> </span>
           </div>
-          <div class="col-6 contenedor2" id="formCitas">
-            <div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="Fecha" disabled></div>
-              <div class="col-5 coso"><input type="text" class="form-control" id="Horas" disabled></div>
-            </div>
-            <div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="cod_centro" disabled></div>
-              <div class="col-5 coso"><input type="text" class="form-control" id="TIS" disabled></div>
-            </div>
-            <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>
+          <table class="months-table w-100">
+            <tbody>
+              <tr class="months-row">
+                <td class="month">ENE</td>
+                <td class="month">FEB</td>
+                <td class="month">MAR</td>
+                <td class="month">ABR</td>
+                <td class="month">MAY</td>
+                <td class="month">JUN</td>
+                <td class="month">JUL</td>
+                <td class="month">AGO</td>
+                <td class="month">SEP</td>
+                <td class="month">OCT</td>
+                <td class="month">NOV</td>
+                <td class="month">DIC</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="days-table w-100">
+            <td class="day">LU</td>
+            <td class="day">MA</td>
+            <td class="day">MI</td>
+            <td class="day">JU</td>
+            <td class="day">VI</td>
+            <td class="day">SA</td>
+            <td class="day">DO</td>
+          </table>
+          <div class="frame">
+            <table class="dates-table w-100">
+              <tbody class="tbody">
+              </tbody>
+            </table>
           </div>
+          <button class="btn-danger btn" id="add-button">Add Event</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 col-md-6 contenedor2" id="formCitas">
+      <h2>Cita Actual</h2>
+      <div class="row">
+        <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha"></div>
+        <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas"></div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro"></div>
+        <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS"></div>
+      </div>
+      <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>
+    </div>
   </div>
-  <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button>
+  <!-- <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button> -->
 
   <div id="menuPruebaId">
     <span style="font-size: 15px;"> --Menu de prueba-- <br>
@@ -43,6 +100,9 @@
     <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
     <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
   </div>
+
+  <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
+
 
   <footer id="footer" class="bg-dark"></footer>
 
@@ -54,5 +114,14 @@
 <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 <script src="view/js/insert.js"></script>
 <script src="view/js/citaVacunacion.js"></script>
+<script src="view/js/jquery.min.js"></script>
+<script src="view/js/popper.js+bootstrap.min.js.pagespeed.jc.ndf8_3FdiS.js"></script>
+<script>eval(mod_pagespeed_wDxec1q6mG);</script>
+<script>eval(mod_pagespeed_amktbYOjgV);</script>
+<script src="view/js/calendarioCitas.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+  integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+  data-cf-beacon='{"rayId":"6cd69a26beef666f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
+  crossorigin="anonymous"></script>
 
 </html>

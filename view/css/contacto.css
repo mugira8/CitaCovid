@@ -7,7 +7,7 @@
     list-style: none;
     margin-top: 2%;
     margin-bottom: 2%;
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid #DC3545;
 }
 
 .li{
@@ -19,16 +19,8 @@
     border: none;
 
     font-size: 18px;
-    color: rgb(76, 76, 202);
 }
 
-.li:hover{
-    background-color: blue;
-    color: white;
-}
-.btnMenu:hover{
-    color: white;
-}
 /*CSS DEL MENU FINAL*/
 
 .fondoText{
@@ -54,7 +46,6 @@
 .info{
     margin-top: 22%;
     margin-left: 7%;
-    color: rgb(1, 1, 167);
     font-weight: bolder;
     font-size: 30px;
 }

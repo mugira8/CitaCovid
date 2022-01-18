@@ -3,6 +3,7 @@ require_once '../model/usuarioModel.php';
 
 $response=array();
 $usuario= new usuarioModel();
+$paciente = new pacienteModel();
 
 session_start();
 

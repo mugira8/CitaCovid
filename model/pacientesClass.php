@@ -6,10 +6,7 @@ class pacientesClass
     protected $Fecha_Nacimiento;
     protected $Nombre;
     protected $Apellido;
-    protected $Edad;
     protected $cod_centro;
-
-    
 
     /**
      * Get the value of TIS
@@ -107,26 +104,6 @@ class pacientesClass
     public function setApellido($Apellido)
     {
         $this->Apellido = $Apellido;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Edad
-     */ 
-    public function getEdad()
-    {
-        return $this->Edad;
-    }
-
-    /**
-     * Set the value of Edad
-     *
-     * @return  self
-     */ 
-    public function setEdad($Edad)
-    {
-        $this->Edad = $Edad;
 
         return $this;
     }
