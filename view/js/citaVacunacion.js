@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     //loadCitas();
 
-    document.getElementById("botonConfirmarCita").addEventListener('click', insertar);
+    //document.getElementById("botonConfirmarCita").addEventListener('click', insertar);
     var botonesCitas = document.getElementsByClassName("btnMostrarCita");
 
 for (var i = 0; i < botonesCitas.length; i++) {
@@ -69,13 +69,15 @@ function loadCitas(event) {
 
 			var newRow = "";
 			
-			newRow = `<div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="Fecha" disabled placeholder="`+citas.Fecha+`"></div>
-              <div class="col-5 coso"><input type="text" class="form-control" id="Horas" disabled placeholder="`+citas.Horas+`"></div>
+            //Substring() limita la cantidad de caracteres se muestran
+			newRow = `<h2>Cita Actual</h2>
+            <div class="row">
+              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled placeholder="Fecha: `+citas.Fecha+`"></div>
+              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder="Hora: `+citas.Horas.substring(0,5)+`"></div>
             </div>
             <div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+citas.cod_centro+`"> </div>
-              <div class="col-5 coso"><input type="text" class="form-control" id="TIS" disabled placeholder="`+citas.TIS+`"></div>
+              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="Centro: `+citas.cod_centro+`"> </div>
+              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+citas.TIS+`"></div>
             </div>
 			<div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>`
 			
