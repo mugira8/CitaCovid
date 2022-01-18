@@ -12,5 +12,4 @@ $http.get("view/js/articulos.json").then(function(response){
 });
 }]);
 
-
 //var esNuevo = `<span class="badge bg-danger ">New</span>`;

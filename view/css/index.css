@@ -1,8 +1,3 @@
-@font-face {
-    font-family: champagne;
-    src: url("../fonts/Champagne\ &\ Limousines.ttf");
-}
-
 nav {
     background-image: url(../images/bg.jpg);
     background-position: center;
@@ -46,6 +41,7 @@ nav {
     justify-content: center;
     align-items: center;
     background-image: url("../images/vacunacion.jpeg");
+    -webkit-text-stroke: 0.5px black;
 }
 
 .paraCont {
