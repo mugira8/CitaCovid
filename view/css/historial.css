@@ -5,7 +5,11 @@ table {
 }
 
 .seccionCentral {
-  height: 400px;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  min-height: 400px;
+  width: 100%;
 }
 
 td,
@@ -24,10 +28,11 @@ table td {
 }
 
 .miCuenta {
-  height: 100px;
+  height: auto;
+  min-height: 100px;
 }
 
-.nombre {
+.campoCuenta {
   margin-top: 35px;
   margin-left: 30px;
   border: 2px solid black;
@@ -35,18 +40,8 @@ table td {
 .nombre::-webkit-input-placeholder {
   text-align: center;
 }
-.apellido {
-  margin-top: 35px;
-  margin-left: 30px;
-  border: 2px solid black;
-}
 .apellido::-webkit-input-placeholder {
   text-align: center;
-}
-.tis {
-  margin-top: 35px;
-  margin-left: 30px;
-  border: 2px solid black;
 }
 .tis::-webkit-input-placeholder {
   text-align: center;
