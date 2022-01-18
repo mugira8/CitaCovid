@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    loadCitas();
+    //loadCitas();
 
     document.getElementById("botonConfirmarCita").addEventListener('click', insertar);
+    var botonesCitas = document.getElementsByClassName("btnMostrarCita");
+
+for (var i = 0; i < botonesCitas.length; i++) {
+    botonesCitas[i].addEventListener('click', loadCitas, false);
+}
 
 })
 
@@ -21,30 +26,64 @@ function validate(evt) {
     }
 }
 
-function loadCitas() {
+function loadCitas(event) {
 
-    var url = "controller/cLoadCentros.php"
+	console.log("boton clicado:", event.target.id)
 
+    //Recoge todas las citas
+    // var url = "controller/cLoadCentros.php"
+
+    // fetch(url, {
+    //     method: 'GET',
+    // })
+    //     .then(res => res.json()).then(result => {
+
+    //         console.log("resultado citas", result.list);
+
+    //         var centro = result.list;
+
+    //         var newRow = "";
+
+    //         newRow += "<option value=''selected disabled hidden>Selecciona centro </option>";
+
+    //         for (let i = 0; i < centro.length; i++) {
+
+    //             newRow += "<option value='" + centro[i].cod_centro + "'>" + centro[i].Nombre + "</option>";
+    //         }
+    //         document.getElementById("cod_centro").innerHTML = newRow;
+    //     })
+    //     .catch(error => console.error('Error status:', error));
+
+    //Recoge las citas por TIS
+    var url = "controller/cLoadCitas.php";
+	var TIS = event.target.id;
+	var data = {'TIS':TIS};
     fetch(url, {
-        method: 'GET',
-    })
-        .then(res => res.json()).then(result => {
+         method: 'POST',
+		 body: JSON.stringify(data), // data can be `string` or {object}!
+		 headers:{'Content-Type': 'application/json'}  //input data
+     })
+         .then(res => res.json()).then(result => {
+            console.log("resultado citas", result);
+            var citas = result.citas;
 
-            console.log("resultado citas", result.list);
+			var newRow = "";
+			
+			newRow = `<div class="row">
+              <div class="col-5 coso"><input type="text" class="form-control" id="Fecha" disabled placeholder="`+citas.Fecha+`"></div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="Horas" disabled placeholder="`+citas.Horas+`"></div>
+            </div>
+            <div class="row">
+              <div class="col-5 coso"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+citas.cod_centro+`"> </div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="TIS" disabled placeholder="`+citas.TIS+`"></div>
+            </div>
+			<div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>`
+			
+			document.getElementById("formCitas").innerHTML=newRow;
+			
+         }).catch(error => console.error('Error status:', error));
 
-            var centro = result.list;
-
-            var newRow = "";
-
-            newRow += "<option value=''selected disabled hidden>Selecciona centro </option>";
-
-            for (let i = 0; i < centro.length; i++) {
-
-                newRow += "<option value='" + centro[i].cod_centro + "'>" + centro[i].Nombre + "</option>";
-            }
-            document.getElementById("cod_centro").innerHTML = newRow;
-        })
-        .catch(error => console.error('Error status:', error));
+        
 }
 
 function insertar(){

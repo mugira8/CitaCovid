@@ -74,9 +74,31 @@ class citasModel extends citasClass {
         } else {
             return $sql."Fallo al insertar una cita nueva: (" . $this->link->errno . ") " . $this->link->error;
         }
-        
         $this->CloseConnect();
+    }
+    
+    public function findCitaByTIS() {
+        $this->OpenConnect();
         
+        $TIS=$this->TIS;
+        $sql="select * from citas where TIS=$TIS";
+        $result = $this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $this->cod_cita=$row["cod_cita"];
+            $this->Fecha=$row["Fecha"];
+            $this->Horas=$row["Horas"];
+            $this->Tipo_vacuna=$row["Tipo_vacuna"];
+            $this->cod_centro=$row["cod_centro"];
+            $this->TIS=$row["TIS"];
+        }
+        
+        mysqli_free_result($result);
+       $this->CloseConnect();
+    }
+    
+    public function ObjVars()
+    {
+        return get_object_vars($this);
     }
 
 }//fin

@@ -22,20 +22,27 @@
           <div class="col-6 contenedor1">
             hola
           </div>
-          <div class="col-6 contenedor2">
+          <div class="col-6 contenedor2" id="formCitas">
             <div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="Fecha"></div>
-              <div class="col-5 coso"><input type="time" class="form-control" id="Horas"></div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="Fecha" disabled></div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="Horas" disabled></div>
             </div>
             <div class="row">
-              <div class="col-5 coso"><input type="text" class="form-control" id="cod_centro"> </div>
-              <div class="col-5 coso"><input type="text" class="form-control" id="TIS" minlength="8" maxlength="8" onkeypress='validate(event)'></div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="cod_centro" disabled></div>
+              <div class="col-5 coso"><input type="text" class="form-control" id="TIS" disabled></div>
             </div>
             <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>
           </div>
   </div>
   <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button>
 
+  <div id="menuPruebaId">
+    <span style="font-size: 15px;"> --Menu de prueba-- <br>
+    Recoge citas de la BBDD</span> <br>
+    <button type="button" class="btn btn-danger coso btnMostrarCita" id="2328241">cita 1</button>
+    <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
+    <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
+  </div>
 
   <footer id="footer" class="bg-dark"></footer>
 
