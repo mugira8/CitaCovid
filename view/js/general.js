@@ -61,9 +61,9 @@ $(document).on('keydown', ':focusable', function (e) {
 
 //Login Paciente
 function login() {
-    var email = $("#email").val();
-    var contrasenia = $("#contrasenia").val();
-
+    var tis = $("#insertTis").val();
+    var fecha = $("#insertFecha").val();
+    console.log('values', tis, fecha)
     var url = "controller/cLogin.php";
     var data = { 'email': email, 'contrasenia': contrasenia }
     fetch(url, {
