@@ -10,6 +10,9 @@ MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
 
 
     $scope.habilitarEdit=function() {
-        
+
+       alert("Hola")
+
     }
+    
 }]);
