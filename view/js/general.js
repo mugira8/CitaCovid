@@ -36,25 +36,24 @@ function sessionVarsView() {
                 window.location.href = "index.html";
             }        
         }
-      
-    })
+    });
 }
 
 //En el formulario al darle a enter que pase al siguiente input
-jQuery.extend(jQuery.expr[':'], {
-    focusable: function (el, index, selector) {
-        return $(el).is(':input');
-    }
+jQuery.extend(jQuery.expr[":"], {
+  focusable: function (el, index, selector) {
+    return $(el).is(":input");
+  },
 });
-$(document).on('keydown', ':focusable', function (e) {
-    if (e.which == 13) {
-        e.preventDefault();
-        // Get all focusable elements on the page
-        var $canfocus = $(':focusable');
-        var index = $canfocus.index(this) + 1;
-        if (index >= $canfocus.length) index = 0;
-        $canfocus.eq(index).focus();
-    }
+$(document).on("keydown", ":focusable", function (e) {
+  if (e.which == 13) {
+    e.preventDefault();
+    // Get all focusable elements on the page
+    var $canfocus = $(":focusable");
+    var index = $canfocus.index(this) + 1;
+    if (index >= $canfocus.length) index = 0;
+    $canfocus.eq(index).focus();
+  }
 });
 
 //Login Paciente

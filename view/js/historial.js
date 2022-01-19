@@ -1,4 +1,4 @@
-var MyApp = angular.module('miApp', []);
+var MyApp = angular.module("miApp", []);
 
 MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
 
@@ -7,5 +7,5 @@ MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
         $scope.lista = response.data.list;
         
     });
-
-}]);
+  },
+]);

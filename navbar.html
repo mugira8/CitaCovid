@@ -25,14 +25,16 @@
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnEditarPerfil"  class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar
-                        Perfil</a>
+                    <a class="nav-link text-danger" href="historial.html">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnAdministrar" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
+                    <a class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnCita" class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
                 </li>
             </ul>
         </div>
@@ -88,31 +90,34 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
+                <h2>Mi Perfil</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="izquierda">
-                    <div class="miPerfil">
-                        <h2>Mi Perfil</h2>
-                    </div>
-                    <div class="inputs" ng-repeat="item in lista">
-                        <input type="text" disabled class="inputEdit" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
-                        <input type="text" disabled class="inputEdit" id="apellido" placeholder="{{item.Num_Dosis}}">
-                        <input type="text" disabled class="inputEdit" id="edad" placeholder="{{item.Fecha}}">
-                    </div>
+                <div class="container contenedor">
+                        <div class="col-12 col-md-6">
+                            <div class="" ng-repeat="item in lista">
+                                <input type="text" disabled class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
+                                <input type="text" disabled class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
+                                <input type="text" disabled class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
+                            </div>
+                            <div class="botones">
+                                <div class="container">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil" ng-click="habilitarEdit()">Editar Perfil</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-12 col-md-6">
+                        <!-- imagen del usuario -->
+                        <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
 
-                    
-
-                    <div class="botones">
-                        <button class="btnEditarPerfil" ng-click="habilitarEdit()">Editar Perfil</button>
-                        <button class="btnConfirmar">Confirmar</button>
-                    </div>
-                </div>
-                <div class="derecha">
-                    <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
-                    <div class="botonesFoto">
-                        <input class="inputFile" type="file">
-                        <button class="btnEnviar">Enviar</button>
+                        <div class="botonesFoto">
+                            <input class="form-control" type="file" id="formFile">
+                            <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,7 +186,7 @@
                                     <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
                                 </div>
                             </div>
-                            
+
                             <!-- horario -->
                             <div class="col-12 col-md-6">
                                 <small>Horario</small>
