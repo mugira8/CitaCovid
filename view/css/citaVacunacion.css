@@ -1,25 +1,38 @@
 .contenedorPrincipal {
   margin-top: 20px;
   height: auto;
-  background-color: white;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   align-content: center;
+  justify-content: center;
 }
 .contenedor1 {
   display: flex;
   height: auto;
+  justify-content: center;
+  text-align: center;
 }
 .contenedor2 {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
   height: auto;
+  /* justify-content: center; */
+  text-align: center;
 }
 
 .campo {
   margin: 20px;
+}
+
+@media screen and (max-width: 768px) and (min-width: 0px) {
+  .campo {
+    margin-top: 10px;
+  }
+  .contenedorPrincipal {
+    padding-bottom: 40px;
+  }
 }
 
 .boton {
