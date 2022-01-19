@@ -19,6 +19,11 @@ myApp.controller("prueba", ["$scope", "$http", function($scope, $http){
     $scope.habilitarEdit = function() {
         console.log("hola");
     }
+
+    $http.get('controller/cHistorial.php').then(function (response){
+        $scope.lista = response.data.list;
+    });
+
 }]);
 
 
