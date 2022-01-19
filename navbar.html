@@ -1,3 +1,5 @@
+<html lang="en">
+
 <link rel="stylesheet" href="view/css/modalEditPerfil.css">
 <link rel="stylesheet" href="view/css/panelAdmin.css">
 
@@ -23,7 +25,7 @@
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnEditarPerfil" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar
+                    <a id="btnEditarPerfil"  class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar
                         Perfil</a>
                 </li>
                 <li class="nav-item">
@@ -82,7 +84,7 @@
 </div>
 
 <!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true" ng-controller="prueba">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,13 +95,16 @@
                     <div class="miPerfil">
                         <h2>Mi Perfil</h2>
                     </div>
-                    <div class="inputs">
-                        <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
-                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido"> 
-                        <input type="text" class="inputEdit" id="edad" placeholder="Edad">
+                    <div class="inputs" ng-repeat="item in lista">
+                        <input type="text" disabled class="inputEdit" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
+                        <input type="text" disabled class="inputEdit" id="apellido" placeholder="{{item.Num_Dosis}}">
+                        <input type="text" disabled class="inputEdit" id="edad" placeholder="{{item.Fecha}}">
                     </div>
+
+                    
+
                     <div class="botones">
-                        <button class="btnEditarPerfil">Editar Perfil</button>
+                        <button class="btnEditarPerfil" ng-click="habilitarEdit()">Editar Perfil</button>
                         <button class="btnConfirmar">Confirmar</button>
                     </div>
                 </div>
@@ -198,3 +203,4 @@
         </div>
     </div>
 </div>
+</html>

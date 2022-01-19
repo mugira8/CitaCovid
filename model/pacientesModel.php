@@ -45,6 +45,7 @@ class pacientesModel extends pacientesClass {
             $pacientes->Nombre = $row['Nombre'];
             $pacientes->Apellido = $row['Apellido'];
             $pacientes->Edad = $row['Edad'];
+            $pacientes->Foto = $row['Foto'];
             $pacientes->cod_centro = $row['cod_centro'];
 
 
