@@ -12,6 +12,8 @@ function sessionVarsView() {
             $("#cerrarSesion").css('display', 'block');
             $("#btnEditarPerfil").css('display', 'block');
             $("#btnAdministrar").css('display', 'none');
+            $("#btnCita").css('display', 'block');
+            $("#btnHistorial").css('display', 'block');
             if(window.location.href.includes("index")){
                 $('#usuario').attr('data-bs-target', '#loginModal');
             }else{
@@ -22,8 +24,10 @@ function sessionVarsView() {
             if (result.error == "no error" && result.usuario) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
-                $("#btnEditarPerfil").css('display', 'block');
-                $("#btnAdministrar").css('display', 'none');
+                $("#btnEditarPerfil").css('display', 'none');
+                $("#btnAdministrar").css('display', 'block');
+                $("#btnCita").css('display', 'none');
+                $("#btnHistorial").css('display', 'none');
                 if(window.location.href.includes("index")){
                     $('#usuario').attr('data-bs-target', '#userModal');
                 }else{
@@ -139,7 +143,9 @@ function logout() {
             $("#iniciarSesion").css('display', 'block');
             $("#cerrarSesion").css('display', 'none');
             $("#btnEditarPerfil").css('display', 'none');
-            $("#btnAdministrar").css('display', 'block');
+            $("#btnAdministrar").css('display', 'none');
+            $("#btnCita").css('display', 'none');
+            $("#btnHistorial").css('display', 'none');
         }
         if(!window.location.href.includes("index.html")){
             window.location.href = "index.html";
