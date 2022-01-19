@@ -14,4 +14,12 @@ $http.get("view/js/articulos.json").then(function(response){
 }]);
 
 
+myApp.controller("prueba", ["$scope", "$http", function($scope, $http){
+
+    $scope.habilitarEdit = function() {
+        console.log("hola");
+    }
+}]);
+
+
 //var esNuevo = `<span class="badge bg-danger ">New</span>`;
