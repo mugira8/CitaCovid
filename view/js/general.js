@@ -106,28 +106,28 @@ function login() {
 
 //LOGOUT
 function logout() {
-  var url = "controller/cLogout.php";
-  fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-      if (result.error == "no error") {
-        $("#errorLogin").text("");
-        $("#btnBanca").css("display", "none");
-        $("#btnProductos").css("display", "none");
-        $("#ddLg").css("display", "block");
-        $("#ddReg").css("display", "block");
-        $("#ddLo").css("display", "none");
-        $("#nomUsu").text("Login");
-        $("#nomUsu").attr("data-bs-target", "#login");
-        $("#email").val("");
-        $("#contrasenia").val("");
-      }
-      if (!window.location.href.includes("index.html")) {
-        window.location.href = "index.html";
-      }
-    });
+    
+    var url = "controller/cLogout.php";
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json()).then(result => {
+        console.log(result);
+        if (result.error == "no error") {
+            $("#errorLogin").text("");
+            $("#btnBanca").css('display', 'none');
+            $("#btnProductos").css('display', 'none');
+            $("#ddLg").css('display', 'block');
+            $("#ddReg").css('display', 'block');
+            $("#ddLo").css('display', 'none');
+            $("#nomUsu").text("Login");
+            $('#nomUsu').attr('data-bs-target', '#login');
+            $("#email").val("");
+            $("#contrasenia").val("");
+        }
+        if(!window.location.href.includes("index.html")){
+            window.location.href = "index.html";
+        }
+    })
+
 }

@@ -39,13 +39,12 @@ class usuariosModel extends usuariosClass {
 
             $usuarios = new usuariosClass();
 
-            $usuarios->cod_usuario = $row['cod_usuario'];
-            $usuarios->Correo = $row['Correo'];
-            $usuarios->Contraseña = $row['Contraseña'];
-            $usuarios->Tipo = $row['Tipo'];
-            $usuarios->cod_centro = $row['cod_centro'];
+            $usuarios->setCod_usuario($row['cod_usuario']);
+            $usuarios->setCorreo($row['correo']);
+            $usuarios->setContrasena($row['contrasena']);
+            $usuarios->setCod_centro($row['cod_centro']);
 
-            array_push($list, $usuarios);
+            array_push($list, get_object_vars($usuarios));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
@@ -70,5 +69,10 @@ class usuariosModel extends usuariosClass {
         $this->CloseConnect();
         return $usuarioExists;
     }
-}//fin
+
+    public function ObjVars()
+    {
+        return get_object_vars($this);
+    }
+}
 ?>
