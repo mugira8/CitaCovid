@@ -1,4 +1,4 @@
-var MyApp = angular.module("miApp", []);
+var MyApp = angular.module("myApp", []);
 
 MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
 
