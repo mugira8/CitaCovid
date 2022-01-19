@@ -18,6 +18,17 @@
   height: auto;
 }
 
+.coso{
+    margin: 20px;
+}
+#menuPruebaId{
+    position: fixed;
+    width: 180px;
+    height: 280px;
+    border-style: solid;
+    top: 20px;
+    background-color: white;
+}
 .campo {
   margin: 20px;
 }
