@@ -7,16 +7,24 @@ $paciente = new pacienteModel();
 
 session_start();
 
+if(isset($_SESSION['paciente'])){
+    $paciente=$_SESSION['paciente'];
+    $response['error'] = "no error";
+}else{
+    $response['paciente'] = $paciente;
+    $response['error']="No estas loggeado";
+}
+
 if (isset($_SESSION['usuario'])){
     $usuario=$_SESSION['usuario'];
     $response['error']="no error";
-    
 } else{  
-    $response['usuario']= $usuario;
-    $response['error']="You are not logged";
+    $response['usuario'] = $usuario;
+    $response['error']="No estas loggeado";
 }
 
 $response['usuario']= $usuario;
+$response['paciente']=$paciente;
 
 echo json_encode($response);
 

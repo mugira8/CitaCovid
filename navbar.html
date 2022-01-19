@@ -23,14 +23,14 @@
                     <a class="nav-link text-danger" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar
+                    <a id="btnEditarPerfil" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar
                         Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
+                    <a id="btnAdministrar" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
+                    <a id="btnCita" class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
             </ul>
         </div>
@@ -38,18 +38,48 @@
         <!-- Login/registro -->
         <form class="d-flex m-0 align-items-center">
             <i class="fa fa-user-circle fa-lg" role="button" data-bs-toggle="dropdown"></i>
-            <p id="nomUsu" data-bs-toggle="modal" data-bs-target="#loginModal" class="m-1 text-dark">Login</p>
+            <p id="usuario" data-bs-toggle="modal" data-bs-target="#loginModal" class="m-1 text-dark">Login</p>
             <ul class="dropdown-menu dropdown-menu-end ">
-                <li><a id="ddLg" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar
+                <li><a id="iniciarSesion" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar
                         sesion</a>
                 </li>
-                <li><a id="ddReg" class="dropdown-item" data-bs-toggle="modal"
-                        data-bs-target="#register">Registrarse</a></li>
-                <li><a id="ddLo" class="dropdown-item" style="display: none;" onclick="logout()">Log Out</a></li>
+                <li><a id="cerrarSesion" class="dropdown-item" style="display: none;" onclick="logout()">Log Out</a></li>
             </ul>
         </form>
     </div>
 </nav>
+
+<!--Login paciente-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel">LOGIN</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3 justify-content-center">
+                        <div>
+                            <label class="form-label">TIS</label>
+                            <input id="insertTis" type="text" class="form-control" placeholder="" value="">
+                        </div>
+                        <div>
+                            <label class="form-label">Fecha de Nacimiento</label>
+                            <input id="insertDate" type="date" class="form-control" placeholder="" value="" step="any">
+                        </div>
+                        <p id="errorLogin" class="text-danger"></p>
+                        <!--Fin del formulario-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal"
+                                id="modalBotonCerrar">Cerrar</button>
+                            <button id="botonLoginPaciente" class="col-3 btn btn-primary" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--MODAL EDITAR PERFIL-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,41 +89,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <div class="izquierda">
-
                     <div class="miPerfil">
                         <h2>Mi Perfil</h2>
                     </div>
-
                     <div class="inputs">
-
                         <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
-
-                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
-
+                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido"> 
                         <input type="text" class="inputEdit" id="edad" placeholder="Edad">
-
                     </div>
-
                     <div class="botones">
                         <button class="btnEditarPerfil">Editar Perfil</button>
-
                         <button class="btnConfirmar">Confirmar</button>
                     </div>
-
                 </div>
-
                 <div class="derecha">
-
                     <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
-
                     <div class="botonesFoto">
                         <input class="inputFile" type="file">
                         <button class="btnEnviar">Enviar</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
