@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" ng-app="myApp">
 
 <head>
   <meta charset="UTF-8">
@@ -26,7 +26,7 @@
 
 <body>
 
-  <div id="navbar"></div>
+  <div id="navbar" ng-include="'navbar.html'"></div>
   <div class="bg-white">
     <!-- campo para ver la dosis que toque -->
     <div class="container contenedorPrincipal bg-light">
@@ -96,7 +96,7 @@
     <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
 
   </div>
-  <footer id="footer" class="bg-light"></footer>
+  <footer id="footer" class="bg-light" ng-include="'footer.html'"></footer>
 
 </body>
 
@@ -113,5 +113,8 @@
   integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
   data-cf-beacon='{"rayId":"6cd69a26beef666f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
   crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="view/js/index.js"></script>
+  <script src="view/js/general.js"></script>
 
 </html>

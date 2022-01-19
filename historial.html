@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en" ng-app='miApp'>
 
 <head>
@@ -18,7 +17,7 @@
 
 <body>
 
-    <div id="navbar"></div>
+    <div id="navbar" ng-include="'navbar.html'"></div>
 
     <!--Seccion Central-->
     <div ng-controller="miControlador" class="container">
@@ -46,7 +45,7 @@
         </div>
     </div>
 
-    <footer id="footer" class="bg-light2"></footer>
+    <footer id="footer" class="bg-light2" ng-include="'footer.html'"></footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
