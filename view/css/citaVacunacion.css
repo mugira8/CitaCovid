@@ -17,6 +17,12 @@
   margin-top: 50px;
   height: auto;
 }
+.contenedor3{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
 
 .coso{
     margin: 20px;
@@ -31,6 +37,9 @@
 }
 .campo {
   margin: 20px;
+}
+.campo2{
+    margin: 5px;
 }
 
 .boton{

@@ -2,10 +2,12 @@
 //CONTROLADOR DE CITAS
 include_once ("connect_data.php");
 include_once ("citasClass.php");
+include_once ("centrosModel.php");
 
 class citasModel extends citasClass {
 
     private $link;
+    private $objCentros;
         
     public function OpenConnect() {
         $konDat = new connect_data();
@@ -90,6 +92,12 @@ class citasModel extends citasClass {
             $this->Tipo_vacuna=$row["Tipo_vacuna"];
             $this->cod_centro=$row["cod_centro"];
             $this->TIS=$row["TIS"];
+            
+            $centros=new centrosModel();
+            $centros->setCod_centro($row["cod_centro"]);
+            $centros->findCentroByCodCentro();
+            
+            $this->objCentros=$centros->ObjVars();
         }
         
         mysqli_free_result($result);

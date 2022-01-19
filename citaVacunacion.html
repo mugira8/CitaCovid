@@ -59,13 +59,13 @@
             </tbody>
           </table>
           <table class="days-table w-100">
+            <td class="day">DO</td>
             <td class="day">LU</td>
             <td class="day">MA</td>
             <td class="day">MI</td>
             <td class="day">JU</td>
             <td class="day">VI</td>
             <td class="day">SA</td>
-            <td class="day">DO</td>
           </table>
           <div class="frame">
             <table class="dates-table w-100">
@@ -73,7 +73,8 @@
               </tbody>
             </table>
           </div>
-          <button class="btn-danger btn" id="add-button">Add Event</button>
+          <!-- Este boton abre el modal -->
+          <button class="btn-danger btn" data-toggle="modal" data-target="#modalSolicitarCita" id="botonSolicitarCita">Solicitar cita</button>
         </div>
       </div>
 
@@ -101,9 +102,41 @@
     <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
   </div>
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog" aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalSolicitarCitaLabel">Solicitar cita</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body container">
+          
+          <div class="col-12 col-md-11 contenedor3" id="formSolicitarCita">
+            <div class="row">
+              <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha"></div>
+              <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras" placeholder="Hora"></div>
+            </div>
+            <div class="row">
+              <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
+              <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX" onkeypress='validate(event)' maxlength="8"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Realizar solicitud</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Fin modal -->
+
   <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
-
-
   <footer id="footer" class="bg-dark"></footer>
 
 </body>

@@ -22,6 +22,14 @@ $citas->findCitaByTIS();
 $response["citas"]=$citas->ObjVars();
 
 
+$cod_centro=$citas->getCod_centro();
+
+$centros=new centrosModel();
+
+$centros->setCod_centro($cod_centro);
+$centros->findCentroByCodCentro();
+$response["objCentros"]=$centros;//->ObjVars();
+
 $response['error']='no error';
 echo json_encode($response);
 unset($response);
