@@ -95,16 +95,17 @@
             </div>
             <div class="modal-body">
                 <div class="container contenedor">
-                        <div class="col-12 col-md-6">
-                            <div class="" ng-repeat="item in lista">
-                                <input type="text" disabled class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
-                                <input type="text" disabled class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
-                                <input type="text" disabled class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
+                        <div class="col-12 col-md-6" ng-init="inactive=true">
+                            <div class="" ng-repeat="item in lista" >
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
                             </div>
                             <div class="botones">
                                 <div class="container">
                                     <div class="row">
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil" ng-click="habilitarEdit()">Editar Perfil</button>
+                                        <!-- <a ng-click="inactive = !inactive" href="">Toggle Active</a> -->
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil" ng-click="inactive = !inactive">Editar Perfil</button>
                                         <button type="button" class="btn btn-danger col-4 botonPerfil">Confirmar</button>
                                     </div>
                                 </div>
