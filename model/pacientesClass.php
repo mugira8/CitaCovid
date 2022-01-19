@@ -6,6 +6,7 @@ class pacientesClass
     protected $Fecha_Nacimiento;
     protected $Nombre;
     protected $Apellido;
+    protected $Foto;
     protected $cod_centro;
 
     /**
@@ -124,6 +125,26 @@ class pacientesClass
     public function setCod_centro($cod_centro)
     {
         $this->cod_centro = $cod_centro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Foto
+     */ 
+    public function getFoto()
+    {
+        return $this->Foto;
+    }
+
+    /**
+     * Set the value of Foto
+     *
+     * @return  self
+     */ 
+    public function setFoto($Foto)
+    {
+        $this->Foto = $Foto;
 
         return $this;
     }
