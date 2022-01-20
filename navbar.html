@@ -95,7 +95,7 @@
             </div>
             <div class="modal-body">
                 <div class="container contenedor">
-                        <div class="col-12 col-md-6" ng-init="inactive=true">
+                        <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
                             <div class="" ng-repeat="item in lista" >
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
@@ -105,8 +105,8 @@
                                 <div class="container">
                                     <div class="row">
                                         <!-- <a ng-click="inactive = !inactive" href="">Toggle Active</a> -->
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil" ng-click="inactive = !inactive">Editar Perfil</button>
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil">Confirmar</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
