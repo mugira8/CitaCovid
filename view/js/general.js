@@ -136,7 +136,7 @@ function logout() {
     var url = "controller/cLogout.php";
     fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' } 
     }).then(res => res.json()).then(result => {
         console.log(result);
         if (result.error == "no error") {
