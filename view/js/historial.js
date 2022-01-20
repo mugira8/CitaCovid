@@ -7,5 +7,5 @@ MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
         $scope.lista = response.data.list;
         
     });
-  },
-]);
+
+}]);
