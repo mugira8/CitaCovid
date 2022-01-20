@@ -104,6 +104,33 @@ class citasModel extends citasClass {
        $this->CloseConnect();
     }
     
+    public function findCitaByFecha(){
+        $this->OpenConnect();
+        
+        $Fecha=$this->Fecha;
+        $sql="select * from citas where Fecha='$Fecha'";
+        $result = $this->link->query($sql);
+        if (isset($result)) {
+            if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $this->cod_cita=$row["cod_cita"];
+                $this->Fecha=$row["Fecha"];
+                $this->Horas=$row["Horas"];
+                $this->Tipo_vacuna=$row["Tipo_vacuna"];
+                $this->cod_centro=$row["cod_centro"];
+                $this->TIS=$row["TIS"];
+                
+                $centros=new centrosModel();
+                $centros->setCod_centro($row["cod_centro"]);
+                $centros->findCentroByCodCentro();
+                
+                $this->objCentros=$centros->ObjVars();
+            }
+        }
+        
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+    
     public function ObjVars()
     {
         return get_object_vars($this);

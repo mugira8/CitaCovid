@@ -1,35 +1,39 @@
 <?php
 
 include_once '../model/citasModel.php';
-
-//$response=array();
-
-//$citas=new citasModel();
-
-//$response['list']= $citas->setList();
-//$response['error']='no error';
-
 $data=json_decode(file_get_contents("php://input"),true);
 
-$TIS=$data["TIS"];
+
 
 $citas=new citasModel();
-$citas->setTIS($TIS);
-
 $response=array();
 
-$citas->findCitaByTIS();
-$response["citas"]=$citas->ObjVars();
+if ( isset($data["TIS"]) ){
+    $TIS=$data["TIS"];
+    $citas->setTIS($TIS);
+    
+    $citas->findCitaByTIS();
+    $response["citas"]=$citas->ObjVars();
 
+} elseif ( isset($data["Fecha"]) ) {
+    $Fecha=$data["Fecha"];
+    $citas->setFecha($Fecha);
+    
+    $citas->findCitaByFecha();
+    $response["citasFecha"]=$citas->ObjVars();
+}
 
 $cod_centro=$citas->getCod_centro();
 
 $centros=new centrosModel();
 
 $centros->setCod_centro($cod_centro);
-$centros->findCentroByCodCentro();
-$response["objCentros"]=$centros;//->ObjVars();
+if (isset($response["objCentros"])) {
+    
+    $centros->findCentroByCodCentro();
+    $response["objCentros"]=$centros;
+    $response['error']='no error';
+}
 
-$response['error']='no error';
 echo json_encode($response);
 unset($response);
