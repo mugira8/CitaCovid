@@ -21,6 +21,12 @@
   /* justify-content: center; */
   text-align: center;
 }
+.contenedor3{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
 
 .coso{
     margin: 20px;
@@ -35,6 +41,9 @@
 }
 .campo {
   margin: 20px;
+}
+.campo2{
+    margin: 5px;
 }
 
 @media screen and (max-width: 768px) and (min-width: 0px) {

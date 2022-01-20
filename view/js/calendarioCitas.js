@@ -83,7 +83,8 @@
     $(".active-date").removeClass("active-date");
     $(this).addClass("active-date");
     show_events(event.data.events, event.data.month, event.data.day);
-  }
+    mostrarDiaSeleccionado();
+};
 
   // Event handler for when a month is clicked
   function month_click(event) {
@@ -172,8 +173,9 @@
     event_data["events"].push(event);
   }
 
-  // Display all events of the selected date in card views
-  function show_events(events, month, day) {
+// Display all events of the selected date in card views
+function show_events(events, month, day) {
+
     // Clear the dates container
     $(".events-container").empty();
     $(".events-container").show(250);
