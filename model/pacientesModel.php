@@ -75,4 +75,23 @@ class pacientesModel extends pacientesClass {
 		return $pacienteExists;
     }
 
+    public function update(){
+
+        $this->OpenConnect();
+
+        $tis=$this->tis;
+        $Nombre=$this->Nombre;
+        $Apellido=$this->Apellido;
+
+        $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido WHERE tis='$tis'";
+
+        if ($this->link->query($sql))
+        {
+            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+        } else {
+            return "Error updating ". $sql ."   ". $this->link->error;
+        }
+        $this->CloseConnect();
+    }
+
 }//fin
