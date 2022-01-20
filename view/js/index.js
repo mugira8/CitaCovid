@@ -21,6 +21,3 @@ myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
     });
 
 }]);
-
-
-//var esNuevo = `<span class="badge bg-danger ">New</span>`;
