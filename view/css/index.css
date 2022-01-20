@@ -32,6 +32,17 @@ nav {
     letter-spacing: .4rem;   
     font-size: 20px;
   }
+
+  .nuevosModelosWhite span {
+    color: #fdf3f3;
+    overflow: hidden;   
+    border-right: .10em solid #FF8D8D;
+    white-space: nowrap;   
+    margin: 0 auto;   
+    letter-spacing: .4rem;   
+    font-size: 20px;
+  }
+
 .parallax {
     height: 50%;
     background-attachment: fixed;

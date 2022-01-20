@@ -56,6 +56,20 @@
     font-weight: bolder;
     font-size: 25px;
 }
+.contenedor{
+                          
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+ 
+
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 @media screen and (max-width: 300px) and (min-width: 800px) {
     
