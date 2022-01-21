@@ -16,25 +16,25 @@
         </a>
 
         <!-- Menu opciones -->
-        <div class="collapse navbar-collapse justify-content-lg-center" id="navbarOptions">
+        <div class="collapse navbar-collapse justify-content-lg-left" id="navbarOptions">
             <ul class="navbar-nav d-flex">
                 <li class="nav-item">
-                    <a class="nav-link text-danger" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link text-danger opcnav" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="contacto.html">Contacto</a>
+                    <a class="nav-link text-danger opcnav" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnHistorial" class="nav-link text-danger" href="historial.html">Historial</a>
+                    <a id="btnHistorial" class="nav-link text-danger opcnav" href="historial.html">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnCita" class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
+                    <a id="btnCita" class="nav-link text-danger opcnav" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnEditarPerfil" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar Perfil</a>
+                    <a id="btnEditarPerfil" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnAdministrar" class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
+                    <a id="btnAdministrar" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
                 </li>
             </ul>
         </div>
@@ -86,7 +86,7 @@
 </div>
 
 <!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true" ng-controller="prueba">
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true" ng-controller="editPerfil">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -95,8 +95,8 @@
             </div>
             <div class="modal-body">
                 <div class="container contenedor">
-                        <div class="col-12 col-md-6" ng-init="inactive=true">
-                            <div class="" ng-repeat="item in lista">
+                        <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
+                            <div class="" ng-repeat="item in lista" >
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
@@ -105,8 +105,8 @@
                                 <div class="container">
                                     <div class="row">
                                         <!-- <a ng-click="inactive = !inactive" href="">Toggle Active</a> -->
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil" ng-click="inactive = !inactive">Editar Perfil</button>
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil">Confirmar</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1">Confirmar</button>
                                     </div>
                                 </div>
                             </div>

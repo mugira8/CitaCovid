@@ -14,7 +14,7 @@ $http.get("view/js/articulos.json").then(function(response){
 }]);
 
 
-myApp.controller("prueba", ["$scope", "$http", function($scope, $http){
+myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
 
     $http.get('controller/cHistorial.php').then(function (response){
         $scope.lista = response.data.list;
