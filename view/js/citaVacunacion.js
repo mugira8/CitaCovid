@@ -1,14 +1,24 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    //loadCitas();
 
     //document.getElementById("botonConfirmarCita").addEventListener('click', insertar);
+    
     var botonesCitas = document.getElementsByClassName("btnMostrarCita");
-
+    
     for (var i = 0; i < botonesCitas.length; i++) {
-        botonesCitas[i].addEventListener('click', loadCitas, false);
+        botonesCitas[i].addEventListener('click', loadCitas);
     }
-
+    
     document.getElementById("botonSolicitarCita").addEventListener("click", añadirCita);
+    
+    document.getElementById("mainContainer").style.display ="none"
+    carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
+    document.getElementById("carga").innerHTML = carga
+
+    $(window).on('load', function() {
+        document.getElementById("mainContainer").style.display ="block"
+        document.getElementById("carga").style.display="none"
+        mostrarDiaSeleccionado();
+    });
 })
 
 //Hace que el input solo admita numeros
@@ -27,45 +37,58 @@ function validate(evt) {
     }
 }
 
-function loadCitas(event) {
+function loadCitas(event, fechaSeleccionada) {
 
-    console.log("boton clicado:", event.target.id)
-
-
-
+    var data
     //Recoge las citas por TIS
+    if (fechaSeleccionada == null) {
+        console.log("MENU DE PRUEBA CLICADO")
+        var TIS = event.target.id;
+        data = { 'TIS': TIS };
+    } else {
+        console.log("CALENDARIO CLICADO")
+        var Fecha = fechaSeleccionada;
+        data = {'Fecha': Fecha}
+    }
     var url = "controller/cLoadCitas.php";
-    var TIS = event.target.id;
-    var data = { 'TIS': TIS };
+    console.log("DATA ", data);
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data), // data can be `string` or {object}!
         headers: { 'Content-Type': 'application/json' }  //input data
     })
-        .then(res => res.json()).then(result => {
-            console.log("resultado citas", result);
-            var citas = result.citas;
-
+    .then(res => res.json()).then(result => {
+            if (fechaSeleccionada == null) {
+                var citas = result.citas;
+            } else{
+                var citas = result.citasFecha;
+            }
             var newRow = "";
 
+            if (citas.objCentros != null) {
+                document.getElementById("botonSolicitarCita").style.display="none";
+                newRow = `<h2>Cita Actual</h2>
+                <div class="row">
+                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled placeholder="Fecha: `+ citas.Fecha + `"></div>
+                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder="Hora: `+ citas.Horas.substring(0, 5) + `"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
+                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ citas.TIS + `"></div>
+                </div>
+                <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>`
+    
+                document.getElementById("formCitas").innerHTML = newRow;
+            } else {
+                console.log("No hay cita este dia");
+                document.getElementById("botonSolicitarCita").style.display="inline-block";
+            }
             //Substring() limita la cantidad de caracteres se muestran
-            newRow = `<h2>Cita Actual</h2>
-            <div class="row">
-              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled placeholder="Fecha: `+ citas.Fecha + `"></div>
-              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder="Hora: `+ citas.Horas.substring(0, 5) + `"></div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
-              <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ citas.TIS + `"></div>
-            </div>
-			<div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>`
-
-            document.getElementById("formCitas").innerHTML = newRow;
 
         }).catch(error => console.error('Error status:', error));
 }
 
-function insertar(diaSeleccionado, mesSeleccionado, añoSeleccionado) {
+function insertar(diaSeleccionado, mesSeleccionado, anioSeleccionado) {
     var Fecha = document.getElementById("Fecha").value;
     var Horas = document.getElementById("Horas").value;
     var cod_centro = document.getElementById("cod_centro").value;
@@ -88,57 +111,65 @@ function insertar(diaSeleccionado, mesSeleccionado, añoSeleccionado) {
 }
 
 function mostrarDiaSeleccionado() {
+    document.getElementById("Fecha").value = " ";
+    document.getElementById("Horas").value = " ";
+    document.getElementById("cod_centro").value = " ";
+    document.getElementById("TIS").value = " ";
+
+
     var dia = document.getElementsByClassName("table-date active-date");
+    if (dia[0].innerHTML.length==1) {
+        diaConvertido = "0"+dia[0].innerHTML;
+    } else {
+        diaConvertido = dia[0].innerHTML;
+    }
     var mes = document.getElementsByClassName("month active-month");
-    var año = document.getElementsByClassName("year");
-    console.log("Dia seleccionado: ", dia[0].innerHTML);
-    console.log("Mes seleccionado: ", mes[0].innerHTML);
-    console.log("Año seleccionado: ", año[0].innerHTML);
+    var anio = document.getElementsByClassName("year");
 
     switch (mes[0].innerHTML) {
         case "ENE":
-            var mesConvertido = 01;
+            var mesConvertido = "01";
             break;
         case "FEB":
-            var mesConvertido = 02;
+            var mesConvertido = "02";
             break;
         case "MAR":
-            var mesConvertido = 03;
+            var mesConvertido = "03";
             break;
         case "ABR":
-            var mesConvertido = 04;
+            var mesConvertido = "04";
             break;
         case "MAY":
-            var mesConvertido = 05;
+            var mesConvertido = "05";
             break;
         case "JUN":
-            var mesConvertido = 06;
+            var mesConvertido = "06";
             break;
         case "JUL":
-            var mesConvertido = 07;
+            var mesConvertido = "07";
             break;
         case "AGO":
-            var mesConvertido = 08;
+            var mesConvertido = "08";
             break;
         case "SEP":
-            var mesConvertido = 09;
+            var mesConvertido = "09";
             break;
         case "OCT":
-            var mesConvertido = 10;
+            var mesConvertido = "10";
             break;
         case "NOV":
-            var mesConvertido = 11;
+            var mesConvertido = "11";
             break;
         case "DIC":
-            var mesConvertido = 12;
+            var mesConvertido = "12";
             break;
         default:
             break;
     }
 
-    var fechaSeleccionada = año[0].innerHTML+"-"+mesConvertido+"-"+dia[0].innerHTML;
+    var fechaSeleccionada = anio[0].innerHTML+"-"+mesConvertido+"-"+diaConvertido;
     console.log("Fecha formateada", fechaSeleccionada)
-
+    loadCitas(event, fechaSeleccionada);
 }
 
 function añadirCita() {
@@ -163,10 +194,10 @@ function añadirCita() {
 
     var dia = document.getElementsByClassName("table-date active-date");
     var mes = document.getElementsByClassName("month active-month");
-    var año = document.getElementsByClassName("year");
+    var anio = document.getElementsByClassName("year");
     console.log("Dia seleccionado: ", dia[0].innerHTML);
     console.log("Mes seleccionado: ", mes[0].innerHTML);
-    console.log("Año seleccionado: ", año[0].innerHTML);
+    console.log("Año seleccionado: ", anio[0].innerHTML);
 
     //insertar(dia, mes, año);
 }

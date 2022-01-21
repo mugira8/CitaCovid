@@ -25,61 +25,47 @@
 </head>
 
 <body>
-
-  <div id="navbar"></div>
-
-  <!-- campo para ver la dosis que toque -->
-  <div class="container contenedorPrincipal">
-
-    <div class="col-12 col-md-6 contenedor1">
-
-      <div class="calendar-container">
-        <div class="calendar">
-          <div class="year-header">
-            <span class="left-button fa fa-chevron-left" id="prev"> </span>
-            <span class="year" id="label"></span>
-            <span class="right-button fa fa-chevron-right" id="next"> </span>
-          </div>
-          <table class="months-table w-100">
-            <tbody>
-              <tr class="months-row">
-                <td class="month">ENE</td>
-                <td class="month">FEB</td>
-                <td class="month">MAR</td>
-                <td class="month">ABR</td>
-                <td class="month">MAY</td>
-                <td class="month">JUN</td>
-                <td class="month">JUL</td>
-                <td class="month">AGO</td>
-                <td class="month">SEP</td>
-                <td class="month">OCT</td>
-                <td class="month">NOV</td>
-                <td class="month">DIC</td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="days-table w-100">
-            <td class="day">DO</td>
-            <td class="day">LU</td>
-            <td class="day">MA</td>
-            <td class="day">MI</td>
-            <td class="day">JU</td>
-            <td class="day">VI</td>
-            <td class="day">SA</td>
-          </table>
-          <div class="frame">
-            <table class="dates-table w-100">
-              <tbody class="tbody">
+  <div id="carga"></div>
+  <div id="mainContainer">
+    <div id="navbar"></div>
+    <!-- campo para ver la dosis que toque -->
+    <div class="container contenedorPrincipal">
+  
+      <div class="col-12 col-md-6 contenedor1">
+  
+        <div class="calendar-container">
+          <div class="calendar">
+            <div class="year-header">
+              <span class="left-button fa fa-chevron-left" id="prev"> </span>
+              <span class="year" id="label"></span>
+              <span class="right-button fa fa-chevron-right" id="next"> </span>
+            </div>
+            <table class="months-table w-100">
+              <tbody>
+                <tr class="months-row">
+                  <td class="month">ENE</td>
+                  <td class="month">FEB</td>
+                  <td class="month">MAR</td>
+                  <td class="month">ABR</td>
+                  <td class="month">MAY</td>
+                  <td class="month">JUN</td>
+                  <td class="month">JUL</td>
+                  <td class="month">AGO</td>
+                  <td class="month">SEP</td>
+                  <td class="month">OCT</td>
+                  <td class="month">NOV</td>
+                  <td class="month">DIC</td>
+                </tr>
               </tbody>
             </table>
             <table class="days-table w-100">
+              <td class="day">DO</td>
               <td class="day">LU</td>
               <td class="day">MA</td>
               <td class="day">MI</td>
               <td class="day">JU</td>
               <td class="day">VI</td>
               <td class="day">SA</td>
-              <td class="day">DO</td>
             </table>
             <div class="frame">
               <table class="dates-table w-100">
@@ -87,91 +73,92 @@
                 </tbody>
               </table>
             </div>
-            <button class="btn-danger btn" id="add-button">Add Event</button>
+            <!-- Este boton abre el modal -->
+            <button class="btn-danger btn" data-toggle="modal" data-target="#modalSolicitarCita" id="botonSolicitarCita">Solicitar cita</button>
           </div>
-          <!-- Este boton abre el modal -->
-          <button class="btn-danger btn" data-toggle="modal" data-target="#modalSolicitarCita" id="botonSolicitarCita">Solicitar cita</button>
         </div>
-
+  
       </div>
-
-      <div class="col-12 col-md-6 contenedor2">
+      <div class="col-12 col-md-6 contenedor2" id="formCitas">
         <h2>Cita Actual</h2>
         <div class="row">
-          <div class="col-11 col-xl-5 campo"><input type="text" class="form-control" id=""></div>
-          <div class="col-11 col-xl-5 campo"><input type="text" class="form-control" id=""></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled></div>
         </div>
         <div class="row">
-          <div class="col-11 col-xl-5 campo"><input type="text" class="form-control" id=""></div>
-          <div class="col-11 col-xl-5 campo"><input type="text" class="form-control" id=""></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled></div>
         </div>
         <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>
       </div>
     </div>
-
-  <div id="menuPruebaId">
-    <span style="font-size: 15px;"> --Menu de prueba-- <br>
-    Recoge citas de la BBDD</span> <br>
-    <button type="button" class="btn btn-danger coso btnMostrarCita" id="2328241">cita 1</button>
-    <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
-    <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
-  </div>
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog" aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalSolicitarCitaLabel">Solicitar cita</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body container">
-          
-          <div class="col-12 col-md-11 contenedor3" id="formSolicitarCita">
-            <div class="row">
-              <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha"></div>
-              <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras" placeholder="Hora"></div>
-            </div>
-            <div class="row">
-              <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
-              <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX" onkeypress='validate(event)' maxlength="8"></div>
-            </div>
+    <!-- <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button> -->
+  
+    <div id="menuPruebaId">
+      <span style="font-size: 15px;"> --Menu de prueba-- <br>
+      Recoge citas de la BBDD</span> <br>
+      <button type="button" class="btn btn-danger coso btnMostrarCita" id="2328241">cita 1</button>
+      <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
+      <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
+    </div>
+  
+  
+    <!-- Modal -->
+    <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog" aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalSolicitarCitaLabel">Solicitar cita</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Realizar solicitud</button>
+          <div class="modal-body container">
+            
+            <div class="col-12 col-md-11 contenedor3" id="formSolicitarCita">
+              <div class="row">
+                <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha"></div>
+                <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras" placeholder="Hora"></div>
+              </div>
+              <div class="row">
+                <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
+                <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX" onkeypress='validate(event)' maxlength="8"></div>
+              </div>
+            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Realizar solicitud</button>
+          </div>
         </div>
       </div>
     </div>
+  <!-- Fin modal -->
+  
+    <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
+    <footer id="footer" class="bg-dark"></footer>
+  
   </div>
-<!-- Fin modal -->
-
-  <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
-  <footer id="footer" class="bg-dark"></footer>
-
+  
 </body>
 
 <!--SCRIPTS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
+<script src="view/js/calendarioCitas.js"></script>
+<script src="view/js/insert.js"></script>
 <script src="view/js/jquery.min.js"></script>
 <script src="view/js/popper.js+bootstrap.min.js.pagespeed.jc.ndf8_3FdiS.js"></script>
 <script>eval(mod_pagespeed_wDxec1q6mG);</script>
 <script>eval(mod_pagespeed_amktbYOjgV);</script>
-<script src="view/js/calendarioCitas.js"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+<script src="view/js/citaVacunacion.js"></script>
+
+<!-- No se que hace esto, pero si lo quito deja de dar errores en la consola -Kevin -->
+<!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
   integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
   data-cf-beacon='{"rayId":"6cd69a26beef666f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
-  crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
-  <script src="view/js/index.js"></script>
-  <script src="view/js/general.js"></script>
+  crossorigin="anonymous"></script> -->
 
 </html>
