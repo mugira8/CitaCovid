@@ -7,6 +7,7 @@ function sessionVarsView() {
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
+        console.log(window.location.href)
         if (result.error == "no error" && result.paciente) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
@@ -15,11 +16,13 @@ function sessionVarsView() {
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
             if(window.location.href.includes("index")){
+                console.log('dentro del if');
                 $('#usuario').attr('data-bs-target', '#loginModal');
             }else{
+                console.log('dentro del else')
                 $('#usuario').removeAttr('data-bs-target');
             }     
-            $("#usuario").text(result.paciente.tis);
+            $("#usuario").text(result.paciente.nombre);
 
             if (result.error == "no error" && result.usuario) {
                 $("#iniciarSesion").css('display', 'none');
@@ -28,7 +31,7 @@ function sessionVarsView() {
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
-                if(window.location.href.includes("index")){
+                if(!window.location.href.includes("index")){
                     $('#usuario').attr('data-bs-target', '#userModal');
                 }else{
                     $('#usuario').removeAttr('data-bs-target');
@@ -83,7 +86,7 @@ function loginPaciente() {
                 }else{
                     $('#usuario').removeAttr('data-bs-target');
                 }
-                $("#usuario").text(result.paciente.tis);
+                $("#usuario").text(result.nombre);
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
