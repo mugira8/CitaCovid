@@ -17,7 +17,7 @@ $http.get("view/js/articulos.json").then(function(response){
 myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
 
     $scope.confirmarEditar = function() {
-        var listaModificacion = {TIS: $scope.nuevoTIS , nombre: $scope.nuevoNombre , apellido: $scope.nuevoApellido};
+        var listaModificacion = {TIS: $scope.item.Tis , nombre: $scope.item.Nombre , apellido: $scope.item.Apellido};
         console.log(listaModificacion)
         $http({url: "controlador/cPacienteUpdate.php",
         method: "GET",
