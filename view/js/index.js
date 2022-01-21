@@ -14,10 +14,19 @@ $http.get("view/js/articulos.json").then(function(response){
 }]);
 
 
+
+
 myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
 
-    $http.get('controller/').then(function (response){
-        $scope.lista = response.data.list;
-    });
+    $scope.confirmarEditar = function() {
+        var listaModificacion = {TIS: $scope.nuevoTIS , nombre: $scope.nuevoNombre , apellido: $scope.nuevoApellido};
+        console.log(listaModificacion)
+        $http({url: "controlador/cPacienteUpdate.php",
+        method: "GET",
+        params: {value: listaModificar}
+    }).then(function(response) {
+        window.location.reload();
+    })
+    }
 
 }]);

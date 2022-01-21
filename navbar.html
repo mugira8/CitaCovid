@@ -97,6 +97,7 @@
                 <div class="container contenedor">
                         <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
                             <div class=""><!--ng-repeat="item in lista-->
+                                <input type="text" id="tis" style="display: none;">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
@@ -105,7 +106,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmar()">Confirmar</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmarEditar()">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
