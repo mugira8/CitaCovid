@@ -14,8 +14,6 @@ $http.get("view/js/articulos.json").then(function(response){
 }]);
 
 
-
-
 myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
 
     $scope.confirmarEditar = function() {
