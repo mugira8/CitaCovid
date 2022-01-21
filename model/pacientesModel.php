@@ -75,7 +75,7 @@ class pacientesModel extends pacientesClass {
 		return $pacienteExists;
     }
 
-    public function update(){
+    public function updateUsername(){
 
         $this->OpenConnect();
 
