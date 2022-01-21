@@ -69,14 +69,14 @@
                         </div>
                         <div>
                             <label class="form-label">Fecha de Nacimiento</label>
-                            <input id="insertDate" type="date" class="form-control" placeholder="" value="" step="any">
+                            <input id="insertFecha" type="date" class="form-control" placeholder="" value="" step="any">
                         </div>
                         <p id="errorLogin" class="text-danger"></p>
                         <!--Fin del formulario-->
                         <div class="modal-footer">
                             <button type="button" class="btn" data-bs-dismiss="modal"
                                 id="modalBotonCerrar">Cerrar</button>
-                            <button id="botonLoginPaciente" class="col-3 btn btn-primary" type="submit">Enviar</button>
+                            <button id="botonLoginPaciente" class="col-3 btn btn-primary" onclick="loginPaciente()">Enviar</button>
                         </div>
                     </div>
                 </form>
@@ -96,7 +96,7 @@
             <div class="modal-body">
                 <div class="container contenedor">
                         <div class="col-12 col-md-6" ng-init="inactive=true">
-                            <div class="" ng-repeat="item in lista" >
+                            <div class="" ng-repeat="item in lista">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Tipo_vacuna}} ">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Num_Dosis}}">
                                 <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}">
@@ -114,7 +114,6 @@
                     <div class="col-12 col-md-6">
                         <!-- imagen del usuario -->
                         <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
-
                         <div class="botonesFoto">
                             <input class="form-control" type="file" id="formFile">
                             <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
@@ -134,9 +133,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <div class="contenedor container">
-
                     <div class="col-10 col-md-6">
                         <!-- selecctor de centro -->
                         <select class="form-select campo" aria-label="Default select example" id="centros">
@@ -145,14 +142,12 @@
                             <option value="2">ornamentado</option>
                             <option value="3">arboleda arbolosa</option>
                         </select>
-
                         <!-- nombre y municipio -->
                         <small>Nombre del centro</small>
                         <input type="text" class="form-control campo" id="nombreCentro">
                         <small>municipio</small>
                         <input type="text" class="form-control campo" id="municipio">
                     </div>
-
                     <div class="col-10 col-lg-6">
                         <div class="contenedor container">
                             <!-- dias de vacunaccion -->

@@ -56,13 +56,13 @@ class pacientesModel extends pacientesClass {
         return $list;
     }
 
-    public function findPacinete(){
+    public function findPaciente(){
         $this->OpenConnect();
 
         $tis=$this->tis;
-        $fecha_naci=$this->fecha_naci;
+        $fecha=$this->fecha;
 
-        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha_naci'";
+        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha'";
         $result = $this->link->query($sql);
 
         $userExists=false;

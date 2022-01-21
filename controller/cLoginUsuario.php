@@ -1,5 +1,5 @@
 <?php
-require_once "../model/usuarioModel.php";
+require_once "../model/usuariosModel.php";
 
 $data=json_decode(file_get_contents("php://input"),true);
 

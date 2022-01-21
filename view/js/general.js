@@ -64,7 +64,6 @@ $(document).on("keydown", ":focusable", function (e) {
 function loginPaciente() {
     var tis = $("#insertTis").val();
     var fecha = $("#insertFecha").val();
-    console.log('values', tis, fecha)
     var url = "controller/cLoginPaciente.php";
     var data = { 'tis': tis, 'fecha': fecha }
     fetch(url, {
@@ -72,7 +71,7 @@ function loginPaciente() {
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
-
+        console.log(result)
         switch (result.error) {
             case "no error":
                 $("#errorLogin").text("");
@@ -107,7 +106,6 @@ function loginUsuario(){
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
-
         switch (result.error) {
             case "no error":
                 $("#errorLogin").text("");
@@ -132,7 +130,6 @@ function loginUsuario(){
 
 //LOGOUT
 function logout() {
-    
     var url = "controller/cLogout.php";
     fetch(url, {
         method: 'GET',
@@ -151,5 +148,4 @@ function logout() {
             window.location.href = "index.html";
         }
     })
-
 }
