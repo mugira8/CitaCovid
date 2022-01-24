@@ -8,59 +8,55 @@ function sessionVarsView() {
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
         console.log(window.location.href)
-        if (result.error == "no error" && result.paciente) {
+        if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
             $("#btnEditarPerfil").css('display', 'block');
             $("#btnAdministrar").css('display', 'none');
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
-            if(window.location.href.includes("index")){
-                console.log('dentro del if');
-                $('#usuario').attr('data-bs-target', '#loginModal');
-            }else{
-                console.log('dentro del else')
-                $('#usuario').removeAttr('data-bs-target');
-            }     
+            $('#usuario').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
 
-            if (result.error == "no error" && result.usuario) {
+            if (result.error == "no error" && result.usuario.correo) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $("#btnEditarPerfil").css('display', 'none');
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
-                if(!window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#userModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }     
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
             }
-        }else{
-            if(!window.location.href.includes("index")){
-                window.location.href = "index.html";
-            }        
+        } else {
+            if (!window.location.href.includes("index")) {
+                if (window.location.htef.includes('contacto')) {
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                } else {
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
+            }
         }
     });
 }
 
 //En el formulario al darle a enter que pase al siguiente input
 jQuery.extend(jQuery.expr[":"], {
-  focusable: function (el, index, selector) {
-    return $(el).is(":input");
-  },
+    focusable: function (el, index, selector) {
+        return $(el).is(":input");
+    },
 });
 $(document).on("keydown", ":focusable", function (e) {
-  if (e.which == 13) {
-    e.preventDefault();
-    // Get all focusable elements on the page
-    var $canfocus = $(":focusable");
-    var index = $canfocus.index(this) + 1;
-    if (index >= $canfocus.length) index = 0;
-    $canfocus.eq(index).focus();
-  }
+    if (e.which == 13) {
+        e.preventDefault();
+        // Get all focusable elements on the page
+        var $canfocus = $(":focusable");
+        var index = $canfocus.index(this) + 1;
+        if (index >= $canfocus.length) index = 0;
+        $canfocus.eq(index).focus();
+    }
 });
 
 //Login Paciente
@@ -81,11 +77,7 @@ function loginPaciente() {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
-                if(!window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#loginModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
                 break;
             case "incorrect user":
@@ -98,28 +90,25 @@ function loginPaciente() {
 }
 
 //Login usuario
-function loginUsuario(){
-    var tis = $("#insertTis").val();
-    var fecha = $("#insertFecha").val();
-    console.log('values', tis, fecha)
-    var url = "controller/cLoginPaciente.php";
-    var data = { 'tis': tis, 'fecha': fecha }
+function loginUsuario() {
+    var correo = $("#insertEmail").val();
+    var contrasena = $("#insertContrasena").val();
+    console.log('values', correo, contrasena)
+    var url = "controller/cLoginUsuario.php";
+    var data = { 'correo': correo, 'contrasena': contrasena }
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
+        console.log('result usuario', result);
         switch (result.error) {
             case "no error":
                 $("#errorLogin").text("");
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
-                if(!window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#userModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
                 break;
             case "incorrect user":
@@ -136,7 +125,7 @@ function logout() {
     var url = "controller/cLogout.php";
     fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' } 
+        headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
         console.log(result);
         if (result.error == "no error") {
@@ -147,8 +136,14 @@ function logout() {
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
         }
-        if(!window.location.href.includes("index.html")){
-            window.location.href = "index.html";
+        if (!window.location.href.includes("index")) {
+            if (window.location.htef.includes('contacto')) {
+                console.log('contacto')
+                window.location.href = "contacto.html"
+            } else {
+                console.log('index')
+                window.location.href = "index.html";
+            }
         }
     })
 }
@@ -159,18 +154,18 @@ function logout() {
 mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

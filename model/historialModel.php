@@ -54,31 +54,6 @@ class historialModel extends historialClass {
         return $list;
     }
 
-    public function setList()
-    {
-        $this->OpenConnect();  
-        
-        $sql = "SELECT Tipo_vacuna, Num_Dosis, Fecha FROM historial"; 
-
-        $result = $this->link->query($sql);
-        
-        $list=array();
-        
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $nuevo=new historialModel();
-            
-            $nuevo->setTipo_vacuna($row['Tipo_vacuna']);
-            $nuevo->setNum_Dosis($row['Num_Dosis']);
-            $nuevo->setFecha($row['Fecha']);
-            
-            array_push($list, get_object_vars($nuevo));
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $list;
-    }
-
     public function ObjVars()
     {
         return get_object_vars($this);
