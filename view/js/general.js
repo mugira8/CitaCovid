@@ -15,11 +15,7 @@ function sessionVarsView() {
             $("#btnAdministrar").css('display', 'none');
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
-            if(window.location.href.includes("index")){
-                $('#usuario').attr('data-bs-target', '#loginModal');
-            }else{
-                $('#usuario').removeAttr('data-bs-target');
-            }     
+            $('#usuario').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
 
             if (result.error == "no error" && result.usuario.correo) {
@@ -28,42 +24,38 @@ function sessionVarsView() {
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
-                if(window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#userModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }     
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
             }
-        }else{
-            if(!window.location.href.includes("index")){
-                if(window.location.htef.includes('contacto')){
+        } else {
+            if (!window.location.href.includes("index")) {
+                if (window.location.htef.includes('contacto')) {
                     console.log('contacto')
                     window.location.href = "contacto.html"
-                }else{
+                } else {
                     console.log('index')
                     window.location.href = "index.html";
                 }
-            }        
+            }
         }
     });
 }
 
 //En el formulario al darle a enter que pase al siguiente input
 jQuery.extend(jQuery.expr[":"], {
-  focusable: function (el, index, selector) {
-    return $(el).is(":input");
-  },
+    focusable: function (el, index, selector) {
+        return $(el).is(":input");
+    },
 });
 $(document).on("keydown", ":focusable", function (e) {
-  if (e.which == 13) {
-    e.preventDefault();
-    // Get all focusable elements on the page
-    var $canfocus = $(":focusable");
-    var index = $canfocus.index(this) + 1;
-    if (index >= $canfocus.length) index = 0;
-    $canfocus.eq(index).focus();
-  }
+    if (e.which == 13) {
+        e.preventDefault();
+        // Get all focusable elements on the page
+        var $canfocus = $(":focusable");
+        var index = $canfocus.index(this) + 1;
+        if (index >= $canfocus.length) index = 0;
+        $canfocus.eq(index).focus();
+    }
 });
 
 //Login Paciente
@@ -84,11 +76,7 @@ function loginPaciente() {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
-                if(!window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#loginModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
                 break;
             case "incorrect user":
@@ -101,7 +89,7 @@ function loginPaciente() {
 }
 
 //Login usuario
-function loginUsuario(){
+function loginUsuario() {
     var correo = $("#insertEmail").val();
     var contrasena = $("#insertContrasena").val();
     console.log('values', correo, contrasena)
@@ -119,11 +107,7 @@ function loginUsuario(){
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
-                if(!window.location.href.includes("index")){
-                    $('#usuario').attr('data-bs-target', '#userModal');
-                }else{
-                    $('#usuario').removeAttr('data-bs-target');
-                }
+                $('#usuario').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
                 break;
             case "incorrect user":
@@ -140,7 +124,7 @@ function logout() {
     var url = "controller/cLogout.php";
     fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' } 
+        headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
         console.log(result);
         if (result.error == "no error") {
@@ -151,27 +135,36 @@ function logout() {
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
         }
-        if(!window.location.href.includes("index.html")){
-            window.location.href = "index.html";
+        if (!window.location.href.includes("index")) {
+            if (window.location.htef.includes('contacto')) {
+                console.log('contacto')
+                window.location.href = "contacto.html"
+            } else {
+                console.log('index')
+                window.location.href = "index.html";
+            }
         }
     })
 }
+
+
+
 //Get the button:
 mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
