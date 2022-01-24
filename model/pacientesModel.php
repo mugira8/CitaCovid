@@ -68,6 +68,7 @@ class pacientesModel extends pacientesClass {
         $userExists=false;
         if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
+            $this->nombre=$row['Nombre'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);

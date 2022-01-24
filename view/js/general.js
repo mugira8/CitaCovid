@@ -7,7 +7,8 @@ function sessionVarsView() {
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
-        if (result.error == "no error" && result.paciente) {
+        console.log(window.location.href)
+        if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
             $("#btnEditarPerfil").css('display', 'block');
@@ -19,9 +20,9 @@ function sessionVarsView() {
             }else{
                 $('#usuario').removeAttr('data-bs-target');
             }     
-            $("#usuario").text(result.paciente.tis);
+            $("#usuario").text(result.paciente.nombre);
 
-            if (result.error == "no error" && result.usuario) {
+            if (result.error == "no error" && result.usuario.correo) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $("#btnEditarPerfil").css('display', 'none');
@@ -37,7 +38,13 @@ function sessionVarsView() {
             }
         }else{
             if(!window.location.href.includes("index")){
-                window.location.href = "index.html";
+                if(window.location.htef.includes('contacto')){
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                }else{
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
             }        
         }
     });
@@ -83,7 +90,7 @@ function loginPaciente() {
                 }else{
                     $('#usuario').removeAttr('data-bs-target');
                 }
-                $("#usuario").text(result.paciente.tis);
+                $("#usuario").text(result.nombre);
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
@@ -96,16 +103,17 @@ function loginPaciente() {
 
 //Login usuario
 function loginUsuario(){
-    var tis = $("#insertTis").val();
-    var fecha = $("#insertFecha").val();
-    console.log('values', tis, fecha)
-    var url = "controller/cLoginPaciente.php";
-    var data = { 'tis': tis, 'fecha': fecha }
+    var correo = $("#insertEmail").val();
+    var contrasena = $("#insertContrasena").val();
+    console.log('values', correo, contrasena)
+    var url = "controller/cLoginUsuario.php";
+    var data = { 'correo': correo, 'contrasena': contrasena }
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
+        console.log('result usuario', result);
         switch (result.error) {
             case "no error":
                 $("#errorLogin").text("");
@@ -148,4 +156,23 @@ function logout() {
             window.location.href = "index.html";
         }
     })
+}
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

@@ -16,6 +16,7 @@ if ($tis!=null){
         session_start();
         $_SESSION['paciente']=$paciente;
         $_SESSION['id']=$paciente->tis;
+        $_SESSION['nombre']=$paciente->nombre;
         $response['error']="no error";
     }else{
         $response['error']="incorrect user";
@@ -23,7 +24,7 @@ if ($tis!=null){
 }else{
     $response['error']="insert data";
 }
-    $response['nombre']=$paciente->tis;
+    $response['nombre']=$paciente->nombre;
 
     echo json_encode($response);
     unset($response);
