@@ -19,8 +19,38 @@
 
     <div id="navbar" ng-include="'navbar.html'"></div>
 
+    <!--Editar Perfil-->
+        <div class="modal-body" ng-controller="miControlador" >
+            <div class="container contenedor">
+                    <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
+                        <div class=""><!--ng-repeat="item in lista-->
+                            <input type="text" id="tis"  style="display: none;" placeholder="{{item.Tis}}" ng-model="item.Tis">
+                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
+                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
+                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
+                        </div>
+                        <div class="botones">
+                            <div class="container">
+                                <div class="row">
+                                    <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
+                                    <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmarEditar()">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-12 col-md-6">
+                    <!-- imagen del usuario -->
+                    <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
+                    <div class="botonesFoto">
+                        <input class="form-control" type="file" id="formFile">
+                        <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!--Seccion Central-->
-    <div ng-controller="miControlador" class="container">
+    <div class="container">
         <div class="miCuenta col-12" ng-repeat="item in lista">
             <div class="container">
                 <input type="text" class="campoCuenta col-11 col-md-3" disabled placeholder="{{item.Nombre}}">
