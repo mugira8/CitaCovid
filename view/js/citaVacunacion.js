@@ -1,24 +1,27 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-
-    //document.getElementById("botonConfirmarCita").addEventListener('click', insertar);
-    
-    var botonesCitas = document.getElementsByClassName("btnMostrarCita");
-    
-    for (var i = 0; i < botonesCitas.length; i++) {
-        botonesCitas[i].addEventListener('click', loadCitas);
-    }
-    
-    document.getElementById("botonSolicitarCita").addEventListener("click", añadirCita);
-    
+    //Pantalla de carga hasta que todos los datos esten cargados
     document.getElementById("mainContainer").style.display ="none"
     carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
     document.getElementById("carga").innerHTML = carga
-
-    $(window).on('load', function() {
+    
+    $(sessionVarsView()).ready(function() {
+        console.log("ventana: ", document)
+        
         document.getElementById("mainContainer").style.display ="block"
         document.getElementById("carga").style.display="none"
         mostrarDiaSeleccionado();
     });
+    var botonesCitas = document.getElementsByClassName("btnMostrarCita");
+    for (var i = 0; i < botonesCitas.length; i++) {
+        botonesCitas[i].addEventListener('click', loadCitas);
+    }
+    
+    //Boton que abre modal con formulario
+    document.getElementById("botonSolicitarCita").addEventListener("click", añadirCita);
+    //Boton que realiza la solicitud con datos del formulario
+    document.getElementById("botonRealizarSolicitud").addEventListener("click", realizarSolicitud);
+    
+    
 })
 
 //Hace que el input solo admita numeros
@@ -41,15 +44,18 @@ function loadCitas(event, fechaSeleccionada) {
 
     var data
     //Recoge las citas por TIS
-    if (fechaSeleccionada == null) {
-        console.log("MENU DE PRUEBA CLICADO")
-        var TIS = event.target.id;
-        data = { 'TIS': TIS };
-    } else {
-        console.log("CALENDARIO CLICADO")
-        var Fecha = fechaSeleccionada;
-        data = {'Fecha': Fecha}
-    }
+    // if (fechaSeleccionada == null) {
+    //     console.log("MENU DE PRUEBA CLICADO")
+    //     var TIS = event.target.id;
+    //     data = { 'TIS': TIS };
+    // } else {
+    //     console.log("CALENDARIO CLICADO")
+    //     var Fecha = fechaSeleccionada;
+    //     data = {'Fecha': Fecha}
+    // }
+    var Fecha = fechaSeleccionada;
+    var TIS = objPaciente.paciente.tis;
+    data = {"Fecha": Fecha, "TIS": TIS}
     var url = "controller/cLoadCitas.php";
     console.log("DATA ", data);
     fetch(url, {
@@ -58,14 +64,14 @@ function loadCitas(event, fechaSeleccionada) {
         headers: { 'Content-Type': 'application/json' }  //input data
     })
     .then(res => res.json()).then(result => {
-            if (fechaSeleccionada == null) {
-                var citas = result.citas;
-            } else{
-                var citas = result.citasFecha;
-            }
+            // if (fechaSeleccionada == null) {
+            //     var citas = result.citas;
+            // } else{
+            //     var citas = result.citasFecha;
+            // }
+            var citas = result.citas;
             var newRow = "";
 
-            if (citas.objCentros != null) {
                 document.getElementById("botonSolicitarCita").style.display="none";
                 newRow = `<h2>Cita Actual</h2>
                 <div class="row">
@@ -74,29 +80,26 @@ function loadCitas(event, fechaSeleccionada) {
                 </div>
                 <div class="row">
                   <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
-                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ citas.TIS + `"></div>
+                  <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ objPaciente.paciente.tis + `"></div>
                 </div>
                 <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>`
     
                 document.getElementById("formCitas").innerHTML = newRow;
-            } else {
-                console.log("No hay cita este dia");
-                document.getElementById("botonSolicitarCita").style.display="inline-block";
-            }
+
             //Substring() limita la cantidad de caracteres se muestran
 
         }).catch(error => console.error('Error status:', error));
 }
 
-function insertar(diaSeleccionado, mesSeleccionado, anioSeleccionado) {
-    var Fecha = document.getElementById("Fecha").value;
-    var Horas = document.getElementById("Horas").value;
-    var cod_centro = document.getElementById("cod_centro").value;
-    var TIS = document.getElementById("TIS").value;
+function insertar(fechaInsertar, horaInsertar, centroInsertar) {
+    // var Fecha = document.getElementById("Fecha").value;
+    // var Horas = document.getElementById("Horas").value;
+    // var cod_centro = document.getElementById("cod_centro").value;
+    // var TIS = document.getElementById("TIS").value;
 
     var url = "controller/cInsertCitas.php";
 
-    var data = { "Fecha": Fecha, "Horas": Horas, "cod_centro": cod_centro, "TIS": TIS };
+    var data = { "Fecha": fechaInsertar, "Horas": horaInsertar, "cod_centro": centroInsertar, "TIS": objPaciente.paciente.tis };
 
     fetch(url, {
         method: 'POST',
@@ -105,12 +108,13 @@ function insertar(diaSeleccionado, mesSeleccionado, anioSeleccionado) {
     })
         .then(res => res.json()).then(result => {
             console.log("mensaje error", result.error);
-            alert(result.error);
+            alert("La cita se ha insertado con exito");
             location.reload()
         })
 }
-
+var fechaSeleccionada
 function mostrarDiaSeleccionado() {
+    console.log("SESION ACTUAL: ",objPaciente) //Variable de sesion recibida desde general.js
     document.getElementById("Fecha").value = " ";
     document.getElementById("Horas").value = " ";
     document.getElementById("cod_centro").value = " ";
@@ -167,7 +171,7 @@ function mostrarDiaSeleccionado() {
             break;
     }
 
-    var fechaSeleccionada = anio[0].innerHTML+"-"+mesConvertido+"-"+diaConvertido;
+    fechaSeleccionada = anio[0].innerHTML+"-"+mesConvertido+"-"+diaConvertido;
     console.log("Fecha formateada", fechaSeleccionada)
     loadCitas(event, fechaSeleccionada);
 }
@@ -188,6 +192,10 @@ function añadirCita() {
                 newRow += "<option value='" + centro[i].cod_centro + "'>" + centro[i].Nombre + "</option>";
             }
             document.getElementById("SolicitarCod_centro").innerHTML = newRow;
+
+            fechaSeleccionada;
+            document.getElementById("SolicitarFecha").value = fechaSeleccionada;
+            document.getElementById("SolicitarTIS").value = objPaciente.paciente.tis
         })
         .catch(error => console.error('Error status:', error));
 
@@ -199,5 +207,18 @@ function añadirCita() {
     console.log("Mes seleccionado: ", mes[0].innerHTML);
     console.log("Año seleccionado: ", anio[0].innerHTML);
 
-    //insertar(dia, mes, año);
+}
+
+function realizarSolicitud() {
+    console.log(fechaSeleccionada)
+    var horaSeleccionada = document.getElementById("SolicitarHoras").value;
+    var centroSeleccionado = document.getElementById("SolicitarCod_centro").value;
+    var tisSeleccionado = document.getElementById("SolicitarTIS").value;
+
+    console.log("Fecha form: ", fechaSeleccionada);
+    console.log("Hora form: ", horaSeleccionada);
+    console.log("Centro form: ", centroSeleccionado);
+    console.log("Tis form: ", tisSeleccionado);
+
+    insertar(fechaSeleccionada, horaSeleccionada, centroSeleccionado);
 }

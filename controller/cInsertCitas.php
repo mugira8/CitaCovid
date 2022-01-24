@@ -4,10 +4,10 @@ include_once '../model/citasModel.php';
 
 $data=json_decode(file_get_contents("php://input"),true);
 
-$cod_cita=$data["cod_cita"];
+// $cod_cita=$data["cod_cita"];
 $Fecha=$data["Fecha"];
 $Horas=$data["Horas"];
-$Tipo_vacuna=$data["Tipo_vacuna"];
+// $Tipo_vacuna=$data["Tipo_vacuna"];
 $cod_centro=$data["cod_centro"];
 $TIS=$data["TIS"];
 
@@ -21,9 +21,9 @@ if (isset($Fecha)){
 if (isset($Horas)){
     $citas->setHoras($Horas);
 }
-if (isset($Tipo_vacuna)){
-    $citas->setTipo_vacuna($Tipo_vacuna);
-}
+// if (isset($Tipo_vacuna)){
+//     $citas->setTipo_vacuna($Tipo_vacuna);
+// }
 if (isset($cod_centro)){
     $citas->setCod_centro($cod_centro);
 }

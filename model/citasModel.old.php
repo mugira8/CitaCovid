@@ -62,11 +62,11 @@ class citasModel extends citasClass {
         $cod_cita=$this->cod_cita;
         $Fecha=$this->Fecha;
         $Horas=$this->Horas;
-        // $Tipo_vacuna=$this->Tipo_vacuna;
+        $Tipo_vacuna=$this->Tipo_vacuna;
         $cod_centro=$this->cod_centro;
         $TIS=$this->TIS;
         
-        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$cod_centro', '$TIS')";
+        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `Tipo_vacuna`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$Tipo_vacuna', '$cod_centro', '$TIS')";
         
         $this->link->query($sql);
         
@@ -82,11 +82,8 @@ class citasModel extends citasClass {
     public function findCitaByTIS() {
         $this->OpenConnect();
         
-        $Fecha=$this->Fecha;
         $TIS=$this->TIS;
-        $sql="select citas.*,centros.nombre from citas 
-            inner join centros on citas.cod_centro=centros.cod_centro 
-            where TIS=$TIS and Fecha='$Fecha'";
+        $sql="select * from citas where TIS=$TIS";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_cita=$row["cod_cita"];
@@ -97,7 +94,8 @@ class citasModel extends citasClass {
             $this->TIS=$row["TIS"];
             
             $centros=new centrosModel();
-            $centros->setNombre($row["nombre"]);
+            $centros->setCod_centro($row["cod_centro"]);
+            $centros->findCentroByCodCentro();
             
             $this->objCentros=$centros->ObjVars();
         }
@@ -110,9 +108,7 @@ class citasModel extends citasClass {
         $this->OpenConnect();
         
         $Fecha=$this->Fecha;
-        $sql="select  citas.*,centros.nombre from citas 
-                inner join centros on citas.cod_centro=centros.cod_centro 
-                where Fecha='$Fecha'";
+        $sql="select * from citas where Fecha='$Fecha'";
         $result = $this->link->query($sql);
         if (isset($result)) {
             if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -124,7 +120,8 @@ class citasModel extends citasClass {
                 $this->TIS=$row["TIS"];
                 
                 $centros=new centrosModel();
-                $centros->setNombre($row["nombre"]);
+                $centros->setCod_centro($row["cod_centro"]);
+                $centros->findCentroByCodCentro();
                 
                 $this->objCentros=$centros->ObjVars();
             }
