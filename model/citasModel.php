@@ -62,11 +62,11 @@ class citasModel extends citasClass {
         $cod_cita=$this->cod_cita;
         $Fecha=$this->Fecha;
         $Horas=$this->Horas;
-        $Tipo_vacuna=$this->Tipo_vacuna;
+        // $Tipo_vacuna=$this->Tipo_vacuna;
         $cod_centro=$this->cod_centro;
         $TIS=$this->TIS;
         
-        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `Tipo_vacuna`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$Tipo_vacuna', '$cod_centro', '$TIS')";
+        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$cod_centro', '$TIS')";
         
         $this->link->query($sql);
         
@@ -82,10 +82,11 @@ class citasModel extends citasClass {
     public function findCitaByTIS() {
         $this->OpenConnect();
         
+        $Fecha=$this->Fecha;
         $TIS=$this->TIS;
         $sql="select citas.*,centros.nombre from citas 
             inner join centros on citas.cod_centro=centros.cod_centro 
-            where TIS=$TIS";
+            where TIS=$TIS and Fecha='$Fecha'";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_cita=$row["cod_cita"];
