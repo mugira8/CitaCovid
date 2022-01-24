@@ -8,7 +8,7 @@ function sessionVarsView() {
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
         console.log(window.location.href)
-        if (result.error == "no error" && result.paciente) {
+        if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
             $("#btnEditarPerfil").css('display', 'block');
@@ -16,22 +16,20 @@ function sessionVarsView() {
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
             if(window.location.href.includes("index")){
-                console.log('dentro del if');
                 $('#usuario').attr('data-bs-target', '#loginModal');
             }else{
-                console.log('dentro del else')
                 $('#usuario').removeAttr('data-bs-target');
             }     
             $("#usuario").text(result.paciente.nombre);
 
-            if (result.error == "no error" && result.usuario) {
+            if (result.error == "no error" && result.usuario.correo) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $("#btnEditarPerfil").css('display', 'none');
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
-                if(!window.location.href.includes("index")){
+                if(window.location.href.includes("index")){
                     $('#usuario').attr('data-bs-target', '#userModal');
                 }else{
                     $('#usuario').removeAttr('data-bs-target');
@@ -40,7 +38,13 @@ function sessionVarsView() {
             }
         }else{
             if(!window.location.href.includes("index")){
-                window.location.href = "index.html";
+                if(window.location.htef.includes('contacto')){
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                }else{
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
             }        
         }
     });
@@ -99,16 +103,17 @@ function loginPaciente() {
 
 //Login usuario
 function loginUsuario(){
-    var tis = $("#insertTis").val();
-    var fecha = $("#insertFecha").val();
-    console.log('values', tis, fecha)
-    var url = "controller/cLoginPaciente.php";
-    var data = { 'tis': tis, 'fecha': fecha }
+    var correo = $("#insertEmail").val();
+    var contrasena = $("#insertContrasena").val();
+    console.log('values', correo, contrasena)
+    var url = "controller/cLoginUsuario.php";
+    var data = { 'correo': correo, 'contrasena': contrasena }
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
+        console.log('result usuario', result);
         switch (result.error) {
             case "no error":
                 $("#errorLogin").text("");

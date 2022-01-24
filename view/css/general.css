@@ -4,3 +4,56 @@
 .opcnav:hover{
   text-decoration-line: underline;
 }
+#btnEditarPerfil{
+  display: none;
+}
+#btnAdministrar{
+  display: none;
+}
+#btnCita{
+  display: none;
+}
+#btnHistorial{
+  display: none;
+}
+
+/*Navbar*/
+.modal-body {
+  height: auto;
+}
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/*Footer*/
+#hr {
+  height: 3px;
+  margin: unset;
+}
+#container {
+  justify-content: space-evenly;
+  font-size: 13;
+}
+.title {
+  color: red;
+}
+a {
+  text-decoration: none;
+  color: #7a0000;
+}
+a:hover {
+  color: #7a0000;
+}
+#enlaces {
+  font-size: 13;
+}
+#copy {
+  font-size: 12;
+}
+h6 {
+  color: red;
+}
