@@ -3,6 +3,7 @@ var MyApp = angular.module("myApp", []);
 MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
 
     
+    
     $http.get('controller/cHistorial.php').then(function (response){
         $scope.lista = response.data.list;
         
@@ -22,6 +23,16 @@ MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
         window.location.reload();
     })
     }
+
+    $scope.verHistorial = function() {
+        $scope.ver = "si";
+    }
+
+}]);
+
+MyApp.controller('prueba',['$scope','$http', function($scope,$http){
+
+
 
 }]);
 
