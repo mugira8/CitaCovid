@@ -28,3 +28,10 @@ myApp.controller("editPerfil", ["$scope", "$http", function($scope, $http){
     }
 
 }]);
+
+
+myApp.controller("administrar",["$scope", "$http", function($scope, $http){
+
+    
+
+}])

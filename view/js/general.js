@@ -152,6 +152,9 @@ function logout() {
         }
     })
 }
+
+
+
 //Get the button:
 mybutton = document.getElementById("myBtn");
 
