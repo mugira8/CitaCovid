@@ -2,7 +2,7 @@
 include_once ("connect_data.php");
 include_once ("vacunasClass.php");
 
-class citasModel extends citasClass {
+class vacunasModel extends vacunasClass {
 
     private $link;
         
