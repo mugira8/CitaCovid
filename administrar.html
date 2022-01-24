@@ -36,8 +36,9 @@
             <input type="text" class="form-control campo" id="municipio">
         </div>
 
+            <div class="container contenedor">
                 <!-- dias de vacunaccion -->
-                <div class="col-12">
+                <div class="col-6">
                     <small>Dias de Vacunacion</small>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="checkLunes">
@@ -68,18 +69,17 @@
                         <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
                     </div>
                 </div>
-
                 <!-- horario -->
-                <div class="col-12 ">
-                    <small>Horario</small>
-                    <p><small>apertura</small>
+                <div class="col-6 ">
+                    <h4>Horario:</h4>
+                    <p><small>Apertura:</small>
                         <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
                     </p>
-                    <p><small>Cierre</small>
+                    <p><small>Cierre:</small>
                         <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
                     </p>
                 </div>
-           
+            </div>
         </div>
         <button type="button" class="btn btn-danger boton">Confirmar</button>
     </div>
