@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +15,11 @@
     <title>Contacta con Umbrella Corp.</title>
     <link rel="shortcut icon" href="view/images/icon.png">
 </head>
+
 <body>
-    
+
     <!--NAVBAR-->
-    <div id="navbar"></div>
+    <div id="navbar" ng-include="'navbar.html'"></div>
 
     <!--CONTENEDOR-->
     <section class="container">
@@ -34,7 +35,9 @@
         <div class="fondoText">
 
             <div class="foto">
-                <img class="imagen2" src="https://www.osakidetza.euskadi.eus/contenidos/informacion/osk_corp_contacta_osakidetza/es_def/images/ab-84-osakidetza-contacta-consejo-sanitario.jpg" alt="">
+                <img class="imagen2"
+                    src="https://www.osakidetza.euskadi.eus/contenidos/informacion/osk_corp_contacta_osakidetza/es_def/images/ab-84-osakidetza-contacta-consejo-sanitario.jpg"
+                    alt="">
             </div>
 
             <div class="text">
@@ -47,14 +50,16 @@
     </section>
 
     <!--FOOTER-->
-    <footer id="footer" class="bg-light2"></footer>
+    <footer id="footer" class="bg-light2" ng-include="'footer.html'"></footer>
 
     <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
-    <script src="view/js/insert.js"></script>
-    <script src="view/js/jsFunctions.js"></script>
+    <script src="view/js/index.js"></script>
+    <script src="view/js/general.js"></script>
 
 </body>
+
 </html>

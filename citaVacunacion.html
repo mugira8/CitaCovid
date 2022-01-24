@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" ng-app="myApp">
 
 <head>
   <meta charset="UTF-8">
@@ -14,6 +14,9 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="view/css/calendarioCitas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="view/css/index.css">
+  <link rel="shortcut icon" href="view/images/icon.png">
 
   <script>(function (w, d) {
       !function (e, t, r, a, s) {
@@ -27,7 +30,7 @@
 <body>
   <div id="carga"></div>
   <div id="mainContainer">
-    <div id="navbar"></div>
+    <div id="navbar" ng-include="'navbar.html'"></div>
     <!-- campo para ver la dosis que toque -->
     <div class="container contenedorPrincipal">
   
@@ -136,8 +139,13 @@
     </div>
   <!-- Fin modal -->
   
-    <button type="button" class="btn btn-danger volver boton" id="">Volver</button>
-    <footer id="footer" class="bg-dark"></footer>
+    <a type="button" class="btn btn-danger volver boton" id="" href="index.html">Volver</a>
+  
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+    </svg></button>
+
+    <footer id="footer" class="bg-light2" ng-include="'footer.html'"></footer>
   
   </div>
   
@@ -154,6 +162,10 @@
 <script>eval(mod_pagespeed_wDxec1q6mG);</script>
 <script>eval(mod_pagespeed_amktbYOjgV);</script>
 <script src="view/js/citaVacunacion.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>    
+<script src="view/js/index.js"></script>
+<script src="view/js/general.js"></script>
+
 
 <!-- No se que hace esto, pero si lo quito deja de dar errores en la consola -Kevin -->
 <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"

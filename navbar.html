@@ -1,3 +1,5 @@
+<html lang="en">
+
 <link rel="stylesheet" href="view/css/modalEditPerfil.css">
 <link rel="stylesheet" href="view/css/panelAdmin.css">
 
@@ -14,23 +16,25 @@
         </a>
 
         <!-- Menu opciones -->
-        <div class="collapse navbar-collapse justify-content-lg-center" id="navbarOptions">
+        <div class="collapse navbar-collapse justify-content-lg-left" id="navbarOptions">
             <ul class="navbar-nav d-flex">
                 <li class="nav-item">
-                    <a class="nav-link text-danger" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link text-danger opcnav" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="contacto.html">Contacto</a>
+                    <a class="nav-link text-danger opcnav" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar
-                        Perfil</a>
+                    <a id="btnHistorial" class="nav-link text-danger opcnav" href="historial.html">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
+                    <a id="btnCita" class="nav-link text-danger opcnav" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
+                    <a id="btnEditarPerfil" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a id="btnAdministrar" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
                 </li>
             </ul>
         </div>
@@ -38,62 +42,84 @@
         <!-- Login/registro -->
         <form class="d-flex m-0 align-items-center">
             <i class="fa fa-user-circle fa-lg" role="button" data-bs-toggle="dropdown"></i>
-            <p id="nomUsu" data-bs-toggle="modal" data-bs-target="#loginModal" class="m-1 text-dark">Login</p>
+            <p id="usuario" data-bs-toggle="modal" data-bs-target="#loginModal" class="m-1 text-dark">Login</p>
             <ul class="dropdown-menu dropdown-menu-end ">
-                <li><a id="ddLg" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar
+                <li><a id="iniciarSesion" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar
                         sesion</a>
                 </li>
-                <li><a id="ddReg" class="dropdown-item" data-bs-toggle="modal"
-                        data-bs-target="#register">Registrarse</a></li>
-                <li><a id="ddLo" class="dropdown-item" style="display: none;" onclick="logout()">Log Out</a></li>
+                <li><a id="cerrarSesion" class="dropdown-item" style="display: none;" onclick="logout()">Log Out</a></li>
             </ul>
         </form>
     </div>
 </nav>
 
+<!--Login paciente-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel">LOGIN</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3 justify-content-center">
+                        <div>
+                            <label class="form-label">TIS</label>
+                            <input id="insertTis" type="text" class="form-control" placeholder="" value="">
+                        </div>
+                        <div>
+                            <label class="form-label">Fecha de Nacimiento</label>
+                            <input id="insertFecha" type="date" class="form-control" placeholder="" value="" step="any">
+                        </div>
+                        <p id="errorLogin" class="text-danger"></p>
+                        <!--Fin del formulario-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal"
+                                id="modalBotonCerrar">Cerrar</button>
+                            <button id="botonLoginPaciente" class="col-3 btn btn-primary" onclick="loginPaciente()">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
+                <h2>Mi Perfil</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                <div class="izquierda">
-
-                    <div class="miPerfil">
-                        <h2>Mi Perfil</h2>
-                    </div>
-
-                    <div class="inputs">
-
-                        <input type="text" class="inputEdit" id="nombre" placeholder="Nombre">
-
-                        <input type="text" class="inputEdit" id="apellido" placeholder="Apellido">
-
-                        <input type="text" class="inputEdit" id="edad" placeholder="Edad">
-
-                    </div>
-
-                    <div class="botones">
-                        <button class="btnEditarPerfil">Editar Perfil</button>
-
-                        <button class="btnConfirmar">Confirmar</button>
-                    </div>
-
-                </div>
-
-                <div class="derecha">
-
-                    <img class="ftPerfil" src="/view/images/fotoPerfil.jpg">
-
-                    <div class="botonesFoto">
-                        <input class="inputFile" type="file">
-                        <button class="btnEnviar">Enviar</button>
+                <div class="container contenedor">
+                        <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
+                            <div class=""><!--ng-repeat="item in lista-->
+                                <input type="text" id="tis"  style="display: none;" placeholder="{{item.Tis}}" ng-model="item.Tis">
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
+                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
+                            </div>
+                            <div class="botones">
+                                <div class="container">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
+                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmarEditar()">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-12 col-md-6">
+                        <!-- imagen del usuario -->
+                        <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
+                        <div class="botonesFoto">
+                            <input class="form-control" type="file" id="formFile">
+                            <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -107,9 +133,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <div class="contenedor container">
-
                     <div class="col-10 col-md-6">
                         <!-- selecctor de centro -->
                         <select class="form-select campo" aria-label="Default select example" id="centros">
@@ -118,14 +142,12 @@
                             <option value="2">ornamentado</option>
                             <option value="3">arboleda arbolosa</option>
                         </select>
-
                         <!-- nombre y municipio -->
                         <small>Nombre del centro</small>
                         <input type="text" class="form-control campo" id="nombreCentro">
                         <small>municipio</small>
                         <input type="text" class="form-control campo" id="municipio">
                     </div>
-
                     <div class="col-10 col-lg-6">
                         <div class="contenedor container">
                             <!-- dias de vacunaccion -->
@@ -160,7 +182,7 @@
                                     <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
                                 </div>
                             </div>
-                            
+
                             <!-- horario -->
                             <div class="col-12 col-md-6">
                                 <small>Horario</small>
@@ -182,3 +204,4 @@
         </div>
     </div>
 </div>
+</html>

@@ -1,22 +1,31 @@
 <?php
-require_once '../model/usuarioModel.php';
+require_once '../model/usuariosModel.php';
+require_once '../model/pacientesModel.php';
 
 $response=array();
-$usuario= new usuarioModel();
-$paciente = new pacienteModel();
+$usuario= new usuariosModel();
+$paciente = new pacientesModel();
 
 session_start();
+
+if (isset($_SESSION['paciente'])){
+    $paciente=$_SESSION['paciente'];
+    $response['error'] = "no error";
+}else if(!isset($_SESSION['usuario'])){
+    $response['paciente'] = $paciente;
+    $response['error']="No estas loggeado";
+}
 
 if (isset($_SESSION['usuario'])){
     $usuario=$_SESSION['usuario'];
     $response['error']="no error";
-    
-} else{  
-    $response['usuario']= $usuario;
-    $response['error']="You are not logged";
+} else if (!isset($_SESSION['paciente'])){  
+    $response['usuario'] = $usuario;
+    $response['error']="No estas loggeado";
 }
 
 $response['usuario']= $usuario;
+$response['paciente']=$paciente;
 
 echo json_encode($response);
 

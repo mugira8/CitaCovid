@@ -45,6 +45,7 @@ class pacientesModel extends pacientesClass {
             $pacientes->Nombre = $row['Nombre'];
             $pacientes->Apellido = $row['Apellido'];
             $pacientes->Edad = $row['Edad'];
+            $pacientes->Foto = $row['Foto'];
             $pacientes->cod_centro = $row['cod_centro'];
 
 
@@ -55,23 +56,43 @@ class pacientesModel extends pacientesClass {
         return $list;
     }
 
-    public function findPacinete(){
+    public function findPaciente(){
         $this->OpenConnect();
 
         $tis=$this->tis;
-        $fecha_naci=$this->fecha_naci;
+        $fecha=$this->fecha;
 
-        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha_naci'";
+        $sql="SELECT * FROM pacientes WHERE tis='$tis' AND fecha_nacimiento='$fecha'";
         $result = $this->link->query($sql);
 
         $userExists=false;
         if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
+            $this->nombre=$row['Nombre'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);
         $this->CloseConnect();
 		return $pacienteExists;
+    }
+
+    public function updateUsername(){
+
+        $this->OpenConnect();
+
+        $tis=$this->tis;
+        $Nombre=$this->Nombre;
+        $Apellido=$this->Apellido;
+
+        $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido WHERE tis='$tis'";
+
+        if ($this->link->query($sql))
+        {
+            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+        } else {
+            return "Error updating ". $sql ."   ". $this->link->error;
+        }
+        $this->CloseConnect();
     }
 
 }//fin

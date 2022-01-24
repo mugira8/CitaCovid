@@ -6,94 +6,110 @@ function sessionVarsView() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
-        $("#btnBanca").css('display', 'none');
+        console.log('session result', result)
+        console.log(window.location.href)
+        if (result.error == "no error" && result.paciente.tis) {
+            $("#iniciarSesion").css('display', 'none');
+            $("#cerrarSesion").css('display', 'block');
+            $("#btnEditarPerfil").css('display', 'block');
+            $("#btnAdministrar").css('display', 'none');
+            $("#btnCita").css('display', 'block');
+            $("#btnHistorial").css('display', 'block');
+            $('#usuario').removeAttr('data-bs-target');
+            $("#usuario").text(result.paciente.nombre);
 
-        if (result.error == "no error") {
-            $("#btnProductos").css('display', 'block');
-            $("#btnEditar").css('display', 'none');
-            $("#btnInsertar").css('display', 'none');
-            $("#ddLg").css('display', 'none');
-            $("#ddReg").css('display', 'none');
-            $("#ddLo").css('display', 'block');
-            if(window.location.href.includes("index")){
-                $('#nomUsu').attr('data-bs-target', '#userModal');
-            }  else{
-                $('#nomUsu').removeAttr('data-bs-target');
-
-            }     
-            $("#nomUsu").text(result.usuario.nombre);
-            $('#nameUser').val(result.usuario.nombre);
-            $('#emailUser').val(result.usuario.email)
-
-            if (result.usuario.admin == 1) {
-                $("#btnBanca").css('display', 'block');
-                $("#btnEliminar").css('display', 'block');
-                $("#btnEditar").css('display', 'block');
-                $("#btnInsertar").css('display', 'block');
-
+            if (result.error == "no error" && result.usuario.correo) {
+                $("#iniciarSesion").css('display', 'none');
+                $("#cerrarSesion").css('display', 'block');
+                $("#btnEditarPerfil").css('display', 'none');
+                $("#btnAdministrar").css('display', 'block');
+                $("#btnCita").css('display', 'none');
+                $("#btnHistorial").css('display', 'none');
+                $('#usuario').removeAttr('data-bs-target');
+                $("#usuario").text(result.usuario.correo);
             }
-        }else{
-            if(!window.location.href.includes("index")){
-                window.location.href = "index.html";
-            }        
+        } else {
+            if (!window.location.href.includes("index")) {
+                if (window.location.htef.includes('contacto')) {
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                } else {
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
+            }
         }
-      
-    })
+    });
 }
 
 //En el formulario al darle a enter que pase al siguiente input
-jQuery.extend(jQuery.expr[':'], {
+jQuery.extend(jQuery.expr[":"], {
     focusable: function (el, index, selector) {
-        return $(el).is(':input');
-    }
+        return $(el).is(":input");
+    },
 });
-$(document).on('keydown', ':focusable', function (e) {
+$(document).on("keydown", ":focusable", function (e) {
     if (e.which == 13) {
         e.preventDefault();
         // Get all focusable elements on the page
-        var $canfocus = $(':focusable');
+        var $canfocus = $(":focusable");
         var index = $canfocus.index(this) + 1;
         if (index >= $canfocus.length) index = 0;
         $canfocus.eq(index).focus();
     }
 });
 
-
 //Login Paciente
-function login() {
+function loginPaciente() {
     var tis = $("#insertTis").val();
     var fecha = $("#insertFecha").val();
-    console.log('values', tis, fecha)
-    var url = "controller/cLogin.php";
-    var data = { 'email': email, 'contrasenia': contrasenia }
+    var url = "controller/cLoginPaciente.php";
+    var data = { 'tis': tis, 'fecha': fecha }
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'content-type': 'application/json' }
     }).then(res => res.json()).then(result => {
-
+        console.log(result)
         switch (result.error) {
             case "no error":
-                $("#btnProductos").css('display', 'block');
                 $("#errorLogin").text("");
-                $("#ddLg").css('display', 'none');
-                $("#ddReg").css('display', 'none');
-                $("#ddLo").css('display', 'block');
+                $("#iniciarSesion").css('display', 'none');
+                $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
-                if(!window.location.href.includes("index")){
-                    $('#nomUsu').attr('data-bs-target', '#userModal');
-                }else{
-                    $('#nomUsu').removeAttr('data-bs-target');
+                $('#usuario').removeAttr('data-bs-target');
+                $("#usuario").text(result.nombre);
+                break;
+            case "incorrect user":
+                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
+                break;
+            default:
+                $("#errorLogin").text("Inserte datos en todos los campos por favor.");
+        }
+    })
+}
 
-                }
-                $("#nomUsu").text(result.usuario.nombre);
-
-                $('#nameUser').val(result.usuario.nombre);
-                $('#emailUser').val(result.usuario.email)
-
-                if (result.usuario.admin == 1) {
-                    $("#btnBanca").css('display', 'block');
-                }
+//Login usuario
+function loginUsuario() {
+    var correo = $("#insertEmail").val();
+    var contrasena = $("#insertContrasena").val();
+    console.log('values', correo, contrasena)
+    var url = "controller/cLoginUsuario.php";
+    var data = { 'correo': correo, 'contrasena': contrasena }
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'content-type': 'application/json' }
+    }).then(res => res.json()).then(result => {
+        console.log('result usuario', result);
+        switch (result.error) {
+            case "no error":
+                $("#errorLogin").text("");
+                $("#iniciarSesion").css('display', 'none');
+                $("#cerrarSesion").css('display', 'block');
+                $('#login').modal('toggle');
+                $('#usuario').removeAttr('data-bs-target');
+                $("#usuario").text(result.usuario.correo);
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
@@ -106,7 +122,6 @@ function login() {
 
 //LOGOUT
 function logout() {
-    
     var url = "controller/cLogout.php";
     fetch(url, {
         method: 'GET',
@@ -114,19 +129,40 @@ function logout() {
     }).then(res => res.json()).then(result => {
         console.log(result);
         if (result.error == "no error") {
-            $("#errorLogin").text("");
-            $("#btnBanca").css('display', 'none');
-            $("#btnProductos").css('display', 'none');
-            $("#ddLg").css('display', 'block');
-            $("#ddReg").css('display', 'block');
-            $("#ddLo").css('display', 'none');
-            $("#nomUsu").text("Login");
-            $('#nomUsu').attr('data-bs-target', '#login');
-            $("#email").val("");
-            $("#contrasenia").val("");
+            $("#iniciarSesion").css('display', 'block');
+            $("#cerrarSesion").css('display', 'none');
+            $("#btnEditarPerfil").css('display', 'none');
+            $("#btnAdministrar").css('display', 'none');
+            $("#btnCita").css('display', 'none');
+            $("#btnHistorial").css('display', 'none');
         }
-        if(!window.location.href.includes("index.html")){
-            window.location.href = "index.html";
+        if (!window.location.href.includes("index")) {
+            if (window.location.htef.includes('contacto')) {
+                console.log('contacto')
+                window.location.href = "contacto.html"
+            } else {
+                console.log('index')
+                window.location.href = "index.html";
+            }
         }
     })
+}
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

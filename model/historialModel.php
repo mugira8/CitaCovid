@@ -25,33 +25,38 @@ class historialModel extends historialClass {
 
 
 //LISTAR DATOS DEL HISTORIAL
-    public function setList() {
 
+    public function mostrarHistorialTIS()
+    {
         $this->OpenConnect();
 
-        $sql = "select * from historial";
+        $TIS=$this->TIS;
+
+        $sql = "SELECT `Tipo_vacuna`, `Num_Dosis`, `Fecha` FROM `historial` WHERE `TIS` = $TIS";
 
         $list = array();
 
-        $result = $this->link->query($sql);
+        $result=$this->link->query($sql);
 
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {
+            $historial = new historialModel();
 
-            $historial = new historialClass();
+            $historial->setTipo_vacuna($row['Tipo_vacuna']);
+            $historial->setNum_Dosis($row['Num_Dosis']);
+            $historial->setFecha($row['Fecha']);
 
-            $historial->cod_historial = $row['cod_historial'];
-            $historial->Tipo = $row['Tipo'];
-            $historial->Num_Dosis = $row['Num_Dosis'];
-            $historial->Fecha = $row['Fecha'];
-            $historial->TIS = $row['TIS'];
-
-
-            array_push($list, $historial);
+            array_push($list, get_object_vars($historial));
         }
+
         mysqli_free_result($result);
         $this->CloseConnect();
         return $list;
     }
 
-}//fin
+    public function ObjVars()
+    {
+        return get_object_vars($this);
+    }
+}
 ?>
