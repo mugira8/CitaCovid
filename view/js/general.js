@@ -22,7 +22,6 @@ function sessionVarsView() {
             if (result.error == "no error" && result.usuario.correo) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
-                $("#btnEditarPerfil").css('display', 'none');
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');

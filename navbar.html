@@ -28,13 +28,10 @@
                     <a class="nav-link text-danger opcnav" href="administrar.html">Administrar</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnHistorial" class="nav-link text-danger opcnav" href="historial.html">Historial</a>
+                    <a id="btnHistorial" class="nav-link text-danger opcnav" href="historial.html">Mi Perfil</a>
                 </li>
                 <li class="nav-item">
                     <a id="btnCita" class="nav-link text-danger opcnav" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
-                </li>
-                <li class="nav-item">
-                    <a id="btnEditarPerfil" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
                     <a id="btnAdministrar" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
@@ -83,46 +80,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--MODAL EDITAR PERFIL-->
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfil" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Mi Perfil</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container contenedor">
-                        <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
-                            <div class=""><!--ng-repeat="item in lista-->
-                                <input type="text" id="tis"  style="display: none;" placeholder="{{item.Tis}}" ng-model="item.Tis">
-                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
-                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
-                                <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
-                            </div>
-                            <div class="botones">
-                                <div class="container">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
-                                        <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmarEditar()">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="col-12 col-md-6">
-                        <!-- imagen del usuario -->
-                        <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
-                        <div class="botonesFoto">
-                            <input class="form-control" type="file" id="formFile">
-                            <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
