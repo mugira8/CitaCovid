@@ -23,17 +23,17 @@ if ( isset($data["TIS"]) ){
     $response["citasFecha"]=$citas->ObjVars();
 }
 
-$cod_centro=$citas->getCod_centro();
+//$cod_centro=$citas->getCod_centro();
 
-$centros=new centrosModel();
+//$centros=new centrosModel();
 
-$centros->setCod_centro($cod_centro);
-if (isset($response["objCentros"])) {
+//$centros->setCod_centro($cod_centro);
+// if (isset($response["objCentros"])) {
     
-    $centros->findCentroByCodCentro();
-    $response["objCentros"]=$centros;
-    $response['error']='no error';
-}
+//     $centros->findCentroByCodCentro();
+//     $response["objCentros"]=$centros;
+//     $response['error']='no error';
+// }
 
 echo json_encode($response);
 unset($response);

@@ -83,9 +83,7 @@ class citasModel extends citasClass {
         $this->OpenConnect();
         
         $TIS=$this->TIS;
-        $sql="select citas.*,centros.nombre from citas 
-            inner join centros on citas.cod_centro=centros.cod_centro 
-            where TIS=$TIS";
+        $sql="select * from citas where TIS=$TIS";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_cita=$row["cod_cita"];
@@ -96,7 +94,8 @@ class citasModel extends citasClass {
             $this->TIS=$row["TIS"];
             
             $centros=new centrosModel();
-            $centros->setNombre($row["nombre"]);
+            $centros->setCod_centro($row["cod_centro"]);
+            $centros->findCentroByCodCentro();
             
             $this->objCentros=$centros->ObjVars();
         }
@@ -109,9 +108,7 @@ class citasModel extends citasClass {
         $this->OpenConnect();
         
         $Fecha=$this->Fecha;
-        $sql="select  citas.*,centros.nombre from citas 
-                inner join centros on citas.cod_centro=centros.cod_centro 
-                where Fecha='$Fecha'";
+        $sql="select * from citas where Fecha='$Fecha'";
         $result = $this->link->query($sql);
         if (isset($result)) {
             if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -123,7 +120,8 @@ class citasModel extends citasClass {
                 $this->TIS=$row["TIS"];
                 
                 $centros=new centrosModel();
-                $centros->setNombre($row["nombre"]);
+                $centros->setCod_centro($row["cod_centro"]);
+                $centros->findCentroByCodCentro();
                 
                 $this->objCentros=$centros->ObjVars();
             }

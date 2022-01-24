@@ -7,14 +7,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
     for (var i = 0; i < botonesCitas.length; i++) {
         botonesCitas[i].addEventListener('click', loadCitas);
     }
-    
+    //Boton que abre modal con formulario
     document.getElementById("botonSolicitarCita").addEventListener("click", añadirCita);
-    
+    //Boton que realiza la solicitud con datos del formulario
+    document.getElementById("botonRealizarSolicitud").addEventListener("click", realizarSolicitud);
+
+    //Pantalla de carga hasta que todos los datos esten cargados
     document.getElementById("mainContainer").style.display ="none"
     carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
     document.getElementById("carga").innerHTML = carga
 
-    $(window).on('load', function() {
+    $(document).ready(function() {
+        console.log("ventana: ", window)
         document.getElementById("mainContainer").style.display ="block"
         document.getElementById("carga").style.display="none"
         mostrarDiaSeleccionado();
@@ -88,15 +92,15 @@ function loadCitas(event, fechaSeleccionada) {
         }).catch(error => console.error('Error status:', error));
 }
 
-function insertar(diaSeleccionado, mesSeleccionado, anioSeleccionado) {
-    var Fecha = document.getElementById("Fecha").value;
-    var Horas = document.getElementById("Horas").value;
-    var cod_centro = document.getElementById("cod_centro").value;
-    var TIS = document.getElementById("TIS").value;
+function insertar(fechaInsertar, horaInsertar, centroInsertar, tisInsertar) {
+    // var Fecha = document.getElementById("Fecha").value;
+    // var Horas = document.getElementById("Horas").value;
+    // var cod_centro = document.getElementById("cod_centro").value;
+    // var TIS = document.getElementById("TIS").value;
 
     var url = "controller/cInsertCitas.php";
 
-    var data = { "Fecha": Fecha, "Horas": Horas, "cod_centro": cod_centro, "TIS": TIS };
+    var data = { "Fecha": fechaInsertar, "Horas": horaInsertar, "cod_centro": centroInsertar, "TIS": tisInsertar };
 
     fetch(url, {
         method: 'POST',
@@ -109,7 +113,7 @@ function insertar(diaSeleccionado, mesSeleccionado, anioSeleccionado) {
             location.reload()
         })
 }
-
+var fechaSeleccionada
 function mostrarDiaSeleccionado() {
     document.getElementById("Fecha").value = " ";
     document.getElementById("Horas").value = " ";
@@ -167,7 +171,7 @@ function mostrarDiaSeleccionado() {
             break;
     }
 
-    var fechaSeleccionada = anio[0].innerHTML+"-"+mesConvertido+"-"+diaConvertido;
+    fechaSeleccionada = anio[0].innerHTML+"-"+mesConvertido+"-"+diaConvertido;
     console.log("Fecha formateada", fechaSeleccionada)
     loadCitas(event, fechaSeleccionada);
 }
@@ -188,6 +192,9 @@ function añadirCita() {
                 newRow += "<option value='" + centro[i].cod_centro + "'>" + centro[i].Nombre + "</option>";
             }
             document.getElementById("SolicitarCod_centro").innerHTML = newRow;
+
+            fechaSeleccionada;
+            document.getElementById("SolicitarFecha").value = fechaSeleccionada;
         })
         .catch(error => console.error('Error status:', error));
 
@@ -199,5 +206,18 @@ function añadirCita() {
     console.log("Mes seleccionado: ", mes[0].innerHTML);
     console.log("Año seleccionado: ", anio[0].innerHTML);
 
-    //insertar(dia, mes, año);
+}
+
+function realizarSolicitud() {
+    console.log(fechaSeleccionada)
+    var horaSeleccionada = document.getElementById("SolicitarHoras").value;
+    var centroSeleccionado = document.getElementById("SolicitarCod_centro").value;
+    var tisSeleccionado = document.getElementById("SolicitarTIS").value;
+
+    console.log("Fecha form: ", fechaSeleccionada);
+    console.log("Hora form: ", horaSeleccionada);
+    console.log("Centro form: ", centroSeleccionado);
+    console.log("Tis form: ", tisSeleccionado);
+
+    insertar(fechaSeleccionada, horaSeleccionada, centroSeleccionado, tisSeleccionado);
 }
