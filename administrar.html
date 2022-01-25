@@ -26,7 +26,8 @@
     <div class="contenedor container" ng-controller="miControlador">
         <div class="col-12 col-md-4 columna">
             <!-- selecctor de centro -->
-            <select id="centros" class="form-select campo" aria-label="Default select example" onchange="mostrar(this.value)">
+            <select id="centros" class="form-select campo" aria-label="Default select example"
+                onchange="mostrar(this.value)">
                 <option value="limpiar" selected>Seleccione un centro</option>
                 <option value="nuevo"> Nuevo</option>
                 <option ng-repeat="item in lista" ng-value="item.cod_centro">{{item.Nombre}}</option>
@@ -50,58 +51,58 @@
             </form>
         </div>
 
-            <!-- dias de vacunaccion -->
-            <div class="col-12 col-md-4 columna">
-                <h4>Dias de Vacunacion</h4>
-                <small></small>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkLunes">
-                    <label class="form-check-label" for="flexCheckDefault1">Lunes</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkMartes">
-                    <label class="form-check-label" for="flexCheckDefault2">Martes</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkMiercoles">
-                    <label class="form-check-label" for="flexCheckDefault3">Miercoles</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkJueves">
-                    <label class="form-check-label" for="flexCheckDefault4">Jueves</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkViernes">
-                    <label class="form-check-label" for="flexCheckDefault5">Viernes</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkSabado">
-                    <label class="form-check-label" for="flexCheckDefault6">Sabado</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDomingo">
-                    <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
-                </div>
+        <!-- dias de vacunaccion -->
+        <div class="col-12 col-md-4 columna">
+            <h4>Dias de Vacunacion</h4>
+            <small></small>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkLunes">
+                <label class="form-check-label" for="flexCheckDefault1">Lunes</label>
             </div>
-            <!-- horario -->
-            <div class="col-12 col-md-4 columna">
-                <h4>Horario:</h4>
-                <p><small>Apertura:</small>
-                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
-                <div class="invalid-feedback">
-                    La hora de apertura es obligatoria.
-                </div>
-                </p>
-                <p><small>Cierre:</small>
-                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
-                <div class="invalid-feedback">
-                    La hora de cierre es obligatoria.
-                </div>
-                </p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkMartes">
+                <label class="form-check-label" for="flexCheckDefault2">Martes</label>
             </div>
-            <button type="button" class="btn btn-danger boton" >Confirmar</button>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkMiercoles">
+                <label class="form-check-label" for="flexCheckDefault3">Miercoles</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkJueves">
+                <label class="form-check-label" for="flexCheckDefault4">Jueves</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkViernes">
+                <label class="form-check-label" for="flexCheckDefault5">Viernes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkSabado">
+                <label class="form-check-label" for="flexCheckDefault6">Sabado</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkDomingo">
+                <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
+            </div>
+        </div>
+        <!-- horario -->
+        <div class="col-12 col-md-4 columna">
+            <h4>Horario:</h4>
+            <p><small>Apertura:</small>
+                <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+            <div class="invalid-feedback">
+                La hora de apertura es obligatoria.
+            </div>
+            </p>
+            <p><small>Cierre:</small>
+                <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+            <div class="invalid-feedback">
+                La hora de cierre es obligatoria.
+            </div>
+            </p>
+        </div>
+        <button type="button" class="btn btn-danger boton">Confirmar</button>
     </div>
-    
+
     </div>
 
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-danger"><svg

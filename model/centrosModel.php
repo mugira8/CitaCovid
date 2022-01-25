@@ -184,6 +184,3 @@ class centrosModel extends centrosClass {
     }
 
 }//fin
-
-
-?>

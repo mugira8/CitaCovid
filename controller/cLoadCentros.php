@@ -1,14 +1,14 @@
 <?php
-include_once ("../model/centrosModel.php");
+include_once("../model/centrosModel.php");
 
 $centros = new centrosModel();
 
 $list = array();
-$list = $centros->setList(); 
+$list = $centros->setList();
 
 $response = array();
-$response['list'] = $list; 
-$response['error'] = "Not error"; 
+$response['list'] = $list;
+$response['error'] = "Not error";
 
 echo json_encode($response);
 
