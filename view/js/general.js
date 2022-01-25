@@ -8,7 +8,18 @@ async function sessionVarsView() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
+        console.log('session result', result)
+        console.log(window.location.href)
+        
+        //Al intentar ejecutar esta funcion para mostrar las citas del dia
+        //desde citaVacunacion.js, nunca recupera objPaciente, siempre
+        //ejecuta primero citaVacunacion.js y despues recibe el objeto,
+        //asi que lo llamo desde aqui para evitar errores
+        //-kevin
         objPaciente = result;
+        if (window.location.href.includes("citaVacunacion")){
+            mostrarDiaSeleccionado()
+        }
         if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');

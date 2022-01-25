@@ -3,11 +3,13 @@
 include_once ("connect_data.php");
 include_once ("citasClass.php");
 include_once ("centrosModel.php");
+include_once ("vacunasModel.php");
 
 class citasModel extends citasClass {
 
     private $link;
     private $objCentros;
+    private $objVacunas;
         
     public function OpenConnect() {
         $konDat = new connect_data();
@@ -24,37 +26,6 @@ class citasModel extends citasClass {
     public function CloseConnect() {
         mysqli_close($this->link);
     }
-
-
-//LISTAR DATOS DE CITAS
-    public function setList() {
-
-        $this->OpenConnect();
-
-        $sql = "select * from citas";
-
-        $list = array();
-
-        $result = $this->link->query($sql);
-
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-
-            $citas = new citasClass();
-
-            $citas->cod_cita = $row['cod_cita'];
-            $citas->Fecha = $row['Fecha'];
-            $citas->Horas = $row['Horas'];
-            $citas->Tipo_vacuna = $row['Tipo_vacuna'];
-            $citas->cod_centro = $row['cod_centro'];
-            $citas->TIS = $row['TIS'];
-
-
-            array_push($list, get_object_vars($citas));
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $list;
-    }
     
     public function insert(){
         
@@ -62,11 +33,11 @@ class citasModel extends citasClass {
         $cod_cita=$this->cod_cita;
         $Fecha=$this->Fecha;
         $Horas=$this->Horas;
-        // $Tipo_vacuna=$this->Tipo_vacuna;
+        $cod_vacuna=$this->cod_vacuna;
         $cod_centro=$this->cod_centro;
         $TIS=$this->TIS;
         
-        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `cod_centro`, `TIS`) VALUES ('$Fecha', '$Horas', '$cod_centro', '$TIS')";
+        $sql = "INSERT INTO `citas` (`Fecha`, `Horas`, `cod_centro`, `TIS`, `cod_vacuna`) VALUES ('$Fecha', '$Horas', '$cod_centro', '$TIS', '$cod_vacuna')";
         
         $this->link->query($sql);
         
@@ -84,56 +55,48 @@ class citasModel extends citasClass {
         
         $Fecha=$this->Fecha;
         $TIS=$this->TIS;
-        $sql="select citas.*,centros.nombre from citas 
-            inner join centros on citas.cod_centro=centros.cod_centro 
+        $sql="select citas.*,centros.nombre, vacunas.Tipo_Vacuna from citas 
+            inner join centros on citas.cod_centro=centros.cod_centro
+            inner join vacunas on citas.cod_vacuna=vacunas.cod_vacuna
             where TIS=$TIS and Fecha='$Fecha'";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_cita=$row["cod_cita"];
             $this->Fecha=$row["Fecha"];
             $this->Horas=$row["Horas"];
-            $this->Tipo_vacuna=$row["Tipo_vacuna"];
+            $this->cod_vacuna=$row["cod_vacuna"];
             $this->cod_centro=$row["cod_centro"];
             $this->TIS=$row["TIS"];
             
             $centros=new centrosModel();
             $centros->setNombre($row["nombre"]);
+            $vacunas=new vacunasModel();
+            $vacunas->setTipo_vacuna($row["Tipo_Vacuna"]);
             
             $this->objCentros=$centros->ObjVars();
+            $this->objVacunas=$vacunas->ObjVars();
         }
         
         mysqli_free_result($result);
        $this->CloseConnect();
     }
-    
-    public function findCitaByFecha(){
-        $this->OpenConnect();
+
+    public function delete(){
+        $this->OpenConnect();  
+
+        $cod_cita=$this->getCod_cita(); 
         
-        $Fecha=$this->Fecha;
-        $sql="select  citas.*,centros.nombre from citas 
-                inner join centros on citas.cod_centro=centros.cod_centro 
-                where Fecha='$Fecha'";
-        $result = $this->link->query($sql);
-        if (isset($result)) {
-            if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                $this->cod_cita=$row["cod_cita"];
-                $this->Fecha=$row["Fecha"];
-                $this->Horas=$row["Horas"];
-                $this->Tipo_vacuna=$row["Tipo_vacuna"];
-                $this->cod_centro=$row["cod_centro"];
-                $this->TIS=$row["TIS"];
-                
-                $centros=new centrosModel();
-                $centros->setNombre($row["nombre"]);
-                
-                $this->objCentros=$centros->ObjVars();
-            }
+        $sql="delete from citas where citas.cod_cita=$cod_cita";
+        
+        if ($this->link->query($sql))
+        {
+            return "Cita cancelada con exito";
+        } else {
+            return "Error deleting : ". $sql ."   ". $this->link->error;
         }
-        
-        mysqli_free_result($result);
         $this->CloseConnect();
     }
-    
+
     public function ObjVars()
     {
         return get_object_vars($this);
