@@ -20,7 +20,6 @@ async function sessionVarsView() {
             $("#btnHistorial").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
-            $("#hola").val(objPaciente.paciente.tis)
 
             
             if (result.error == "no error" && result.usuario.correo) {
