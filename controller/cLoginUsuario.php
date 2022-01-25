@@ -15,7 +15,7 @@ if ($correo!=null){
 
     if ($usuario->findUser()){
         session_start();
-        $_SESSION['usuario']=$correo;
+        $_SESSION['usuario']=$usuario;
         $_SESSION['id']=$usuario->id;
         $response['error']="no error";
     }else{
@@ -24,7 +24,7 @@ if ($correo!=null){
 }else{
     $response['error']="insert data";
 }
-    $response['nombre']=$usuario;
+    $response['usuario']=$usuario;
 
     echo json_encode($response);
     unset($response);

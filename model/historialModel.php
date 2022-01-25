@@ -33,7 +33,6 @@ class historialModel extends historialClass {
         $TIS=$this->TIS;
 
         $sql = "SELECT `Tipo_vacuna`, `Num_Dosis`, `Fecha` FROM `historial` WHERE `TIS` = $TIS";
-
         $list = array();
 
         $result=$this->link->query($sql);
@@ -47,6 +46,7 @@ class historialModel extends historialClass {
             $historial->setFecha($row['Fecha']);
 
             array_push($list, get_object_vars($historial));
+            
         }
 
         mysqli_free_result($result);
