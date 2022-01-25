@@ -26,6 +26,8 @@
     <div class="contenedor container" ng-controller="miControlador">
         <div class="col-12 col-md-4 columna">
             <!-- selecctor de centro -->
+            <div id="errorCentro" class="text-danger"></div>
+            <div id="correctoCentro" class="text-success"></div>
             <select id="centros" class="form-select campo" aria-label="Default select example"
                 onchange="mostrar(this.value)">
                 <option value="limpiar" selected>Seleccione un centro</option>
@@ -35,14 +37,14 @@
             <!-- nombre y municipio -->
             <form class="needs-validation" novalidate>
                 <div>
-                    <small>Nombre del centro</small>
+                    <small>Nombre del centro*</small>
                     <input type="text" class="form-control campo" id="nombreCentro" required>
                     <div class="invalid-feedback">
                         El nombre es obligatorio.
                     </div>
                 </div>
                 <div>
-                    <small>municipio</small>
+                    <small>Municipio*</small>
                     <input type="text" class="form-control campo" id="municipio" required>
                     <div class="invalid-feedback">
                         El municipio es obligatorio.
@@ -87,20 +89,20 @@
         <!-- horario -->
         <div class="col-12 col-md-4 columna">
             <h4>Horario:</h4>
-            <p><small>Apertura:</small>
-                <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+            <p><small>Apertura:*</small>
+                <input type="time" id="apertura" name="appt" min="00:00" max="00:00" required>
             <div class="invalid-feedback">
                 La hora de apertura es obligatoria.
             </div>
             </p>
-            <p><small>Cierre:</small>
-                <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
+            <p><small>Cierre:*</small>
+                <input type="time" id="cierre" name="appt" min="00:00" max="00:00" required>
             <div class="invalid-feedback">
                 La hora de cierre es obligatoria.
             </div>
             </p>
         </div>
-        <button type="button" class="btn btn-danger boton">Confirmar</button>
+        <button type="button" class="btn btn-danger boton" onclick="confirmar()">Confirmar</button>
     </div>
 
     </div>

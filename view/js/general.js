@@ -10,12 +10,7 @@ async function sessionVarsView() {
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
         console.log(window.location.href)
-        
-        //Al intentar ejecutar esta funcion para mostrar las citas del dia
-        //desde citaVacunacion.js, nunca recupera objPaciente, siempre
-        //ejecuta primero citaVacunacion.js y despues recibe el objeto,
-        //asi que lo llamo desde aqui para evitar errores
-        //-kevin
+        //Para citas
         objPaciente = result;
         if (window.location.href.includes("citaVacunacion")){
             mostrarDiaSeleccionado()
@@ -111,9 +106,10 @@ function loginPaciente() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
+                alert('Login correcto')
                 break;
             case "incorrect user":
-                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
+                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
                 break;
             default:
                 $("#errorLogin").text("Inserte datos en todos los campos por favor.");
@@ -139,13 +135,18 @@ function loginUsuario() {
                 $("#errorLogin").text("");
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
+                $("#btnEditarPerfil").css('display', 'block');
+                $("#btnAdministrar").css('display', 'block');
+                $("#btnCita").css('display', 'none');
+                $("#btnHistorial").css('display', 'none');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
+                alert('Login correcto')
                 break;
             case "incorrect user":
-                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
+                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
                 break;
             default:
                 $("#errorLogin").text("Inserte datos en todos los campos por favor.");

@@ -1,6 +1,6 @@
 <?php
 
-include_once("../model/centroModel.php");
+include_once("../model/centrosModel.php");
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -19,19 +19,18 @@ $domingo = $data['domingo'];
 
 $centro = new centrosModel();
 
-$centro->cod_centro = $cod_centro;
-$centro->Nombre = $nombre;
-$centro->Municipio = $municipio;
-$centro->Hora_apertura = $apertura;
-$centro->Hora_cierre = $cierre;
-$centro->Lunes = $lunes;
-$centro->Martes = $martes;
-$centro->Miercoles = $miercoles;
-$centro->Jueves = $jueves;
-$centro->Viernes = $viernes;
-$centro->Sabado = $sabado;
-$centro->Domingo = $domingo;
-
+$centro->setCod_centro($cod_centro);
+$centro->setNombre($nombre);
+$centro->setMunicipio($municipio);
+$centro->setHora_apertura($apertura);
+$centro->setHora_cierre($cierre);
+$centro->setLunes($lunes);
+$centro->setMartes($martes);
+$centro->setMiercoles($miercoles);
+$centro->setJueves($jueves);
+$centro->setViernes($viernes);
+$centro->setSabado($sabado);
+$centro->setDomingo($domingo);
 
 $response = array();
 $response['error'] = $centro->actualizarCentro();
