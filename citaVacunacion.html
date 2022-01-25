@@ -120,19 +120,19 @@
             
             <div class="col-12 col-md-11 contenedor3" id="formSolicitarCita">
               <div class="row">
-                <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha"></div>
+                <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha" disabled></div>
                 <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras" placeholder="Hora"></div>
               </div>
               <div class="row">
                 <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
-                <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX" onkeypress='validate(event)' maxlength="8"></div>
+                <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX"  maxlength="8" disabled></div> <!--onkeypress='validate(event)'-->
               </div>
             </div>
   
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Realizar solicitud</button>
+            <button type="button" class="btn btn-primary" id="botonRealizarSolicitud">Realizar solicitud</button>
           </div>
         </div>
       </div>
@@ -161,10 +161,10 @@
 <script src="view/js/popper.js+bootstrap.min.js.pagespeed.jc.ndf8_3FdiS.js"></script>
 <script>eval(mod_pagespeed_wDxec1q6mG);</script>
 <script>eval(mod_pagespeed_amktbYOjgV);</script>
-<script src="view/js/citaVacunacion.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>    
 <script src="view/js/index.js"></script>
 <script src="view/js/general.js"></script>
+<script src="view/js/citaVacunacion.js"></script>
 
 
 <!-- No se que hace esto, pero si lo quito deja de dar errores en la consola -Kevin -->
