@@ -19,18 +19,30 @@ function sessionVarsView() {
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
+            console.log(result.usuario.correo)
 
-            if (result.error == "no error" && result.usuario) {
-                $("#iniciarSesion").css('display', 'none');
-                $("#cerrarSesion").css('display', 'block');
-                $("#btnAdministrar").css('display', 'block');
-                $("#btnCita").css('display', 'none');
-                $("#btnHistorial").css('display', 'none');
-                $('#usuario').removeAttr('data-bs-target');
-                $('#administrar').removeAttr('data-bs-target');
-                $("#usuario").text(result.usuario);
+        } else if(!result.usuario.correo){
+            if (!window.location.href.includes("index")) {
+                if (window.location.href.includes('contacto')) {
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                } else {
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
             }
-        } else {
+        }
+
+        if (result.error == "no error" && result.usuario.correo) {
+            $("#iniciarSesion").css('display', 'none');
+            $("#cerrarSesion").css('display', 'block');
+            $("#btnAdministrar").css('display', 'block');
+            $("#btnCita").css('display', 'none');
+            $("#btnHistorial").css('display', 'none');
+            $('#usuario').removeAttr('data-bs-target');
+            $('#administrar').removeAttr('data-bs-target');
+            $("#usuario").text(result.usuario.correo);
+        } else if(!result.paciente.tis){
             if (!window.location.href.includes("index")) {
                 if (window.location.href.includes('contacto')) {
                     console.log('contacto')
@@ -119,7 +131,7 @@ function loginUsuario() {
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
-                $("#usuario").text(result.usuario);
+                $("#usuario").text(result.usuario.correo);
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
