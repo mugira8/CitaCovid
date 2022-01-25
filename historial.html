@@ -27,7 +27,6 @@
             <div class="container contenedor">
                     <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
                         <div class=""><!--ng-repeat="item in lista-->
-                            <input type="text" id="hola">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
@@ -55,20 +54,12 @@
 
     <!--Seccion Central-->
     <div class="container" ng-show='ver == "si"'>
-        <div class="miCuenta col-12" ng-repeat="item in lista">
-            <div class="container">
-                <input type="text" class="campoCuenta col-11 col-md-3" disabled placeholder="{{item.Nombre}}">
-                <input type="text" class="campoCuenta col-11 col-md-3" disabled placeholder="{{item.Apellido}}">
-                <input type="text" class="campoCuenta col-11 col-md-3" disabled placeholder="{{item.Tis}}">
-            </div>
-        </div>
-
         <div class="seccionCentral col-12">
             <table>
                 <tr>
                     <th>Tipo Vacuna</th>
                     <th>Numero de Dosis</th>
-                    <th>Fecha</th>
+                    <th>Fecha De La Dosis</th>
                 </tr>
                 <tr ng-repeat="item in lista">
                     <td>{{item.Tipo_vacuna}}</td>

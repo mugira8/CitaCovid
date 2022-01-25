@@ -19,7 +19,6 @@ async function sessionVarsView() {
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
-            console.log(result.usuario.correo)
         } else if (!result.usuario.correo) {
             if (!window.location.href.includes("index")) {
                 if (window.location.href.includes('contacto')) {
