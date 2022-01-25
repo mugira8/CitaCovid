@@ -1,4 +1,3 @@
-
 <html lang="en" ng-app="myApp">
 
 <head>
@@ -14,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="view/css/calendarioCitas.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
   <link rel="stylesheet" href="view/css/index.css">
   <link rel="shortcut icon" href="view/images/icon.png">
 
@@ -33,9 +33,9 @@
     <div id="navbar" ng-include="'navbar.html'"></div>
     <!-- campo para ver la dosis que toque -->
     <div class="container contenedorPrincipal">
-  
+
       <div class="col-12 col-md-6 contenedor1">
-  
+
         <div class="calendar-container">
           <div class="calendar">
             <div class="year-header">
@@ -77,10 +77,11 @@
               </table>
             </div>
             <!-- Este boton abre el modal -->
-            <button class="btn-danger btn" data-toggle="modal" data-target="#modalSolicitarCita" id="botonSolicitarCita">Solicitar cita</button>
+            <button class="btn-danger btn" data-toggle="modal" data-target="#modalSolicitarCita"
+              id="botonSolicitarCita">Solicitar cita</button>
           </div>
         </div>
-  
+
       </div>
       <div class="col-12 col-md-6 contenedor2" id="formCitas">
         <h2>Cita Actual</h2>
@@ -96,18 +97,19 @@
       </div>
     </div>
     <!-- <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button> -->
-  
+
     <div id="menuPruebaId">
       <span style="font-size: 15px;"> --Menu de prueba-- <br>
-      Recoge citas de la BBDD</span> <br>
+        Recoge citas de la BBDD</span> <br>
       <button type="button" class="btn btn-danger coso btnMostrarCita" id="2328241">cita 1</button>
       <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
       <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
     </div>
-  
-  
+
+
     <!-- Modal -->
-    <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog" aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
+    <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog"
+      aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -117,18 +119,23 @@
             </button>
           </div>
           <div class="modal-body container">
-            
+
             <div class="col-12 col-md-11 contenedor3" id="formSolicitarCita">
               <div class="row">
-                <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha" placeholder="fecha" disabled></div>
-                <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras" placeholder="Hora"></div>
+                <div class="col-12 campo2">Fecha seleccionada<input type="text" class="form-control" id="SolicitarFecha"
+                    placeholder="fecha" disabled></div>
+                <div class="col-12 campo2">Hora<input type="time" class="form-control" id="SolicitarHoras"
+                    placeholder="Hora"></div>
               </div>
               <div class="row">
-                <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
-                <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX"  maxlength="8" disabled></div> <!--onkeypress='validate(event)'-->
+                <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro"
+                    placeholder=""></select></div>
+                <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS"
+                    placeholder="XXXXXXXX" maxlength="8" disabled></div>
+                <!--onkeypress='validate(event)'-->
               </div>
             </div>
-  
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -137,18 +144,24 @@
         </div>
       </div>
     </div>
-  <!-- Fin modal -->
-  
-    <a type="button" class="btn btn-danger volver boton" id="" href="index.html">Volver</a>
-  
-    <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
-    </svg></button>
+    <!-- Fin modal -->
 
+    <!-- boton para volver al index -->
+    <a type="button" class="btn btn-danger volver boton" id="" href="index.html">Volver</a>
+
+    <!-- boton para subir -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-danger"><svg
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+      </svg></button>
+
+    <!-- footer -->
     <footer id="footer" class="bg-light2" ng-include="'footer.html'"></footer>
-  
+
   </div>
-  
+
 </body>
 
 <!--SCRIPTS-->
@@ -161,7 +174,7 @@
 <script src="view/js/popper.js+bootstrap.min.js.pagespeed.jc.ndf8_3FdiS.js"></script>
 <script>eval(mod_pagespeed_wDxec1q6mG);</script>
 <script>eval(mod_pagespeed_amktbYOjgV);</script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <script src="view/js/index.js"></script>
 <script src="view/js/general.js"></script>
 <script src="view/js/citaVacunacion.js"></script>

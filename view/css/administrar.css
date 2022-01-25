@@ -1,4 +1,10 @@
 .contenedor{
     height: auto;
+   
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
-
+.columna{
+    margin: 20px;
+}
