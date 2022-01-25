@@ -26,6 +26,7 @@
             <div class="container contenedor">
                     <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
                         <div class=""><!--ng-repeat="item in lista-->
+                            <input type="text" id="hola">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
@@ -69,8 +70,8 @@
                     <th>Fecha</th>
                 </tr>
                 <tr ng-repeat="item in lista">
-                    <td>{{item.Tipo}}</td>
-                    <td>{{item.Num_dosis}}</td>
+                    <td>{{item.Tipo_vacuna}}</td>
+                    <td>{{item.Num_Dosis}}</td>
                     <td>{{item.Fecha}}</td>
                 </tr>
             </table>

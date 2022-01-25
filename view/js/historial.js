@@ -1,12 +1,38 @@
 var MyApp = angular.module("myApp", []);
 
-MyApp.controller('miControlador',['$scope','$http', function($scope,$http){
 
-   console.log( objPaciente.paciente.tis)
-    $http.get('controller/cHistorial.php').then(function (response){
-        $scope.lista = response.data.list;
-        
-    });
+
+MyApp.controller('miControlador',['$scope','$http', async function($scope,$http){
+    sessionVarsView()
+    async function sessionVarsView() {
+        var url = "controller/cSessionVarsView.php";
+        fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json()).then(result => {
+            console.log('session result', result)
+            console.log(window.location.href)
+            objPaciente = result;
+            
+            url= 'controller/cHistorial.php';
+            var data = {"TIS": result.paciente.tis};
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(res => res.json()).then(result => {
+                console.log('session result', result)
+                console.log(window.location.href)
+                objPaciente = result;
+                
+                console.log(result)
+                $scope.lista = result.list;
+    
+            });
+
+        });
+    }
+
 
     /* NS DE QUE CONTROLADOR COGER PARA MOSTRAR PACIENTES
     $http.get('controller/').then(function (response){

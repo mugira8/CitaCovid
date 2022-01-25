@@ -8,6 +8,7 @@ $historial = new historialModel();
 
 $TIS=$data['TIS'];
 
+
 $historial->setTIS($TIS);
 
 $response=array();

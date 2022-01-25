@@ -1,6 +1,8 @@
+
 var objPaciente; //Variable global para poder acceder desde citaVacunacion.js u otros archivos
+
 $(document).ready(sessionVarsView);
-function sessionVarsView() {
+async function sessionVarsView() {
     var url = "controller/cSessionVarsView.php";
     fetch(url, {
         method: 'GET',
@@ -18,6 +20,8 @@ function sessionVarsView() {
             $("#btnHistorial").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
+            $("#hola").val(objPaciente.paciente.tis)
+
             
             if (result.error == "no error" && result.usuario.correo) {
                 $("#iniciarSesion").css('display', 'none');
@@ -38,7 +42,10 @@ function sessionVarsView() {
                     window.location.href = "index.html";
                 }
             }
+            
         }
+        console.log(result.paciente)
+            return result.paciente
     });
 }
 
