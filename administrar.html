@@ -26,9 +26,10 @@
     <div class="contenedor container" ng-controller="miControlador">
         <div class="col-10">
             <!-- selecctor de centro -->
-            <select id="centros" class="form-select campo" aria-label="Default select example">
-                <option selected>Seleccione un centro</option>
-                <option value="nuevo">Nuevo</option>
+            <select id="centros" class="form-select campo" aria-label="Default select example" onchange="mostrar(this.value)">
+                <option value="limpiar" selected>Seleccione un centro</option>
+                <option value="nuevo"> Nuevo</option>
+                <option ng-repeat="item in lista" ng-value="item.cod_centro">{{item.Nombre}}</option>
             </select>
             <!-- nombre y municipio -->
             <form class="needs-validation" novalidate>

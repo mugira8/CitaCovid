@@ -2,6 +2,7 @@ var administrar = angular.module("myApp", []);
 
 administrar.controller('miControlador',['$scope','$http', function($scope,$http){
     $http.get('controller/cLoadCentros.php').then(function (response){
+        console.log('centros',response.data.list)
         $scope.lista = response.data.list;
     });
 
@@ -25,3 +26,8 @@ administrar.controller('miControlador',['$scope','$http', function($scope,$http)
     }*/
 
 }]);
+
+function mostrar(cod_centro){
+    var url = "controller/c"
+    fetch
+}

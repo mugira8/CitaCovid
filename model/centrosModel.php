@@ -64,7 +64,7 @@ class centrosModel extends centrosClass {
         $this->OpenConnect();
         
         $cod_centro=$this->cod_centro;
-        $sql="select * from centros where cod_centro=$cod_centro";
+        $sql="SELECT * FROM centros WHERE cod_centro=$cod_centro";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_centro=$row["cod_centro"];

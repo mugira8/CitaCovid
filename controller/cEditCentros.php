@@ -21,21 +21,21 @@ $centro=new centroModel();
 
 $centro->cod_centro=$cod_centro;
 $centro->Nombre=$nombre;
-$centro->precio=$precio;
-$centro->img1=$img1;
-$centro->img2=$img2;
-$centro->img3=$img3;
-$centro->descripcion=$descripcion;
-$centro->Nombre=$nombre;
-$centro->Nombre=$nombre;
-$centro->Nombre=$nombre;
-$centro->Nombre=$nombre;
-$centro->Nombre=$nombre;
+$centro->Municipio=$municipio;
+$centro->Hora_apertura=$apertura;
+$centro->Hora_cierre=$cierre;
+$centro->Lunes=$lunes;
+$centro->Martes=$martes;
+$centro->Miercoles=$miercoles;
+$centro->Jueves=$jueves;
+$centro->Viernes=$viernes;
+$centro->Sabado=$sabado;
+$centro->Domingo=$domingo;
 
  
 $response=array();
-$response['error']=$articulo->update(); 
+$response['error']=$centro->editCentro(); 
 
 echo json_encode($response);
 
-unset ($articulo);
+unset ($centro);
