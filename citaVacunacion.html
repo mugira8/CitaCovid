@@ -92,17 +92,12 @@
           <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled></div>
           <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled></div>
         </div>
-        <div><button type="button" class="btn btn-danger coso" id="">Cancelar cita</button></div>
+        <div class="row">
+          <h4>Vacuna a administrar</h4>
+          <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled></div>
+        </div>
+        <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>
       </div>
-    </div>
-    <!-- <button type="button" class="btn btn-danger" id="botonConfirmarCita">Confirmar cita</button> -->
-  
-    <div id="menuPruebaId">
-      <span style="font-size: 15px;"> --Menu de prueba-- <br>
-      Recoge citas de la BBDD</span> <br>
-      <button type="button" class="btn btn-danger coso btnMostrarCita" id="2328241">cita 1</button>
-      <button type="button" class="btn btn-danger coso btnMostrarCita" id="6237435">cita 2</button>
-      <button type="button" class="btn btn-danger coso btnMostrarCita" id="7302170">cita 3</button>
     </div>
   
   
@@ -125,6 +120,7 @@
               </div>
               <div class="row">
                 <div class="col-12 campo2">Centro<select class="form-control" id="SolicitarCod_centro" placeholder=""></select></div>
+                <div class="col-12 campo2">Tipo de vacuna<select class="form-control" id="SolicitarCod_vacuna" placeholder=""></select></div>
                 <div class="col-12 campo2">TIS<input type="text" class="form-control" id="SolicitarTIS" placeholder="XXXXXXXX"  maxlength="8" disabled></div> <!--onkeypress='validate(event)'-->
               </div>
             </div>

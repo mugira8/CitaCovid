@@ -34,16 +34,20 @@ class vacunasModel extends vacunasClass {
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
-            $vacunas = new citasClass();
+            $vacunas = new vacunasClass();
 
             $vacunas->cod_vacuna = $row['cod_vacuna'];
-            $vacunas->Tipo_vacuna = $row['Tipo_vacuna'];
+            $vacunas->Tipo_Vacuna = $row['Tipo_Vacuna'];
 
             array_push($list, get_object_vars($vacunas));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
         return $list;
+    }
+    public function ObjVars()
+    {
+        return get_object_vars($this);
     }
 }
 ?>
