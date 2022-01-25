@@ -83,6 +83,89 @@ class centrosModel extends centrosClass {
         mysqli_free_result($result);
         $this->CloseConnect();
     }
+
+    public function insertCentro(){
+        $this -> OpenConnect();
+        
+        $nombre = $this -> Nombre;
+        $municipio = $this -> Municipio;
+        $apertura = $this -> Hora_apertura;
+        $cierre = $this -> Hora_cierre;
+        $lunes = $this -> Lunes;
+        $martes = $this -> Martes;
+        $miercoles = $this -> Miercoles;
+        $jueves = $this -> Jueves;
+        $viernes = $this -> Viernes;
+        $sabado = $this -> Sabado;
+        $domingo = $this -> Domingo;
+
+        $sql ="INSERT INTO centros(Nombre, Municipio, Hora_apertura, Hora_Cierre, 
+        Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo) 
+        VALUES ('$nombre', '$municipio', '$apertura', '$cierre', '$lunes', 
+        '$martes', '$miercoles', '$jueves', '$viernes', '$sabado', '$domingo')";
+        
+        $this -> link -> query($sql);
+        
+        if ($this -> link -> affected_rows == 1){
+            return "El centro se ha insertado con EXITO.";
+        }
+        else {
+            return "FALLO al insertar un nuevo centro.";
+        }
+        
+        $this -> CloseConnect();
+    }
+
+    public function editCentro(){
+        $this->OpenConnect();
+        
+        $cod_centro = $this -> cod_centro;
+        $nombre = $this -> Nombre;
+        $municipio = $this -> Municipio;
+        $apertura = $this -> Hora_apertura;
+        $cierre = $this -> Hora_cierre;
+        $lunes = $this -> Lunes;
+        $martes = $this -> Martes;
+        $miercoles = $this -> Miercoles;
+        $jueves = $this -> Jueves;
+        $viernes = $this -> Viernes;
+        $sabado = $this -> Sabado;
+        $domingo = $this -> Domingo;
+
+        $sql ="UPDATE centros SET Nombre = '$nombre', Municipio = $municipio, Hora_apertura = '$apertura',
+            Hora_cierre = '$cierre', Lunes = '$lunes', Martes = '$martes', Miercoles = '$jueves', 
+            Viernes = '$viernes', Sabado = '$sabado', Domingo = '$domingo' WHERE cod_centro = $cod_centro";
+        
+        $this -> link -> query($sql);
+        
+        if($this->link->affected_rows == 1) {
+            return "El centro se ha editado con EXITO.";
+        }
+        else {
+            return "FALLA la modificacion del centro";
+        }
+        
+        $this -> CloseConnect();
+    }
+
+    public function deleteCentro(){
+        $this -> OpenConnect();
+        
+        $cod_centro = $this -> cod_centro;
+                
+        $sql = "DELETE FROM centros WHERE cod_centro = $cod_centro";
+        
+        $this -> link -> query($sql);
+        
+        if($this -> link -> affected_rows == 1) {
+            return "El centro ha sido eliminado";
+        }
+        else {
+            return "No se ha podido borrar el centro";
+        }
+        
+        $this -> CloseConnect();
+    }
     
     public function ObjVars()
     {

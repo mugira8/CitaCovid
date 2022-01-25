@@ -6,8 +6,6 @@ function sessionVarsView() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
-        console.log('session result', result)
-        console.log(window.location.href)
         objPaciente = result;
         if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
@@ -20,7 +18,6 @@ function sessionVarsView() {
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
             console.log(result.usuario.correo)
-
         } else if(!result.usuario.correo){
             if (!window.location.href.includes("index")) {
                 if (window.location.href.includes('contacto')) {
@@ -32,7 +29,6 @@ function sessionVarsView() {
                 }
             }
         }
-
         if (result.error == "no error" && result.usuario.correo) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
