@@ -66,6 +66,7 @@ public function mostrarPacienteTIS()
         if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
             $this->nombre=$row['Nombre'];
+            $this->apellido=$row['Apellido'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);

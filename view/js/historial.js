@@ -1,10 +1,9 @@
 var MyApp = angular.module("myApp", []);
 
 
-
-MyApp.controller('miControlador',['$scope','$http', async function($scope,$http){
+MyApp.controller('miControlador',['$scope','$http',  function($scope,$http){
     sessionVarsView()
-    async function sessionVarsView() {
+     function sessionVarsView() {
         var url = "controller/cSessionVarsView.php";
         fetch(url, {
             method: 'GET',
@@ -29,19 +28,9 @@ MyApp.controller('miControlador',['$scope','$http', async function($scope,$http)
                 $scope.lista = result.list;
     
             });
-        });
 
-        var url = "controller/cSessionVarsView.php";
-        fetch(url, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }).then(res => res.json()).then(result => {
-            console.log('session result', result)
-            console.log(window.location.href)
-            objPaciente = result;
-            
             url= 'controller/cLoadPacientes.php';
-            var data = {"TIS": result.paciente.tis};
+            data = {"TIS": result.paciente.tis};
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -52,7 +41,7 @@ MyApp.controller('miControlador',['$scope','$http', async function($scope,$http)
                 objPaciente = result;
                 
                 console.log(result)
-                $scope.lista = result.list;
+                $scope.lista2 = result.list;
     
             });
         });
