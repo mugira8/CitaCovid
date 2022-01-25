@@ -178,8 +178,7 @@ class centrosModel extends centrosClass {
         $this->CloseConnect();
     }
 
-    public function ObjVars()
-    {
+    public function ObjVars(){
         return get_object_vars($this);
     }
 
