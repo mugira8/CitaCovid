@@ -60,6 +60,7 @@ class centrosModel extends centrosClass {
         return $list;
     }
     
+    // seleccionar centro
     public function findCentroByCodCentro(){
         $this->OpenConnect();
         
@@ -84,6 +85,7 @@ class centrosModel extends centrosClass {
         $this->CloseConnect();
     }
 
+    // añadir centro
     public function insertCentro(){
         $this -> OpenConnect();
         
@@ -116,38 +118,7 @@ class centrosModel extends centrosClass {
         $this -> CloseConnect();
     }
 
-    public function editCentro(){
-        $this->OpenConnect();
-        
-        $cod_centro = $this -> cod_centro;
-        $nombre = $this -> Nombre;
-        $municipio = $this -> Municipio;
-        $apertura = $this -> Hora_apertura;
-        $cierre = $this -> Hora_cierre;
-        $lunes = $this -> Lunes;
-        $martes = $this -> Martes;
-        $miercoles = $this -> Miercoles;
-        $jueves = $this -> Jueves;
-        $viernes = $this -> Viernes;
-        $sabado = $this -> Sabado;
-        $domingo = $this -> Domingo;
-
-        $sql ="UPDATE centros SET Nombre = '$nombre', Municipio = $municipio, Hora_apertura = '$apertura',
-            Hora_cierre = '$cierre', Lunes = '$lunes', Martes = '$martes', Miercoles = '$jueves', 
-            Viernes = '$viernes', Sabado = '$sabado', Domingo = '$domingo' WHERE cod_centro = $cod_centro";
-        
-        $this -> link -> query($sql);
-        
-        if($this->link->affected_rows == 1) {
-            return "El centro se ha editado con EXITO.";
-        }
-        else {
-            return "FALLA la modificacion del centro";
-        }
-        
-        $this -> CloseConnect();
-    }
-
+    // eliminar centro
     public function deleteCentro(){
         $this -> OpenConnect();
         
@@ -167,7 +138,7 @@ class centrosModel extends centrosClass {
         $this -> CloseConnect();
     }
     
-    //actualizar
+    //actualizar centro
     public function actualizarCentro(){
 
         $this->OpenConnect();

@@ -17,7 +17,7 @@ $viernes=$data['viernes'];
 $sabado=$data['sabado'];
 $domingo=$data['domingo'];
 
-$centro=new centroModel();
+$centro=new centrosModel();
 
 $centro->cod_centro=$cod_centro;
 $centro->Nombre=$nombre;
@@ -34,7 +34,7 @@ $centro->Domingo=$domingo;
 
  
 $response=array();
-$response['error']=$centro->editCentro(); 
+$response['error']=$centro->actualizarCentro(); 
 
 echo json_encode($response);
 

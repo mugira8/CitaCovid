@@ -16,7 +16,7 @@ $viernes=$data['viernes'];
 $sabado=$data['sabado'];
 $domingo=$data['domingo'];
 
-$centro=new centroModel();
+$centro=new centrosModel();
 
 $centro->Nombre=$nombre;
 $centro->Municipio=$municipio;
