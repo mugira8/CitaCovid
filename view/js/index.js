@@ -41,6 +41,7 @@ myApp.controller("editPerfil", [
   },
 ]);
 
+// para la pagina de administracion
 myApp.controller("administrar", [
   "$scope",
   "$http",

@@ -84,10 +84,52 @@ class centrosModel extends centrosClass {
         $this->CloseConnect();
     }
     
+    //actualizar
+    public function actualizarCentro(){
+
+        $this->OpenConnect();
+
+        $cod_centro=$this->cod_centro;
+        $Nombre=$this->Nombre;
+        $Municipio=$this->Municipio;
+        $Hora_apertura=$this->Hora_apertura;
+        $Hora_cierre=$this->Hora_cierre;
+        $Lunes=$this->Lunes;
+        $Martes=$this->Martes;
+        $Miercoles=$this->Miercoles;
+        $Jueves=$this->Jueves;
+        $Viernes=$this->Viernes;
+        $Sabado=$this->Sabado;
+        $Domingo=$this->Domingo;
+
+        $sql="update centros 
+            set Nombre=$Nombre,
+            Municipio=$Municipio,
+            Hora_apertura=$Hora_apertura,
+            Hora_cierre=$Hora_cierre,
+            Lunes=$Lunes,
+            Martes=$Martes,
+            Miercoles=$Miercoles,
+            Jueves=$Jueves,
+            Viernes=$Viernes,
+            Sabado=$Sabado,
+            Domingo=$Domingo, 
+            where cod_centro=$cod_centro";
+
+        if ($this->link->query($sql)) {
+            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+        } else {
+            return "Error updating ". $sql ."   ". $this->link->error;
+        }
+        $this->CloseConnect();
+    }
+
     public function ObjVars()
     {
         return get_object_vars($this);
     }
 
 }//fin
+
+
 ?>
