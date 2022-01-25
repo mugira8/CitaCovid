@@ -25,36 +25,33 @@ class pacientesModel extends pacientesClass {
 
 
 //LISTAR DATOS DE PACIENTES
-    public function setList() {
+public function mostrarPacienteTIS()
+{
+    $this->OpenConnect();
 
-        $this->OpenConnect();
+    $TIS=$this->TIS;
 
-        $sql = "select * from pacientes";
+    $sql = "SELECT `Nombre`, `Apellido`, `Fecha_Nacimiento` FROM `pacientes` WHERE `TIS` = $TIS";
+    $list = array();
 
-        $list = array();
+    $result=$this->link->query($sql);
 
-        $result = $this->link->query($sql);
+    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+    {
+        $pacientes = new pacientesModel();
 
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $pacientes->setNombre($row['Nombre']);
+        $pacientes->setApellido($row['Apellido']);
+        $pacientes->setFecha_Nacimiento($row['Fecha_Nacimiento']);
 
-            $pacientes = new pacientesClass();
-
-            $pacientes->TIS = $row['TIS'];
-            $pacientes->Fecha_PCR_pos = $row['Fecha_PCR_pos'];
-            $pacientes->Fecha_Nacimiento = $row['Fecha_Nacimiento'];
-            $pacientes->Nombre = $row['Nombre'];
-            $pacientes->Apellido = $row['Apellido'];
-            $pacientes->Edad = $row['Edad'];
-            $pacientes->Foto = $row['Foto'];
-            $pacientes->cod_centro = $row['cod_centro'];
-
-
-            array_push($list, $pacientes);
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $list;
+        array_push($list, get_object_vars($pacientes));
+        
     }
+
+    mysqli_free_result($result);
+    $this->CloseConnect();
+    return $list;
+}
 
     public function findPaciente(){
         $this->OpenConnect();
