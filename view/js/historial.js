@@ -29,7 +29,32 @@ MyApp.controller('miControlador',['$scope','$http', async function($scope,$http)
                 $scope.lista = result.list;
     
             });
+        });
 
+        var url = "controller/cSessionVarsView.php";
+        fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json()).then(result => {
+            console.log('session result', result)
+            console.log(window.location.href)
+            objPaciente = result;
+            
+            url= 'controller/cLoadPacientes.php';
+            var data = {"TIS": result.paciente.tis};
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(res => res.json()).then(result => {
+                console.log('session result', result)
+                console.log(window.location.href)
+                objPaciente = result;
+                
+                console.log(result)
+                $scope.lista = result.list;
+    
+            });
         });
     }
 
