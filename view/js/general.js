@@ -17,16 +17,18 @@ function sessionVarsView() {
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
+            $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
-            
-            if (result.error == "no error" && result.usuario.correo) {
+
+            if (result.error == "no error" && result.usuario) {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
                 $('#usuario').removeAttr('data-bs-target');
-                $("#usuario").text(result.usuario.correo);
+                $('#administrar').removeAttr('data-bs-target');
+                $("#usuario").text(result.usuario);
             }
         } else {
             if (!window.location.href.includes("index")) {
@@ -76,8 +78,15 @@ function loginPaciente() {
                 $("#errorLogin").text("");
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
+                $("#btnEditarPerfil").css('display', 'block');
+                $("#btnAdministrar").css('display', 'none');
+                $("#btnCita").css('display', 'block');
+                $("#btnHistorial").css('display', 'block');
+                $("#iniciarSesion").css('display', 'none');
+                $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
+                $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
                 break;
             case "incorrect user":
@@ -109,7 +118,8 @@ function loginUsuario() {
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
-                $("#usuario").text(result.usuario.correo);
+                $('#administrar').removeAttr('data-bs-target');
+                $("#usuario").text(result.usuario);
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
@@ -135,15 +145,8 @@ function logout() {
             $("#btnAdministrar").css('display', 'none');
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
-        }
-        if (!window.location.href.includes("index")) {
-            if (window.location.htef.includes('contacto')) {
-                console.log('contacto')
-                window.location.href = "contacto.html"
-            } else {
-                console.log('index')
-                window.location.href = "index.html";
-            }
+            $("#usuario").text('Login');
+            window.location.href = "index.html";
         }
     })
 }
