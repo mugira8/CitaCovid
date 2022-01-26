@@ -78,15 +78,16 @@ public function mostrarPacienteTIS()
 
         $this->OpenConnect();
 
-        $tis=$this->tis;
+        $tis=$this->TIS;
         $Nombre=$this->Nombre;
         $Apellido=$this->Apellido;
         $Foto=$this->Foto;
 
         if ($Foto =="") { $Foto ="view/images/fotoPerfil.png";}
 
-        $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido, Foto='$Foto' WHERE tis='$tis'";
-
+        $sql="UPDATE pacientes set Nombre=$Nombre WHERE tis=111";
+        // $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido, Foto=$Foto WHERE tis=$tis";
+        echo($sql);
         if ($this->link->query($sql))
         {
             return "Record updated successfully.Num de updates: ".$this->link->affected_rows;

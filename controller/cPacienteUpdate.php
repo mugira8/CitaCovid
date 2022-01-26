@@ -4,8 +4,7 @@ $data=json_decode(file_get_contents("php://input"),true);
 
 $Nombre=$data['Nombre'];
 $Apellido=$data['Apellido'];
-$Foto=$data=['filename'];
-
+$Foto=$data['filename'];
 $savedFileBase64 = $data['savedFileBase64'];
 $fileBase64 = explode(',', $savedFileBase64)[1];
 $file = base64_decode($fileBase64);

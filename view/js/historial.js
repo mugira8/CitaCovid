@@ -62,18 +62,20 @@ var savedFileBase64;
 var filename;
 var filesize;
 
-$("#btnEnviar").on('change',function ()
+$("#fotoInsertar").on('change',function ()
 	{
 		changeFitx("update");
 	});	
 
 function changeFitx(action) {
+    console.log(event.currentTarget.files[0])
     var file=event.currentTarget.files[0];
     var reader = new FileReader();
-
+    console.log(file)
     filename = file.name;
     filesize = file.size;
-
+    console.log("filesize", filesize)
+    console.log("filename", filename)
     if (!   new RegExp("(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$").test(filename)) {
 		  	  
 	    alert("Solo se aceptan imágenes JPG, PNG y GIF");
@@ -102,17 +104,31 @@ function changeFitx(action) {
 	}
 }
 
-$("#confirmarEdicion").on('click', execUpdate);
+$("#btnEnviar").on('click', execUpdate);
 
 function execUpdate() {
     
-    var nombre = $("#nombre").attr('placeholder');
+        var url = "controller/cSessionVarsView.php";
+        fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json()).then(result => {
+            console.log('session result', result)
+            console.log(window.location.href)
+            objPaciente = result;
+            console.log("hola",objPaciente.paciente.tis)
+       
+    
+    
+    var nombre = $("#nombre").val();
     var apellido = $("#apellido").attr('placeholder');
-    console.log(nombre)
-    console.log(apellido)
+    var tis = objPaciente.paciente.tis;
+    console.log(objPaciente.paciente.tis)
+    // console.log(nombre)
+    // console.log(apellido)
     var url = "controller/cPacienteUpdate.php";
-    var data = {'nombre': nombre, 'apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64};
-
+    var data = {'TIS': tis, 'Nombre': nombre, 'Apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64};
+    console.log(data)
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data), 
@@ -135,4 +151,5 @@ function execUpdate() {
         }
  )
  .catch(error => console.error('Error status:', error));
+ });
 }
