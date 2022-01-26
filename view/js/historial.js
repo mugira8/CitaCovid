@@ -102,36 +102,37 @@ function changeFitx(action) {
 	}
 }
 
-$("#btnEnviar").on('click', execUpdate);
+$("#confirmarEdicion").on('click', execUpdate);
 
 function execUpdate() {
     
     var nombre = $("#nombre").val();
     var apellido = $("#apellido").val();
+    console.log(nombre)
+    console.log(apellido)
+//     var url = "controller/cPacienteUpdate.php";
+//     var data = {'nombre': nombre, 'apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64};
 
-    var url = "controller/cPacienteUpdate.php";
-    var data = {'nombre': nombre, 'apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64};
-
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data), 
-        headers:{'Content-Type': 'application/json'} 
-        })
-        .then(res => res.json()).then(result => {
+//     fetch(url, {
+//         method: 'POST',
+//         body: JSON.stringify(data), 
+//         headers:{'Content-Type': 'application/json'} 
+//         })
+//         .then(res => res.json()).then(result => {
 	
-            console.log(result.error);
-            alert(result.error);
-            $("#update").style.display="none";
+//             console.log(result.error);
+//             alert(result.error);
+//             $("#update").style.display="none";
          
-         var inputs = document.querySelectorAll("#update input");
-         for (let i = 0; i < inputs.length; i++) {
-             inputs[i].value = "";
-         }
-         var imgs=document.querySelectorAll("#update img");
-         for (let i = 0; i < imgs.length; i++) {
-             imgs[i].setAttribute('src','');
-         }
-        }
- )
- .catch(error => console.error('Error status:', error));
+//          var inputs = document.querySelectorAll("#update input");
+//          for (let i = 0; i < inputs.length; i++) {
+//              inputs[i].value = "";
+//          }
+//          var imgs=document.querySelectorAll("#update img");
+//          for (let i = 0; i < imgs.length; i++) {
+//              imgs[i].setAttribute('src','');
+//          }
+//         }
+//  )
+//  .catch(error => console.error('Error status:', error));
 }

@@ -26,16 +26,16 @@
         <div class="modal-body" >
             <div class="container contenedor">
                     <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
-                        <div class="">
-                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{paciente.nombre}}">
-                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{paciente.apellido}}">
+                        <option class="">
+                            <option type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre">{{paciente.nombre}}</option>
+                            <option type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido">{{paciente.apellido}}</option>
                             <input type="text" disabled class="form-control datoPaciente" id="edad" placeholder="{{paciente.fecha}}">
                         </div>
                         <div class="botones">
                             <div class="container">
                                 <div class="row">
                                     <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
-                                    <button type="button" onclick="editPerfil()" class="btn btn-danger col-4 botonPerfil1" >Confirmar</button>
+                                    <button type="button" id="confirmarEdicion" class="btn btn-danger col-4 botonPerfil1" >Confirmar</button>
                                     <button type="button" class="btn btn-danger col-4 btnPerfil" ng-click="verHistorial()">Ver Historial</button>
                                 </div>
                             </div>
