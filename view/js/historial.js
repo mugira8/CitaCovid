@@ -66,11 +66,45 @@ MyApp.controller('miControlador',['$scope','$http',  function($scope,$http){
 
 }]);
 
-function editPerfil() {
-    console.log("hola")
+// function changeFitx(action) {
+//     var file=event.currentTarget.files[0];
+//     var reader = new FileReader();
 
-    var nombre = document.getElementById("#nombre");
-    var apellido = document.getElementById("#apellido");
-    console.log(nombre)
-    console.log(apellido)
-}
+//     filename = file.name;
+//     filesize = file.size;
+
+//     if (!   new RegExp("(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$").test(filename)) {
+		  	  
+// 	    alert("Solo se aceptan imágenes JPG, PNG y GIF");
+// 	    document.getElementById("fotoInsertar").value="";
+// 	    document.getElementById("btnEnviar").value="";
+	    
+// 	  } else{
+	  
+// 		  reader.onloadend = function () {
+// 				  savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
+				  
+// 				  if (action== "insert")
+// 				  {
+// 					  document.getElementById("fotoPerfil").setAttribute("src",savedFileBase64); 
+// 					  document.getElementById("btnEnviar").removeAttribute("disabled");
+					  
+// 				  } else if (action== "update"){
+// 					  document.getElementById("filmPhotoUpdateNew").setAttribute("src",savedFileBase64); 
+// 					  document.getElementById("btnExecUpdate").removeAttribute("disabled");
+// 				  }			  
+// 		  }	
+// 		  if (file) {
+// 		    reader.readAsDataURL(file);
+		    
+// 		  } else {
+// 			  if (action== "insert"){
+// 				  document.getElementById("filmPhoto").setAttribute("src",""); 
+				  
+// 			  } else if (action== "update"){
+// 				  document.getElementById("filmPhotoUpdateOld").setAttribute("src",""); 
+// 				  document.getElementById("filmPhotoUpdateNew").setAttribute("src",""); 
+// 			  }  
+// 		  }
+// 	  }
+// }
