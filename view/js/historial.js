@@ -1,6 +1,5 @@
 var MyApp = angular.module("myApp", []);
 
-
 MyApp.controller('miControlador',['$scope','$http',  function($scope,$http){
     sessionVarsView()
      function sessionVarsView() {
@@ -48,25 +47,30 @@ MyApp.controller('miControlador',['$scope','$http',  function($scope,$http){
     }
 
 
-    /* NS DE QUE CONTROLADOR COGER PARA MOSTRAR PACIENTES
-    $http.get('controller/').then(function (response){
-        $scope.lista = response.data.list; 
-    });
-    */
-
-    $scope.confirmarEditar = function() {
-        var listaModificacion = {TIS: $scope.item.Tis , nombre: $scope.item.Nombre , apellido: $scope.item.Apellido};
-        console.log(listaModificacion)
-        $http({url: "controlador/cPacienteUpdate.php",
-        method: "GET",
-        params: {value: listaModificar}
-    }).then(function(response) {
-        window.location.reload();
-    })
-    }
+    // $scope.confirmarEditar = function() {
+    //     console.log($scope.pacienteNombre )
+    //     console.log($scope.pacienteApellido)
+    //     var listaModificacion = {nombre: $scope.pacienteNombre , apellido: $scope.pacienteApellido};
+    //     console.log(listaModificacion)
+    //     $http({url: "controller/cPacienteUpdate.php",
+    //     method: "POST",
+    //     params: {value: listaModificacion}
+    // }).then(function(response) {
+        
+    // })
+    // }
 
     $scope.verHistorial = function() {
         $scope.ver = "si";
     }
 
 }]);
+
+function editPerfil() {
+    console.log("hola")
+
+    var nombre = document.getElementById("#nombre");
+    var apellido = document.getElementById("#apellido");
+    console.log(nombre)
+    console.log(apellido)
+}

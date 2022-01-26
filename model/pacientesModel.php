@@ -74,7 +74,7 @@ public function mostrarPacienteTIS()
 		return $pacienteExists;
     }
 
-    public function updateUsername(){
+    public function updatePaciente(){
 
         $this->OpenConnect();
 
