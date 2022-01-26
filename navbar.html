@@ -25,7 +25,7 @@
                     <a class="nav-link text-danger opcnav" href="contacto.html">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger opcnav" href="administrar.html">Administrar</a>
+                    <a id="btnAdministrar" class="nav-link text-danger opcnav" href="administrar.html">Administrar</a>
                 </li>
                 <li class="nav-item">
                     <a id="btnHistorial" class="nav-link text-danger opcnav" href="historial.html">Mi Perfil</a>
@@ -33,10 +33,6 @@
                 <li class="nav-item">
                     <a id="btnCita" class="nav-link text-danger opcnav" href="citaVacunacion.html">Solicita tu cita de Vacunacion</a>
                 </li>
-                <li class="nav-item">
-                    <a id="btnAdministrar" class="nav-link text-danger opcnav" data-bs-toggle="modal" data-bs-target="#panelAdmin">Administrar</a>
-                </li>
-            </ul>
         </div>
 
         <!-- Login/registro -->
@@ -80,86 +76,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal panel de admin -->
-<div class="modal fade" id="panelAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="contenedor container">
-                    <div class="col-10 col-md-6">
-                        <!-- selecctor de centro -->
-                        <select class="form-select campo" aria-label="Default select example" id="centros">
-                            <option selected>Seleccione un centro</option>
-                            <option value="1">A</option>
-                            <option value="2">ornamentado</option>
-                            <option value="3">arboleda arbolosa</option>
-                        </select>
-                        <!-- nombre y municipio -->
-                        <small>Nombre del centro</small>
-                        <input type="text" class="form-control campo" id="nombreCentro">
-                        <small>municipio</small>
-                        <input type="text" class="form-control campo" id="municipio">
-                    </div>
-                    <div class="col-10 col-lg-6">
-                        <div class="contenedor container">
-                            <!-- dias de vacunaccion -->
-                            <div class="col-12 col-md-6">
-                                <small>Dias de Vacunacion</small>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkLunes">
-                                    <label class="form-check-label" for="flexCheckDefault1">Lunes</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkMartes">
-                                    <label class="form-check-label" for="flexCheckDefault2">Martes</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkMiercoles">
-                                    <label class="form-check-label" for="flexCheckDefault3">Miercoles</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkJueves">
-                                    <label class="form-check-label" for="flexCheckDefault4">Jueves</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkViernes">
-                                    <label class="form-check-label" for="flexCheckDefault5">Viernes</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkSabado">
-                                    <label class="form-check-label" for="flexCheckDefault6">Sabado</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkDomingo">
-                                    <label class="form-check-label" for="flexCheckDefault7">Domingo</label>
-                                </div>
-                            </div>
-
-                            <!-- horario -->
-                            <div class="col-12 col-md-6">
-                                <small>Horario</small>
-                                <p><small>apertura</small>
-                                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
-                                </p>
-                                <p><small>Cierre</small>
-                                    <input type="time" id="appt" name="appt" min="00:00" max="00:00" required>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-danger boton">Confirmar</button>
-                    <button type="button" class="btn btn-danger boton">Cancelar</button>
-                </div>
-
-
             </div>
         </div>
     </div>
