@@ -132,5 +132,25 @@ function editarCentro() {
 }
 
 function deleteCentro() {
+    let id = $('#centros').val();
 
+    let url = 'controller/cDeleteCentro.php';
+    let data = {
+        'cod_centro': id
+    }
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'content-type': 'application/json' }
+    }).then(res => res.json()).then(result => {
+
+        console.log(result.error);
+        alert(result.error);
+
+
+
+        console.log(result)
+        $('#correctoCentro').html('Se ha ELIMINADO correctamente')
+        
+    })
 }
