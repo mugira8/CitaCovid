@@ -106,8 +106,8 @@ $("#confirmarEdicion").on('click', execUpdate);
 
 function execUpdate() {
     
-    var nombre = $("#nombre").val();
-    var apellido = $("#apellido").val();
+    var nombre = $("#nombre").attr('placeholder');
+    var apellido = $("#apellido").attr('placeholder');
     console.log(nombre)
     console.log(apellido)
     var url = "controller/cPacienteUpdate.php";
@@ -124,11 +124,11 @@ function execUpdate() {
             alert(result.error);
             $("#update").style.display="none";
          
-         var inputs = document.querySelectorAll("#update input");
+         var inputs = document.querySelectorAll("#btnEnviar");
          for (let i = 0; i < inputs.length; i++) {
              inputs[i].value = "";
          }
-         var imgs=document.querySelectorAll("#update img");
+         var imgs=document.querySelectorAll("#fotoPerfil");
          for (let i = 0; i < imgs.length; i++) {
              imgs[i].setAttribute('src','');
          }
