@@ -10,6 +10,7 @@ administrar.controller("miControlador", [
   },
 ]);
 
+// funcion para mostrar centro
 function mostrar(cod_centro) {
   if (cod_centro != "nuevo") {
     var url = "controller/cGetCentro.php";
@@ -90,6 +91,7 @@ function confirmar() {
   }
 }
 
+// funcion añadir centro
 function crearCentro() {
   let nombre = $("#nombreCentro").val();
   let municipio = $("#municipio").val();
@@ -129,6 +131,7 @@ function crearCentro() {
     });
 }
 
+// funcion editar centro
 function editarCentro() {
   let id = $("#centros").val();
   let nombre = $("#nombreCentro").val();
@@ -170,6 +173,7 @@ function editarCentro() {
     });
 }
 
+// funcion eliminar centro
 function deleteCentro() {
   let id = $("#centros").val();
 
