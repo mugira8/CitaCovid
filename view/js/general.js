@@ -10,7 +10,11 @@ function sessionVarsView() {
     }).then(res => res.json()).then(result => {
         console.log('session result', result)
         console.log(window.location.href)
+        //Para citas
         objPaciente = result;
+        if (window.location.href.includes("citaVacunacion")){
+            mostrarDiaSeleccionado()
+        }
         if (result.error == "no error" && result.paciente.tis) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
@@ -19,19 +23,9 @@ function sessionVarsView() {
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
+            $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
-
-            
-            if (result.error == "no error" && result.usuario.correo) {
-                $("#iniciarSesion").css('display', 'none');
-                $("#cerrarSesion").css('display', 'block');
-                $("#btnAdministrar").css('display', 'block');
-                $("#btnCita").css('display', 'none');
-                $("#btnHistorial").css('display', 'none');
-                $('#usuario').removeAttr('data-bs-target');
-                $("#usuario").text(result.usuario.correo);
-            }
-        } else {
+        } else if (!result.usuario.correo) {
             if (!window.location.href.includes("index")) {
                 if (window.location.href.includes('contacto')) {
                     console.log('contacto')
@@ -41,7 +35,27 @@ function sessionVarsView() {
                     window.location.href = "index.html";
                 }
             }
-            
+        }
+        if (result.error == "no error" && result.usuario.correo) {
+            $("#iniciarSesion").css('display', 'none');
+            $("#cerrarSesion").css('display', 'block');
+            $("#btnAdministrar").css('display', 'block');
+            $("#btnCita").css('display', 'none');
+            $("#btnHistorial").css('display', 'none');
+            $('#usuario').removeAttr('data-bs-target');
+            $('#administrar').removeAttr('data-bs-target');
+            $("#usuario").text(result.usuario.correo);
+        } else if (!result.paciente.tis) {
+            if (!window.location.href.includes("index")) {
+                if (window.location.href.includes('contacto')) {
+                    console.log('contacto')
+                    window.location.href = "contacto.html"
+                } else {
+                    console.log('index')
+                    window.location.href = "index.html";
+                }
+            }
+
         }
     });
 }
@@ -80,12 +94,20 @@ function loginPaciente() {
                 $("#errorLogin").text("");
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
+                $("#btnEditarPerfil").css('display', 'block');
+                $("#btnAdministrar").css('display', 'none');
+                $("#btnCita").css('display', 'block');
+                $("#btnHistorial").css('display', 'block');
+                $("#iniciarSesion").css('display', 'none');
+                $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
+                $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
+                alert('Login correcto')
                 break;
             case "incorrect user":
-                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
+                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
                 break;
             default:
                 $("#errorLogin").text("Inserte datos en todos los campos por favor.");
@@ -111,12 +133,18 @@ function loginUsuario() {
                 $("#errorLogin").text("");
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
+                $("#btnEditarPerfil").css('display', 'block');
+                $("#btnAdministrar").css('display', 'block');
+                $("#btnCita").css('display', 'none');
+                $("#btnHistorial").css('display', 'none');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
+                $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
+                alert('Login correcto')
                 break;
             case "incorrect user":
-                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br> <a class='text-dark' onclick='forgotPassword()'>He olvidado la contraseña.</a>");
+                $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
                 break;
             default:
                 $("#errorLogin").text("Inserte datos en todos los campos por favor.");
@@ -139,15 +167,8 @@ function logout() {
             $("#btnAdministrar").css('display', 'none');
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
-        }
-        if (!window.location.href.includes("index")) {
-            if (window.location.htef.includes('contacto')) {
-                console.log('contacto')
-                window.location.href = "contacto.html"
-            } else {
-                console.log('index')
-                window.location.href = "index.html";
-            }
+            $("#usuario").text('Login');
+            window.location.href = "index.html";
         }
     })
 }

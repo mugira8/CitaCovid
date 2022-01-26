@@ -55,14 +55,15 @@ class usuariosModel extends usuariosClass {
         $this->OpenConnect();
 
         $correo=$this->correo;
-        $contrtasena=$this->contrasena;
+        $contrasena=$this->contrasena;
 
-        $sql = "SELECT * FROM usuarios WHERE";
+        $sql = "SELECT * FROM usuarios WHERE correo='$correo' AND contrasena='$contrasena'";
 
         $result = $this->link->query($sql);
 
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
+            $this->id=$row['cod_usuario'];
             $usuarioExists = true;
         }
         mysqli_free_result($result);
