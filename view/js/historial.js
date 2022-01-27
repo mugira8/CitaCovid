@@ -38,20 +38,6 @@ MyApp.controller('miControlador',['$scope','$http',  function($scope,$http){
         });
     }
 
-
-    // $scope.confirmarEditar = function() {
-    //     console.log($scope.pacienteNombre )
-    //     console.log($scope.pacienteApellido)
-    //     var listaModificacion = {nombre: $scope.pacienteNombre , apellido: $scope.pacienteApellido};
-    //     console.log(listaModificacion)
-    //     $http({url: "controller/cPacienteUpdate.php",
-    //     method: "POST",
-    //     params: {value: listaModificacion}
-    // }).then(function(response) {
-        
-    // })
-    // }
-
     $scope.verHistorial = function() {
         $scope.ver = "si";
     }
@@ -121,11 +107,10 @@ function execUpdate() {
     
     
     var nombre = $("#nombre").val();
-    var apellido = $("#apellido").attr('placeholder');
+    var apellido = $("#apellido").val();
     var tis = objPaciente.paciente.tis;
     console.log(objPaciente.paciente.tis)
-    // console.log(nombre)
-    // console.log(apellido)
+
     var url = "controller/cPacienteUpdate.php";
     var data = {'TIS': tis, 'Nombre': nombre, 'Apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64};
     console.log(data)
