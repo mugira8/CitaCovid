@@ -84,10 +84,12 @@ public function mostrarPacienteTIS()
         $Nombre=$this->Nombre;
         $Apellido=$this->Apellido;
         $Foto=$this->Foto;
+        
+        if ($Foto == null){
+            { $Foto ="view/images/fotoPerfil.png"; }
+        } 
 
-        if ($Foto =="") { $Foto ="view/images/fotoPerfil.png"; }
-
-        $sql="UPDATE pacientes set Nombre='$Nombre', Apellido='$Apellido', Foto='$Foto' WHERE tis='$tis'";
+        $sql="UPDATE pacientes set Nombre='$Nombre', Apellido='$Apellido', Foto='$Foto' WHERE TIS='$tis'";
 
         if ($this->link->query($sql))
         {
