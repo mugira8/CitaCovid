@@ -44,7 +44,8 @@
                     <!-- imagen del usuario -->
                     <img src="uploads/{{paciente.foto}}" class="img-thumbnail" id="fotoPerfil">
                     <div class="botonesFoto">
-                        <input class="form-control" type="file" id="fotoInsertar">
+                        <input class="form-control" type="file" id="fotoInsertar" ng-value="{{paciente.foto}}">
+                        <br>
                         <button type="button" id="btnEnviar" class="btn btn-danger botonPerfil ">Enviar</button>
                     </div>
                 </div>

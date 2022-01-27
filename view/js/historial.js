@@ -102,6 +102,11 @@ function execUpdate() {
 
         var nombre = $("#nombre").val();
         var apellido = $("#apellido").val();
+        if(filename != "view/images/fotoPerfil.png"){
+            filename = $("#fotoInsertar").val();
+        }
+        console.log('filename', filename);
+
         var tis = objPaciente.paciente.tis;
 
         var url = "controller/cPacienteUpdate.php";

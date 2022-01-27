@@ -14,8 +14,6 @@ if(isset($data['Apellido'])){
 }
 if(isset($data['filename'])){
     $Foto=$data['filename'];
-}else{
-    $Foto = "view/images/fotoPerfil.png";
 }
 if(isset($data['savedFileBase64'])){
     $savedFileBase64 = $data['savedFileBase64'];
