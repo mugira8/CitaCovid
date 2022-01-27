@@ -3,6 +3,9 @@ require_once "../model/pacientesModel.php";
 $data=json_decode(file_get_contents("php://input"),true);
 
 var_dump($data);
+if(isset($data['TIS'])){
+    $tis=$data['TIS'];
+}
 if(isset($data['Nombre'])){
     $Nombre=$data['Nombre'];
 }
@@ -23,13 +26,13 @@ if(isset($data['savedFileBase64'])){
     file_put_contents($writable_dir.$Foto, $file, LOCK_EX);
 }
 
-
 $paciente = new pacientesModel();
 
 if(isset($Foto)){
     $paciente->setFoto($Foto);
 }
-if(isset($Nombre) && isset($Apellido)){
+if(isset($Nombre) && isset($Apellido) && isset($tis)){
+    $paciente->setTIS($tis);
     $paciente->setNombre($Nombre);
     $paciente->setApellido($Apellido);
 
