@@ -16,12 +16,18 @@ file_put_contents($writable_dir.$Foto, $file, LOCK_EX);
 
 $paciente = new pacientesModel();
 
-$paciente->setNombre($Nombre);
-$paciente->setApellido($Apellido);
-$paciente->setFoto($Foto);
+if($Foto){
+    $paciente->setFoto($Foto);
+}
+if($Nombre && $Apellido){
+    $paciente->setNombre($Nombre);
+    $paciente->setApellido($Apellido);
 
-$response=array();
-$response['error']=$paciente->updatePaciente();
+    $response=array();
+    $response['error']=$paciente->updatePaciente();
+}else{
+    $response['error']='Faltan datos obligatorios.';
+}
 
 echo json_encode($response);
 unset ($paciente);

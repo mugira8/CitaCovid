@@ -24,7 +24,7 @@ class centrosModel extends centrosClass {
     }
 
 
-//LISTAR DATOS DE CENTROS
+    //LISTAR DATOS DE CENTROS
     public function setList() {
 
         $this->OpenConnect();
@@ -121,15 +121,11 @@ class centrosModel extends centrosClass {
     // eliminar centro
     public function deleteCentro(){
         $this -> OpenConnect();
-        
-        $cod_centro = $this -> cod_centro;
-                
-        $sql = "DELETE FROM centros WHERE cod_centro = $cod_centro";
-        
-        $this -> link -> query($sql);
-        
-        if($this -> link -> affected_rows == 1) {
-            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+        $cod_centro = $this->getCod_centro();
+        $sql = "DELETE FROM centros WHERE centros.cod_centro = $cod_centro";
+
+        if($this -> link -> query($sql)) {
+            return " Record deleted successfully";
         }
         else {
             return "Error updating ". $sql ."   ". $this->link->error;

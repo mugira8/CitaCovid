@@ -104,7 +104,6 @@ function loginPaciente() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
-                alert('Login correcto')
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
@@ -141,7 +140,6 @@ function loginUsuario() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
-                alert('Login correcto')
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
@@ -173,12 +171,9 @@ function logout() {
     })
 }
 
-
-
-//Get the button:
+//Funciones para el boton del scrollup
 mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
@@ -189,7 +184,6 @@ function scrollFunction() {
     }
 }
 
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
