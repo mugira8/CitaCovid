@@ -2,16 +2,17 @@
 require_once "../model/pacientesModel.php";
 $data=json_decode(file_get_contents("php://input"),true);
 
-if($data['Nombre']){
+var_dump($data);
+if(isset($data['Nombre'])){
     $Nombre=$data['Nombre'];
 }
-if($data['Apellido']){
+if(isset($data['Apellido'])){
     $Apellido=$data['Apellido'];
 }
-if($data['filename']){
+if(isset($data['filename'])){
     $Foto=$data['filename'];
 }
-if($data['savedFileBase64']){
+if(isset($data['savedFileBase64'])){
     $savedFileBase64 = $data['savedFileBase64'];
     $fileBase64 = explode(',', $savedFileBase64)[1];
     $file = base64_decode($fileBase64);
@@ -25,10 +26,10 @@ if($data['savedFileBase64']){
 
 $paciente = new pacientesModel();
 
-if($Foto){
+if(isset($Foto)){
     $paciente->setFoto($Foto);
 }
-if($Nombre && $Apellido){
+if(isset($Nombre) && isset($Apellido)){
     $paciente->setNombre($Nombre);
     $paciente->setApellido($Apellido);
 
