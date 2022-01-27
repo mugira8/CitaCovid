@@ -6,7 +6,7 @@ var FechaPcrPositiva;
 var cantidadCitas = 0;
 var mesesDesdeAnteriorCita;
 var mesesHastaSiguienteCita;
-var tiempoNecesarioEntreCitas;
+var tiempoNecesarioEntreCitas = true;
 document.addEventListener("DOMContentLoaded", function (event) {
     //Pantalla de carga hasta que todos los datos esten cargados
     document.getElementById("mainContainer").style.display = "none"
@@ -169,7 +169,7 @@ function loadCitas(event, fechaSeleccionada) {
             if (comprobarCitaAnterior < hoy) {
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "none";
-            } else {
+            } else if (comprobarCitaAnterior > hoy && citas.objCentros == null){
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
             }
             //Substring() limita la cantidad de caracteres se muestran
