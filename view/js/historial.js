@@ -98,15 +98,11 @@ function execUpdate() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
-        console.log('session result', result)
-        console.log(window.location.href)
         objPaciente = result;
-        console.log("hola", objPaciente.paciente.tis)
 
         var nombre = $("#nombre").val();
         var apellido = $("#apellido").val();
         var tis = objPaciente.paciente.tis;
-        console.log(objPaciente.paciente.tis)
 
         var url = "controller/cPacienteUpdate.php";
         var data = { 'TIS': tis, 'Nombre': nombre, 'Apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64 };
@@ -118,7 +114,7 @@ function execUpdate() {
         })
             .then(res => res.json()).then(result => {
 
-                console.log(result.error);
+                console.log('result de pacienteupdate', result);
                 alert(result.error);
                 $("#update").style.display = "none";
 
@@ -130,8 +126,6 @@ function execUpdate() {
                 for (let i = 0; i < imgs.length; i++) {
                     imgs[i].setAttribute('src', '');
                 }
-            }
-            )
-            .catch(error => console.error('Error status:', error));
+            })
     });
 }
