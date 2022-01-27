@@ -169,7 +169,7 @@ function loadCitas(event, fechaSeleccionada) {
             if (comprobarCitaAnterior < hoy) {
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "none";
-            } else {
+            } else if (comprobarCitaAnterior > hoy && citas.objCentros == null){
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
             }
             //Substring() limita la cantidad de caracteres se muestran
