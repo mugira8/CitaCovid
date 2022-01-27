@@ -69,6 +69,7 @@ public function mostrarPacienteTIS()
         {
             $this->nombre=$row['Nombre'];
             $this->apellido=$row['Apellido'];
+            $this->foto=$row['foto'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);
@@ -84,7 +85,7 @@ public function mostrarPacienteTIS()
         $Nombre=$this->Nombre;
         $Apellido=$this->Apellido;
         $Foto=$this->Foto;
-        
+
         if ($Foto == null){
             { $Foto ="view/images/fotoPerfil.png"; }
         } 
