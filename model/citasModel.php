@@ -27,6 +27,36 @@ class citasModel extends citasClass {
         mysqli_close($this->link);
     }
     
+
+    public function setList() {
+
+        $this->OpenConnect();
+
+        $sql = "select * from citas";
+
+        $list = array();
+
+        $result = $this->link->query($sql);
+
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+            $citas = new citasClass();
+
+            $citas->cod_cita = $row['cod_cita'];
+            $citas->Fecha = $row['Fecha'];
+            $citas->Horas = $row['Horas'];
+            $citas->cod_vacuna = $row['cod_vacuna'];
+            $citas->cod_centro = $row['cod_centro'];
+            $citas->TIS = $row['TIS'];
+
+
+            array_push($list, get_object_vars($citas));
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+    }
+
     public function insert(){
         
         $this->OpenConnect();
