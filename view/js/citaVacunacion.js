@@ -6,7 +6,7 @@ var FechaPcrPositiva;
 var cantidadCitas = 0;
 var mesesDesdeAnteriorCita;
 var mesesHastaSiguienteCita;
-var tiempoNecesarioEntreCitas;
+var tiempoNecesarioEntreCitas = true;
 document.addEventListener("DOMContentLoaded", function (event) {
     //Pantalla de carga hasta que todos los datos esten cargados
     document.getElementById("mainContainer").style.display = "none"
