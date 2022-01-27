@@ -31,7 +31,7 @@ public function mostrarPacienteTIS()
 
     $TIS=$this->TIS;
 
-    $sql = "SELECT `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Fecha_PCR_pos` FROM `pacientes` WHERE `TIS` = $TIS";
+    $sql = "SELECT `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Fecha_PCR_pos`, `Foto` FROM `pacientes` WHERE `TIS` = $TIS";
     $list = array();
 
     $result=$this->link->query($sql);
@@ -44,6 +44,7 @@ public function mostrarPacienteTIS()
         $pacientes->setApellido($row['Apellido']);
         $pacientes->setFecha_Nacimiento($row['Fecha_Nacimiento']);
         $pacientes->setFecha_PCR_pos($row["Fecha_PCR_pos"]);
+        $pacientes->setFoto($row["Foto"]);
 
         array_push($list, get_object_vars($pacientes));
         

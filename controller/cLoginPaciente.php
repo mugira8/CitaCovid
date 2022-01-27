@@ -18,6 +18,7 @@ if ($tis!=null){
         $_SESSION['id']=$paciente->tis;
         $_SESSION['nombre']=$paciente->nombre;
         $_SESSION['apellido']=$paciente->apellido;
+        $_SESSION['foto']=$paciente->foto;
         $response['error']="no error";
     }else{
         $response['error']="incorrect user";
