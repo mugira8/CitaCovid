@@ -26,16 +26,15 @@
         <div class="modal-body" >
             <div class="container contenedor">
                     <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
-                        <div class=""><!--ng-repeat="item in lista-->
-                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{item.Nombre}}" ng-model="item.Nombre">
-                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{item.Apellido}}" ng-model="item.Apellido">
-                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="edad" placeholder="{{item.Fecha}}" ng-model="item.Fecha">
+                        <div class="">
+                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{paciente.nombre}}">
+                            <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{paciente.apellido}}">
+                            <input type="text" disabled class="form-control datoPaciente" id="edad" placeholder="{{paciente.fecha}}">
                         </div>
                         <div class="botones">
                             <div class="container">
                                 <div class="row">
                                     <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
-                                    <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="confirmarEditar()">Confirmar</button>
                                     <button type="button" class="btn btn-danger col-4 btnPerfil" ng-click="verHistorial()">Ver Historial</button>
                                 </div>
                             </div>
@@ -43,10 +42,10 @@
                     </div>
                 <div class="col-12 col-md-6">
                     <!-- imagen del usuario -->
-                    <img src="view/images/fotoPerfil.jpg" class="img-thumbnail" alt="...">
+                    <img src="uploads/{{paciente.foto}}" class="img-thumbnail" id="fotoPerfil">
                     <div class="botonesFoto">
-                        <input class="form-control" type="file" id="formFile">
-                        <button type="button" class="btn btn-danger botonPerfil btnenviar">Enviar</button>
+                        <input class="form-control" type="file" id="fotoInsertar">
+                        <button type="button" id="btnEnviar" class="btn btn-danger botonPerfil ">Enviar</button>
                     </div>
                 </div>
             </div>

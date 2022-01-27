@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-01-2022 a las 09:38:46
+-- Tiempo de generación: 26-01-2022 a las 09:06:32
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.12
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,18 +30,18 @@ USE `covidcitas_reto`;
 --
 
 CREATE TABLE `centros` (
-  `cod_centro` int(50) NOT NULL,
+  `cod_centro` int(11) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Municipio` varchar(50) NOT NULL,
   `Hora_apertura` time NOT NULL,
   `Hora_cierre` time NOT NULL,
-  `Lunes` text NOT NULL,
-  `Martes` text NOT NULL,
-  `Miercoles` text NOT NULL,
-  `Jueves` text NOT NULL,
-  `Viernes` text NOT NULL,
-  `Sabado` text NOT NULL,
-  `Domingo` text NOT NULL
+  `Lunes` tinyint(1) NOT NULL,
+  `Martes` tinyint(1) NOT NULL,
+  `Miercoles` tinyint(1) NOT NULL,
+  `Jueves` tinyint(1) NOT NULL,
+  `Viernes` tinyint(1) NOT NULL,
+  `Sabado` tinyint(1) NOT NULL,
+  `Domingo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -49,9 +49,7 @@ CREATE TABLE `centros` (
 --
 
 INSERT INTO `centros` (`cod_centro`, `Nombre`, `Municipio`, `Hora_apertura`, `Hora_cierre`, `Lunes`, `Martes`, `Miercoles`, `Jueves`, `Viernes`, `Sabado`, `Domingo`) VALUES
-(0, 'Centro de salud Gernika', 'Gernika', '08:00:00', '20:00:00', '', '', '', '', '', '', ''),
-(1, 'Centro de salud Amorebieta-Etxano', 'Amorebieta-Etxano', '08:00:00', '20:00:00', '', '', '', '', '', '', ''),
-(2, 'Centro de Salud de Durango-Landako', 'Durango', '08:00:00', '20:00:00', '', '', '', '', '', '', '');
+(1, 'Centro de salud Gernika', 'Gernika', '08:00:00', '20:00:00', 1, 1, 1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -60,22 +58,13 @@ INSERT INTO `centros` (`cod_centro`, `Nombre`, `Municipio`, `Hora_apertura`, `Ho
 --
 
 CREATE TABLE `citas` (
-  `cod_cita` int(50) NOT NULL,
+  `cod_cita` int(11) NOT NULL,
   `Fecha` date NOT NULL,
   `Horas` time(4) NOT NULL,
-  `Tipo_vacuna` varchar(50) NOT NULL,
-  `cod_centro` int(50) NOT NULL,
+  `cod_vacuna` int(11) NOT NULL,
+  `cod_centro` int(11) NOT NULL,
   `TIS` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `citas`
---
-
-INSERT INTO `citas` (`cod_cita`, `Fecha`, `Horas`, `Tipo_vacuna`, `cod_centro`, `TIS`) VALUES
-(1, '2022-01-20', '10:15:00.0000', 'Pfizer', 2, 2328241),
-(2, '2022-01-17', '13:00:00.0000', 'AstraZeneca', 1, 6237435),
-(3, '2022-02-16', '09:30:00.0000', 'Moderna', 0, 7302170);
 
 -- --------------------------------------------------------
 
@@ -84,19 +73,12 @@ INSERT INTO `citas` (`cod_cita`, `Fecha`, `Horas`, `Tipo_vacuna`, `cod_centro`, 
 --
 
 CREATE TABLE `historial` (
-  `cod_historial` int(55) NOT NULL,
-  `Tipo` varchar(50) NOT NULL,
+  `cod_historial` int(11) NOT NULL,
+  `Tipo_vacuna` varchar(50) NOT NULL,
   `Num_Dosis` int(50) NOT NULL,
   `Fecha` date NOT NULL,
-  `TIS` int(50) NOT NULL
+  `TIS` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `historial`
---
-
-INSERT INTO `historial` (`cod_historial`, `Tipo`, `Num_Dosis`, `Fecha`, `TIS`) VALUES
-(1, 'Janssen', 1, '2021-12-02', 6237435);
 
 -- --------------------------------------------------------
 
@@ -110,7 +92,7 @@ CREATE TABLE `pacientes` (
   `Fecha_Nacimiento` date NOT NULL,
   `Nombre` text NOT NULL,
   `Apellido` text NOT NULL,
-  `Edad` int(50) NOT NULL,
+  `foto` longtext DEFAULT NULL,
   `cod_centro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -118,10 +100,9 @@ CREATE TABLE `pacientes` (
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`TIS`, `Fecha_PCR_pos`, `Fecha_Nacimiento`, `Nombre`, `Apellido`, `Edad`, `cod_centro`) VALUES
-(2328241, NULL, '2001-09-11', 'Kevin', 'Stevens-addo', 20, 1),
-(6237435, NULL, '2015-01-10', 'John', 'Johnson', 6, 2),
-(7302170, '2021-11-15', '2006-04-12', 'James', 'Jameson', 15, 0);
+INSERT INTO `pacientes` (`TIS`, `Fecha_PCR_pos`, `Fecha_Nacimiento`, `Nombre`, `Apellido`, `foto`, `cod_centro`) VALUES
+(123, '2001-01-01', '0001-01-01', 'Aitor', 'Mugira', NULL, 1),
+(123456, NULL, '2001-10-07', 'Kevin', 'Stevens', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -130,19 +111,39 @@ INSERT INTO `pacientes` (`TIS`, `Fecha_PCR_pos`, `Fecha_Nacimiento`, `Nombre`, `
 --
 
 CREATE TABLE `usuarios` (
-  `cod_usuarios` int(50) NOT NULL,
+  `cod_usuario` int(11) NOT NULL,
   `Correo` varchar(50) NOT NULL,
-  `Contraseña` varchar(50) NOT NULL,
-  `Tipo` varchar(50) NOT NULL,
-  `cod_centro` int(50) DEFAULT NULL
+  `Contrasena` varchar(50) NOT NULL,
+  `cod_centro` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`cod_usuarios`, `Correo`, `Contraseña`, `Tipo`, `cod_centro`) VALUES
-(1, 'fake_email@yahoo.com', 'contraseña', '', 1);
+INSERT INTO `usuarios` (`cod_usuario`, `Correo`, `Contrasena`, `cod_centro`) VALUES
+(1, 'fake_email@yahoo.com', 'contrasena', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacunas`
+--
+
+CREATE TABLE `vacunas` (
+  `cod_vacuna` int(11) NOT NULL,
+  `Tipo_Vacuna` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `vacunas`
+--
+
+INSERT INTO `vacunas` (`cod_vacuna`, `Tipo_Vacuna`) VALUES
+(0, 'AstraZeneca '),
+(1, 'Pfizer-BioNTech'),
+(2, 'Moderna'),
+(3, 'Janssen');
 
 --
 -- Índices para tablas volcadas
@@ -160,7 +161,8 @@ ALTER TABLE `centros`
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`cod_cita`),
   ADD UNIQUE KEY `cod_centro` (`cod_centro`),
-  ADD UNIQUE KEY `TIS` (`TIS`);
+  ADD UNIQUE KEY `TIS` (`TIS`),
+  ADD KEY `cod_vacuna` (`cod_vacuna`);
 
 --
 -- Indices de la tabla `historial`
@@ -174,36 +176,48 @@ ALTER TABLE `historial`
 --
 ALTER TABLE `pacientes`
   ADD PRIMARY KEY (`TIS`),
-  ADD UNIQUE KEY `cod_centro` (`cod_centro`);
+  ADD KEY `cod_centro` (`cod_centro`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`cod_usuarios`),
-  ADD UNIQUE KEY `cod_centro` (`cod_centro`);
+  ADD PRIMARY KEY (`cod_usuario`),
+  ADD KEY `cod_centro` (`cod_centro`);
+
+--
+-- Indices de la tabla `vacunas`
+--
+ALTER TABLE `vacunas`
+  ADD PRIMARY KEY (`cod_vacuna`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `centros`
+--
+ALTER TABLE `centros`
+  MODIFY `cod_centro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `cod_cita` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `historial`
 --
 ALTER TABLE `historial`
-  MODIFY `cod_historial` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cod_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod_usuarios` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -213,7 +227,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`cod_vacuna`) REFERENCES `vacunas` (`cod_vacuna`);
 
 --
 -- Filtros para la tabla `historial`
@@ -225,13 +240,13 @@ ALTER TABLE `historial`
 -- Filtros para la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`cod_centro`) REFERENCES `centros` (`cod_centro`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`cod_centro`) REFERENCES `centros` (`cod_centro`);
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`cod_centro`) REFERENCES `centros` (`cod_centro`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`cod_centro`) REFERENCES `centros` (`cod_centro`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

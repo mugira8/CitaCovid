@@ -5,7 +5,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $cod_centro = $data['cod_centro'];
 
 $centro = new centrosModel();
-$centro->cod_centro = $cod_centro;
+$centro->setCod_centro($cod_centro);
 
 $response = array();
 $response['error'] = $centro->deleteCentro();
