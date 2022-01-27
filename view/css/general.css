@@ -16,6 +16,12 @@
 #btnHistorial{
   display: none;
 }
+#navbarIcon{
+  display: block;
+}
+#navbarFoto{
+  display: none;
+}
 
 /*Navbar*/
 .modal-body {

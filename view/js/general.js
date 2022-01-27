@@ -22,40 +22,28 @@ function sessionVarsView() {
             $("#btnAdministrar").css('display', 'none');
             $("#btnCita").css('display', 'block');
             $("#btnHistorial").css('display', 'block');
+            $("#navbarIcon").css('display', 'none');
+            $("#navbarFoto").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
-        } else if (!result.usuario.correo) {
-            if (!window.location.href.includes("index")) {
-                if (window.location.href.includes('contacto')) {
-                    console.log('contacto')
-                    window.location.href = "contacto.html"
-                } else {
-                    console.log('index')
-                    window.location.href = "index.html";
-                }
-            }
-        }
+        } 
+        
         if (result.error == "no error" && result.usuario.correo) {
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
             $("#btnAdministrar").css('display', 'block');
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
+            $("#navbarIcon").css('display', 'none');
+            $("#navbarFoto").css('display', 'block');
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.usuario.correo);
-        } else if (!result.paciente.tis) {
-            if (!window.location.href.includes("index")) {
-                if (window.location.href.includes('contacto')) {
-                    console.log('contacto')
-                    window.location.href = "contacto.html"
-                } else {
-                    console.log('index')
-                    window.location.href = "index.html";
-                }
-            }
+        } 
 
+        if(result.error == "No estas loggeado" && !window.location.href.includes("index")){
+            window.location.href = "index.html";
         }
     });
 }
@@ -101,6 +89,8 @@ function loginPaciente() {
                 $("#iniciarSesion").css('display', 'none');
                 $("#cerrarSesion").css('display', 'block');
                 $('#login').modal('toggle');
+                $("#navbarIcon").css('display', 'none');
+                $("#navbarFoto").css('display', 'block');
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
@@ -136,6 +126,8 @@ function loginUsuario() {
                 $("#btnAdministrar").css('display', 'block');
                 $("#btnCita").css('display', 'none');
                 $("#btnHistorial").css('display', 'none');
+                $("#navbarIcon").css('display', 'block');
+                $("#navbarFoto").css('display', 'none');
                 $('#login').modal('toggle');
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
@@ -163,9 +155,11 @@ function logout() {
             $("#cerrarSesion").css('display', 'none');
             $("#btnEditarPerfil").css('display', 'none');
             $("#btnAdministrar").css('display', 'none');
+            $("#navbarIcon").css('display', 'block');
+            $("#navbarFoto").css('display', 'none');
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
-            $("#usuario").text('Login');
+            $("#usuario").text('Iniciar Sesion');
             window.location.href = "index.html";
         }
     })
