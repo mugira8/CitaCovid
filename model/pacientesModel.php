@@ -66,6 +66,7 @@ public function mostrarPacienteTIS()
         if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
             $this->nombre=$row['Nombre'];
+            $this->apellido=$row['Apellido'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);
@@ -73,16 +74,20 @@ public function mostrarPacienteTIS()
 		return $pacienteExists;
     }
 
-    public function updateUsername(){
+    public function updatePaciente(){
 
         $this->OpenConnect();
 
-        $tis=$this->tis;
+        $tis=$this->TIS;
         $Nombre=$this->Nombre;
         $Apellido=$this->Apellido;
+        $Foto=$this->Foto;
 
-        $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido WHERE tis='$tis'";
+        if ($Foto =="") { $Foto ="view/images/fotoPerfil.png";}
 
+        $sql="UPDATE pacientes set Nombre=$Nombre WHERE tis=111";
+        // $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido, Foto=$Foto WHERE tis=$tis";
+        echo($sql);
         if ($this->link->query($sql))
         {
             return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
