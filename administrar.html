@@ -30,7 +30,7 @@
             <div id="correctoCentro" class="text-success"></div>
             <select id="centros" class="form-select campo" aria-label="Default select example"
                 onchange="mostrar(this.value)">
-                <option value="nuevo" selected >Seleccione un centro</option>
+                <option value="limpiar" selected disabled>Seleccione un centro</option>
                 <option value="nuevo">Nuevo</option>
                 <option ng-repeat="item in lista" ng-value="item.cod_centro">{{item.Nombre}}</option>
             </select>
@@ -103,8 +103,8 @@
             </p>
         </div>
         
-        <button type="button" class="btn btn-danger boton" onclick="deleteCentro()">Eliminar</button>
-        <button type="button" class="btn btn-danger boton" onclick="confirmar()">Confirmar</button>
+        <button type="button" class="btn btn-danger boton" onclick="deleteCentro(), refrescar()">Eliminar</button>
+        <button type="button" class="btn btn-danger boton" onclick="confirmar(), refrescar()">Confirmar</button>
     </div>
 
     </div>

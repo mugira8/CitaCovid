@@ -194,3 +194,7 @@ function deleteCentro() {
       $("#correctoCentro").html("Se ha ELIMINADO correctamente");
     });
 }
+
+function refrescar() {
+    location.reload();
+}
