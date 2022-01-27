@@ -104,7 +104,6 @@ function loginPaciente() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
-                alert('Login correcto')
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
@@ -141,7 +140,6 @@ function loginUsuario() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.usuario.correo);
-                alert('Login correcto')
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");
