@@ -195,6 +195,12 @@ function deleteCentro() {
     });
 }
 
+function habilitarBoton() {
+    if (Option.val != "seleccionado") {
+      $("#confirmar").removeAttr('disabled')
+    }
+}
+
 function refrescar() {
     location.reload();
 }
