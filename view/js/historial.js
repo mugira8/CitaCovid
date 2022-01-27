@@ -121,7 +121,7 @@ function execUpdate() {
     
     
     var nombre = $("#nombre").val();
-    var apellido = $("#apellido").attr('placeholder');
+    var apellido = $("#apellido").val();
     var tis = objPaciente.paciente.tis;
     console.log(objPaciente.paciente.tis)
     // console.log(nombre)
