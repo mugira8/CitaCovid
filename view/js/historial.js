@@ -99,8 +99,18 @@ function execUpdate() {
     }).then(res => res.json()).then(result => {
         objPaciente = result;
 
-        var nombre = $("#nombre").val();
-        var apellido = $("#apellido").val();
+        if($("#nombre").val()==""){
+            var nombre = $("#nombre").attr('placeholder');
+            
+        } else {
+            var nombre = $("#nombre").val();
+        }
+        if ($("#apellido").val()==""){ 
+            var apellido = $("#apellido").attr('placeholder');
+            
+        } else {
+            var apellido = $("#apellido").val();
+        }
         if(filename != "view/images/fotoPerfil.png"){
             filename = $("#fotoInsertar").val();
         }
@@ -120,7 +130,7 @@ function execUpdate() {
 
                 console.log('result de pacienteupdate', result);
                 alert(result.error);
-                $("#update").style.display = "none";
+                // $("#update").style.display = "none";
 
                 var inputs = document.querySelectorAll("#btnEnviar");
                 for (let i = 0; i < inputs.length; i++) {
@@ -130,6 +140,9 @@ function execUpdate() {
                 for (let i = 0; i < imgs.length; i++) {
                     imgs[i].setAttribute('src', '');
                 }
+
+                document.getElementById("usuario").innerHTML=result.nombre;
+                document.getElementById("navbarFoto").setAttribute('src', result.foto);
             })
     });
 }
