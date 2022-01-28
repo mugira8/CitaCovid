@@ -9,8 +9,8 @@ $citas=new citasModel();
 $response=array();
 
     $TIS=$data["TIS"];
-    $Fecha=$data["Fecha"];
-    $citas->setFecha($Fecha);
+    //$Fecha=$data["Fecha"];
+    //$citas->setFecha($Fecha);
     $citas->setTIS($TIS);
     
     $citas->findCitaByTIS();
