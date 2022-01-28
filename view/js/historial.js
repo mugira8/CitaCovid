@@ -89,7 +89,6 @@ function changeFitx(action) {
     }
 }
 
-$("#btnEnviar").on('click', execUpdate);
 
 function execUpdate() {
 
