@@ -2,7 +2,6 @@
 require_once "../model/pacientesModel.php";
 $data=json_decode(file_get_contents("php://input"),true);
 
-var_dump($data);
 if(isset($data['TIS'])){
     $tis=$data['TIS'];
 }
@@ -35,9 +34,19 @@ if(isset($Nombre) && isset($Apellido) && isset($tis)){
     $paciente->setTIS($tis);
     $paciente->setNombre($Nombre);
     $paciente->setApellido($Apellido);
-
+    session_start();
+    $_SESSION['paciente']=$paciente;
+    $_SESSION['id']= $tis;
+    $_SESSION['nombre']=$Nombre;
+    $_SESSION['apellido']=$Apellido;
+    $_SESSION['foto']=$Foto;
     $response=array();
     $response['error']=$paciente->updatePaciente();
+    $response['paciente']=$paciente;
+    $response['id']=$tis;
+    $response['nombre']=$Nombre;
+    $response['apellido']=$Apellido;
+    $response['foto']=$Foto;
 }else{
     $response['error']='Faltan datos obligatorios.';
 }
