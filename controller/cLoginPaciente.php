@@ -27,6 +27,7 @@ if ($tis!=null){
     $response['error']="insert data";
 }
     $response['nombre']=$paciente->nombre;
+    $response['foto']=$paciente->foto;
 
     echo json_encode($response);
     unset($response);

@@ -16,8 +16,6 @@ MyApp.controller('miControlador', ['$scope', '$http', function ($scope, $http) {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json()).then(result => {
-            console.log('session result', result)
-            console.log(window.location.href)
             objPaciente = result;
 
             url = 'controller/cHistorial.php';
@@ -27,13 +25,8 @@ MyApp.controller('miControlador', ['$scope', '$http', function ($scope, $http) {
                 body: JSON.stringify(data),
                 headers: { 'Content-Type': 'application/json' }
             }).then(res => res.json()).then(result => {
-                console.log('session result', result)
-                console.log(window.location.href)
                 objPaciente = result;
-
-                console.log(result)
                 $scope.lista = result.list;
-
             });
         });
     }
@@ -45,8 +38,9 @@ MyApp.controller('miControlador', ['$scope', '$http', function ($scope, $http) {
 }]);
 
 var savedFileBase64;
-var filename;
+var filename = '';
 var filesize;
+var sesion;
 
 $("#fotoInsertar").on('change', function () {
     changeFitx("update");
@@ -56,39 +50,27 @@ function changeFitx(action) {
     console.log(event.currentTarget.files[0])
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
-    console.log(file)
     filename = file.name;
     filesize = file.size;
-    console.log("filesize", filesize)
-    console.log("filename", filename)
     if (!new RegExp("(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$").test(filename)) {
-
         alert("Solo se aceptan imágenes JPG, PNG y GIF");
         $("#fotoInsertar").val() = "";
         $("#btnEnviar").val() = "";
-
     } else {
-
         reader.onloadend = function () {
             savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
-
-            if (action == "update") {
-                $("fotoPerfil").attr("src", savedFileBase64);
-                $("btnEnviar").removeAttr("disabled");
-            }
         }
         if (file) {
             reader.readAsDataURL(file);
-
         } else {
             if (action == "update") {
                 $("filmPhotoUpdateOld").attr("src", "");
                 $("filmPhotoUpdateNew").attr("src", "");
             }
         }
+
     }
 }
-
 
 function execUpdate() {
 
@@ -97,40 +79,70 @@ function execUpdate() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
-        objPaciente = result;
-
-        if($("#nombre").val()==""){
+        sesion = result;
+        if ($("#nombre").val() == "") {
             var nombre = $("#nombre").attr('placeholder');
-            
+
         } else {
             var nombre = $("#nombre").val();
         }
-        if ($("#apellido").val()==""){ 
+        if ($("#apellido").val() == "") {
             var apellido = $("#apellido").attr('placeholder');
-            
+
         } else {
             var apellido = $("#apellido").val();
         }
-        if(filename != "view/images/fotoPerfil.png"){
-            filename = $("#fotoInsertar").val();
+        if (filename == '') {
+            filename = sesion.paciente.foto
         }
-        console.log('filename', filename);
-
-        var tis = objPaciente.paciente.tis;
-
+        var tis = sesion.paciente.tis;
         var url = "controller/cPacienteUpdate.php";
         var data = { 'TIS': tis, 'Nombre': nombre, 'Apellido': apellido, 'filename': filename, 'savedFileBase64': savedFileBase64 };
-        console.log(data)
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json()).then(result => {
-
-                console.log('result de pacienteupdate', result);
-                alert(result.error);
-                // $("#update").style.display = "none";
+                switch (result.error) {
+                    case 1:
+                        alert("Perfil editado correctamente");
+                        break;
+                    case 0:
+                        alert("Ha ocurrido un error a la hora de editar");
+                        break;
+                }
+                var tis = sesion.paciente.tis;
+                var fecha = sesion.paciente.fecha;
+                var url = "controller/cLoginPaciente.php";
+                var data = { 'tis': tis, 'fecha': fecha }
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'content-type': 'application/json' }
+                }).then(res => res.json()).then(result => {
+                    switch (result.error) {
+                        case "no error":
+                            $("#errorLogin").text("");
+                            $("#iniciarSesion").css('display', 'none');
+                            $("#cerrarSesion").css('display', 'block');
+                            $("#btnEditarPerfil").css('display', 'block');
+                            $("#btnAdministrar").css('display', 'none');
+                            $("#btnCita").css('display', 'block');
+                            $("#btnHistorial").css('display', 'block');
+                            $("#iniciarSesion").css('display', 'none');
+                            $("#cerrarSesion").css('display', 'block');
+                            $('#login').modal('toggle');
+                            $("#navbarIcon").css('display', 'none');
+                            $("#navbarFoto").css('display', 'block');
+                            $('#usuario').removeAttr('data-bs-target');
+                            $('#administrar').removeAttr('data-bs-target');
+                            $("#usuario").text(result.nombre);
+                            $("#navbarFoto").attr("src", "uploads/" + result.foto)
+                            $('#fotoPerfil').attr("src", "uploads/" + result.foto)
+                            break;
+                    }
+                })
 
                 var inputs = document.querySelectorAll("#btnEnviar");
                 for (let i = 0; i < inputs.length; i++) {
@@ -141,8 +153,9 @@ function execUpdate() {
                     imgs[i].setAttribute('src', '');
                 }
 
-                document.getElementById("usuario").innerHTML=result.nombre;
+                document.getElementById("usuario").innerHTML = result.nombre;
                 document.getElementById("navbarFoto").setAttribute('src', result.foto);
+
             })
     });
 }
