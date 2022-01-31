@@ -9,6 +9,8 @@ MyApp.controller('miControlador', ['$scope', '$http', function ($scope, $http) {
         $scope.paciente = objPaciente.paciente;
     });
 
+    //COMENTADO//
+
     sessionVarsView()
     function sessionVarsView() {
         var url = "controller/cSessionVarsView.php";
