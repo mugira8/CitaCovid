@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //Edad del paciente
 var edadPaciente;
 //Fecha de pcr positiva
@@ -8,17 +7,15 @@ var cantidadCitas = 0;
 var mesesDesdeAnteriorCita;
 var mesesHastaSiguienteCita;
 var tiempoNecesarioEntreCitas = true;
-=======
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
 document.addEventListener("DOMContentLoaded", function (event) {
     //Pantalla de carga hasta que todos los datos esten cargados
     document.getElementById("mainContainer").style.display = "none"
     carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
     document.getElementById("carga").innerHTML = carga
-
+    
     //Comprobar la cantidad de citas
     var cantidadCitas;
-    getCantidadCitas();
+    loadAllCitas();
 
     sessionVarsView()
     $(window).on("load", function () {
@@ -37,10 +34,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("botonSolicitarCita").addEventListener("click", anadirCita);
     //Boton que realiza la solicitud con datos del formulario
     document.getElementById("botonRealizarSolicitud").addEventListener("click", realizarSolicitud);
-    //Edad del paciente
-    var edadPaciente;
-    //Fecha de pcr positiva
-    var FechaPcrPositiva;
 
 
 
@@ -62,20 +55,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
 //     }
 // }
 
-function getCantidadCitas() {
+function loadAllCitas() {
     var url = "controller/cLoadAllCitas.php";
     fetch(url, {
         method: 'POST',
     }).then(res => res.json()).then(result => {
-        console.log("Cantidad citas: ", result.list.length)
         cantidadCitas = result.list.length
-<<<<<<< HEAD
 
         citaMasReciente = new Date(0)
         todasCitas = result
         var mesesHastaSiguienteCita = new Array
         var mesesDesdeAnteriorCita = new Array
-        
         
         for (let i = 0; i < todasCitas.list.length; i++) {
             fechaAnteriorComprobar = new Date(fechaSeleccionada)
@@ -83,22 +73,22 @@ function getCantidadCitas() {
             hoy = new Date()
             
             //Comprueba la cantidad de meses entre citas
-            console.log("ITERACION ", i, " ", todasCitas.list)
-            
-            a = Math.max(
-                (fechaAnteriorComprobar.getFullYear() - fechaComprobar.getFullYear()) * 12 +
-                fechaAnteriorComprobar.getMonth() -
-                fechaComprobar.getMonth(),
-                0);
-                mesesDesdeAnteriorCita.push(a)
+                console.log("ITERACION ", i, " ", todasCitas.list)
+
+                    a = Math.max(
+                        (fechaAnteriorComprobar.getFullYear() - fechaComprobar.getFullYear()) * 12 +
+                        fechaAnteriorComprobar.getMonth() -
+                        fechaComprobar.getMonth(),
+                        0);
+                    mesesDesdeAnteriorCita.push(a)
                 
-                e = Math.max(
-                    (fechaComprobar.getFullYear() - fechaAnteriorComprobar.getFullYear()) * 12 +
-                    fechaComprobar.getMonth() -
-                    fechaAnteriorComprobar.getMonth(),
-                    0);
+                    e = Math.max(
+                        (fechaComprobar.getFullYear() - fechaAnteriorComprobar.getFullYear()) * 12 +
+                        fechaComprobar.getMonth() -
+                        fechaAnteriorComprobar.getMonth(),
+                        0);
                     mesesHastaSiguienteCita.push(e)
-                    
+
                     
                     console.log("Meses desde anterior cita: ", mesesDesdeAnteriorCita, " : ","cod_cita: ",todasCitas.list[i].cod_cita, " , Fecha actual: ",fechaSeleccionada)
                     console.log("Meses hasta siguiente cita: ", mesesHastaSiguienteCita, " : ","cod_cita: ",todasCitas.list[i].cod_cita, " , Fecha actual: ",fechaSeleccionada)
@@ -112,20 +102,19 @@ function getCantidadCitas() {
                         break;
                     }
                 }
-                    loadCitas()
                 console.log("TIEMPO NECESARIO ENTRE VACUNAS: ", tiempoNecesarioEntreCitas)
-=======
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
     })
 }
 
 var codCita //Esta variable se pasa al boton de eliminar
 function loadCitas(event, fechaSeleccionada) {
     var data
-    //var Fecha = fechaSeleccionada;
+    var Fecha = fechaSeleccionada;
     var TIS = objPaciente.paciente.tis;
-    data = {"TIS": TIS }
+    data = { "Fecha": Fecha, "TIS": TIS }
     var url = "controller/cLoadCitas.php";
+
+    //CARGAR CITAS POR TIS Y FECHA
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data), // data can be `string` or {object}!
@@ -144,79 +133,50 @@ function loadCitas(event, fechaSeleccionada) {
 
             var nacimientoFormateado = new Date(anioNacimiento, mesNacimiento, diaNacimiento)
             calcularFechaNaciemiento(nacimientoFormateado)
-            console.log("EDAD PACIENTE: ", edadPaciente)
+            
 
             hoy = new Date();
-            var comprobarCitaAnterior = new Date (fechaSeleccionada)
+            var comprobarCitaAnterior = new Date(fechaSeleccionada)
             console.log("HOY: ", hoy)
-            
             if (citas.objCentros != null) { //Comprueba si hay cita el dia seleccionado
                 console.log("CITAS: ", citas)
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "inline-block";
-                newRow = 
-                `<div class="row">
-                <div class="col-12 col-xl-5 campo"><h4>Nombre paciente</h4> <input type="text" class="form-control" id="NombrePaciente" disabled placeholder="`+ objPaciente.paciente.nombre + `"></div>
-                <div class="col-12 col-xl-5 campo"><h4>TIS</h4><input type="text" class="form-control" id="TIS" disabled placeholder="`+ objPaciente.paciente.tis + `"></div>
-                </div>
-                <h2>Cita Actual</h2>
+                newRow = `<h2>Cita Actual</h2>
                 <div class="row">
                 <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled placeholder="Fecha: `+ citas.Fecha + `"></div>
                 <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder="Hora: `+ citas.Horas.substring(0, 5) + `"></div>
                 </div>
                 <div class="row">
-                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
+                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
+                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ objPaciente.paciente.tis + `"></div>
                 </div>
                 <div class="row">
                 <h4>Vacuna a administrar</h4>
                 <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=`+ citas.objVacunas.Tipo_vacuna + `></div>
                 </div>
                 <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
-                
-                
+
+                document.getElementById("formCitas").innerHTML = newRow;
+
+                //Boton que cancela citas
+                document.getElementById("botonCancelarCita").addEventListener("click", cancelarCita);
                 codCita = citas.cod_cita
             } else {
-<<<<<<< HEAD
-                newRow = 
-                `<div class="row">
-                <div class="col-12 col-xl-5 campo"><h4>Nombre paciente</h4> <input type="text" class="form-control" id="NombrePaciente" disabled placeholder="`+ objPaciente.paciente.nombre + `"></div>
-                <div class="col-12 col-xl-5 campo"><h4>TIS</h4><input type="text" class="form-control" id="TIS" disabled placeholder="`+ objPaciente.paciente.tis + `"></div>
-                </div>
-                <h2>Cita Actual</h2>
-                <div class="row">
-                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled placeholder=""></div>
-                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder=""></div>
-                </div>
-                <div class="row">
-                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder=""></div>
-                </div>
-                <div class="row">
-                <h4>Vacuna a administrar</h4>
-                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=""></div>
-                </div>
-                <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
-=======
-                console.log("NO HAY CITA")
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
                 document.getElementById("botonCancelarCita").style.display = "none";
             }
-            if(comprobarCitaAnterior < hoy){
+            if (comprobarCitaAnterior < hoy) {
                 document.getElementById("botonSolicitarCita").style.display = "none";
-<<<<<<< HEAD
                 document.getElementById("botonCancelarCita").style.display = "none";
             } else if (comprobarCitaAnterior > hoy && citas.objCentros == null){
-=======
-            } else {
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
             }
+            //Substring() limita la cantidad de caracteres se muestran
 
-            document.getElementById("formCitas").innerHTML = newRow;
-            document.getElementById("botonCancelarCita").addEventListener("click", cancelarCita);
         }).catch(error => console.error('Error status:', error));
-    }
-    
+}
+
 function cargarPaciente() {
     var data
     var TIS = objPaciente.paciente.tis;
@@ -228,14 +188,13 @@ function cargarPaciente() {
         headers: { 'Content-Type': 'application/json' }  //input data
     })
         .then(res => res.json()).then(result => {
-            console.log("DATOS PACIENTE: ", result.list[0].Fecha_PCR_pos)
             FechaPcrPositiva = result.list[0].Fecha_PCR_pos
 
-            hoy = new Date();
+            fechaComprobar = new Date(fechaSeleccionada);
             FechaPcrPositiva = new Date(FechaPcrPositiva)
             mesesDesdePcrPos = Math.max(
-                (hoy.getFullYear() - FechaPcrPositiva.getFullYear()) * 12 +
-                hoy.getMonth() -
+                (fechaComprobar.getFullYear() - FechaPcrPositiva.getFullYear()) * 12 +
+                fechaComprobar.getMonth() -
                 FechaPcrPositiva.getMonth(),
                 0)
             console.log("MESES DESDE PCR POSITIVA: ", mesesDesdePcrPos)
@@ -251,51 +210,45 @@ function calcularFechaNaciemiento(nacimientoFormateado) {
 
 function insertar(fechaInsertar, horaInsertar, centroInsertar, vacunaInsertar) {
 
-    //Comprueba las condiciones basando en edad
-    if ((edadPaciente > 11 && cantidadCitas < 3) || (edadPaciente <= 11 && cantidadCitas == 0)) {
+    //Comprueba si todos los campos estan rellenados
+    if (document.getElementById("SolicitarHoras").value && document.getElementById("SolicitarCod_centro").value && document.getElementById("SolicitarCod_vacuna").value) {
+        //Comprueba las condiciones basando en edad
+        if ((edadPaciente > 11 && cantidadCitas < 3) || (edadPaciente <= 11 && cantidadCitas == 0)) {
+            //Comprueba que han pasado 6 meses entre dosis o PCR
+            if (mesesDesdePcrPos >= 6 && tiempoNecesarioEntreCitas == true) {
 
-        //Comprueba que han pasado 6 meses entre dosis o PCR
-        if (mesesDesdePcrPos >=6 ){
-
-            //Comprueba si todos los campos estan rellenados
-            if (document.getElementById("SolicitarHoras").value && document.getElementById("SolicitarCod_centro").value && document.getElementById("SolicitarCod_vacuna").value) {
                 var url = "controller/cInsertCitas.php";
-                
+
                 var data = { "Fecha": fechaInsertar, "Horas": horaInsertar, "cod_centro": centroInsertar, "TIS": objPaciente.paciente.tis, "cod_vacuna": vacunaInsertar };
-                
+
                 fetch(url, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: { 'Content-Type': 'application/json' }
                 })
-                .then(res => res.json()).then(result => {
-                    console.log("mensaje error", result.error);
-                    alert("La cita se ha insertado con éxito");
-                    location.reload()
-                })
-            } else {//Campos
-                alert("No has rellenado todos los campos")
+                    .then(res => res.json()).then(result => {
+                        console.log("mensaje error", result.error);
+                        alert("La cita se ha insertado con éxito");
+                        location.reload()
+                    })
+            } else {
+                alert("Deben pasar 6 meses desde su ultima dosis o PCR positiva")
             }
-<<<<<<< HEAD
         } else {//Edad
-            alert("Ha alcanzado el numero máximo de citas. Citas pendientes: " + cantidadCitas +".")
-=======
-        }else{
-            alert("Deben pasar 6 meses desde su ultima dosis o PCR positiva")
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
+            alert("Ha alcanzado el numero máximo de citas. Citas pendientes: " + cantidadCitas)
         }
-    } else {//Edad
-        alert("Ha alcanzado el numero máximo de citas. Citas pendientes: " + cantidadCitas)
+    } else {//Campos
+        alert("No has rellenado todos los campos")
     }
 }
 var fechaSeleccionada
 function mostrarDiaSeleccionado() {
     console.log("SESION ACTUAL: ", objPaciente) //Variable de sesion recibida desde general.js
-    //document.getElementById("Fecha").value = " ";
-    //document.getElementById("Horas").value = " ";
-    //document.getElementById("cod_centro").value = " ";
-    //document.getElementById("TIS").value = " ";
-    //document.getElementById("cod_vacuna").value = " ";
+    document.getElementById("Fecha").value = " ";
+    document.getElementById("Horas").value = " ";
+    document.getElementById("cod_centro").value = " ";
+    document.getElementById("TIS").value = " ";
+    document.getElementById("cod_vacuna").value = " ";
 
 
     var dia = document.getElementsByClassName("table-date active-date");
@@ -349,16 +302,11 @@ function mostrarDiaSeleccionado() {
     }
 
     fechaSeleccionada = anio[0].innerHTML + "-" + mesConvertido + "-" + diaConvertido;
-    console.log("FECHA SELECCIONADA: ", fechaSeleccionada)
     cargarPaciente()
-<<<<<<< HEAD
-    //loadCitas(event, fechaSeleccionada);
+    loadCitas(event, fechaSeleccionada);
     if (cantidadCitas > 0){
         loadAllCitas()
     }
-=======
-    loadCitas(event, fechaSeleccionada);
->>>>>>> parent of 34546ae (PHP de citas 4, el encuentro final)
 }
 
 function anadirCita() {
@@ -401,9 +349,9 @@ function anadirCita() {
     var dia = document.getElementsByClassName("table-date active-date");
     var mes = document.getElementsByClassName("month active-month");
     var anio = document.getElementsByClassName("year");
-    console.log("Dia seleccionado: ", dia[0].innerHTML);
-    console.log("Mes seleccionado: ", mes[0].innerHTML);
-    console.log("Año seleccionado: ", anio[0].innerHTML);
+    // console.log("Dia seleccionado: ", dia[0].innerHTML);
+    // console.log("Mes seleccionado: ", mes[0].innerHTML);
+    // console.log("Año seleccionado: ", anio[0].innerHTML);
 
 }
 
