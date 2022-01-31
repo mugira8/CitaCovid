@@ -58,5 +58,27 @@ class historialModel extends historialClass {
     {
         return get_object_vars($this);
     }
+
+    public function insertHistorial(){
+        $this->OpenConnect();
+
+        $TIS=$this->TIS;
+        $Fecha=$this->Fecha;
+        $Num_Dosis=$this->Num_Dosis;
+        $Tipo_vacuna=$this->Tipo_vacuna;
+
+        $sql = "INSERT INTO `historial` (`Tipo_vacuna`, `Num_Dosis`, `Fecha`, `TIS`) VALUES ('$Tipo_vacuna', '$Num_Dosis', '$Fecha', '$TIS')";
+        
+        $list = array();
+
+        $result=$this->link->query($sql);
+
+        if ($this->link->affected_rows == 1)
+        {
+            return $sql."La cita se ha creado con exito: ".$this->link->affected_rows;
+        } else {
+            return $sql."Fallo al insertar una cita nueva: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        $this->CloseConnect();
+    }
 }
-?>

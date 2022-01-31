@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("mainContainer").style.display = "none"
     carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
     document.getElementById("carga").innerHTML = carga
-    
+
     //Comprobar la cantidad de citas
     var cantidadCitas;
     loadAllCitas();
@@ -66,45 +66,45 @@ function loadAllCitas() {
         todasCitas = result
         var mesesHastaSiguienteCita = new Array
         var mesesDesdeAnteriorCita = new Array
-        
-        
+
+
         for (let i = 0; i < todasCitas.list.length; i++) {
             fechaAnteriorComprobar = new Date(fechaSeleccionada)
             fechaComprobar = new Date(todasCitas.list[i].Fecha)
             hoy = new Date()
-            
+
             //Comprueba la cantidad de meses entre citas
             console.log("ITERACION ", i, " ", todasCitas.list)
-            
+
             a = Math.max(
                 (fechaAnteriorComprobar.getFullYear() - fechaComprobar.getFullYear()) * 12 +
                 fechaAnteriorComprobar.getMonth() -
                 fechaComprobar.getMonth(),
                 0);
-                mesesDesdeAnteriorCita.push(a)
-                
-                e = Math.max(
-                    (fechaComprobar.getFullYear() - fechaAnteriorComprobar.getFullYear()) * 12 +
-                    fechaComprobar.getMonth() -
-                    fechaAnteriorComprobar.getMonth(),
-                    0);
-                    mesesHastaSiguienteCita.push(e)
-                    
-                    
-                    console.log("Meses desde anterior cita: ", mesesDesdeAnteriorCita, " : ","cod_cita: ",todasCitas.list[i].cod_cita, " , Fecha actual: ",fechaSeleccionada)
-                    console.log("Meses hasta siguiente cita: ", mesesHastaSiguienteCita, " : ","cod_cita: ",todasCitas.list[i].cod_cita, " , Fecha actual: ",fechaSeleccionada)
-                    
-                }
-                for (let i = 0; i < mesesDesdeAnteriorCita.length; i++) {
-                    if (mesesDesdeAnteriorCita[i] >= 6 || mesesHastaSiguienteCita[i] >= 6) {
-                        tiempoNecesarioEntreCitas = true
-                    } else {
-                        tiempoNecesarioEntreCitas = false
-                        break;
-                    }
-                }
-                    loadCitas()
-                console.log("TIEMPO NECESARIO ENTRE VACUNAS: ", tiempoNecesarioEntreCitas)
+            mesesDesdeAnteriorCita.push(a)
+
+            e = Math.max(
+                (fechaComprobar.getFullYear() - fechaAnteriorComprobar.getFullYear()) * 12 +
+                fechaComprobar.getMonth() -
+                fechaAnteriorComprobar.getMonth(),
+                0);
+            mesesHastaSiguienteCita.push(e)
+
+
+            console.log("Meses desde anterior cita: ", mesesDesdeAnteriorCita, " : ", "cod_cita: ", todasCitas.list[i].cod_cita, " , Fecha actual: ", fechaSeleccionada)
+            console.log("Meses hasta siguiente cita: ", mesesHastaSiguienteCita, " : ", "cod_cita: ", todasCitas.list[i].cod_cita, " , Fecha actual: ", fechaSeleccionada)
+
+        }
+        for (let i = 0; i < mesesDesdeAnteriorCita.length; i++) {
+            if (mesesDesdeAnteriorCita[i] >= 6 || mesesHastaSiguienteCita[i] >= 6) {
+                tiempoNecesarioEntreCitas = true
+            } else {
+                tiempoNecesarioEntreCitas = false
+                break;
+            }
+        }
+        loadCitas()
+        console.log("TIEMPO NECESARIO ENTRE VACUNAS: ", tiempoNecesarioEntreCitas)
     })
 }
 
@@ -113,7 +113,7 @@ function loadCitas(event, fechaSeleccionada) {
     var data
     //var Fecha = fechaSeleccionada;
     var TIS = objPaciente.paciente.tis;
-    data = {"TIS": TIS }
+    data = { "TIS": TIS }
     var url = "controller/cLoadCitas.php";
 
     //CARGAR CITAS POR TIS Y FECHA
@@ -135,18 +135,18 @@ function loadCitas(event, fechaSeleccionada) {
 
             var nacimientoFormateado = new Date(anioNacimiento, mesNacimiento, diaNacimiento)
             calcularFechaNaciemiento(nacimientoFormateado)
-            
+
 
             hoy = new Date();
             var comprobarCitaAnterior = new Date(fechaSeleccionada)
             console.log("HOY: ", hoy)
-            
+
             if (citas.objCentros != null) { //Comprueba si hay cita el dia seleccionado
                 console.log("CITAS: ", citas)
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "inline-block";
-                newRow = 
-                `<div class="row">
+                newRow =
+                    `<div class="row">
                 <div class="col-12 col-xl-5 campo"><h4>Nombre paciente</h4> <input type="text" class="form-control" id="NombrePaciente" disabled placeholder="`+ objPaciente.paciente.nombre + `"></div>
                 <div class="col-12 col-xl-5 campo"><h4>TIS</h4><input type="text" class="form-control" id="TIS" disabled placeholder="`+ objPaciente.paciente.tis + `"></div>
                 </div>
@@ -163,12 +163,12 @@ function loadCitas(event, fechaSeleccionada) {
                 <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=`+ citas.objVacunas.Tipo_vacuna + `></div>
                 </div>
                 <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
-                
-                
+
+
                 codCita = citas.cod_cita
             } else {
-                newRow = 
-                `<div class="row">
+                newRow =
+                    `<div class="row">
                 <div class="col-12 col-xl-5 campo"><h4>Nombre paciente</h4> <input type="text" class="form-control" id="NombrePaciente" disabled placeholder="`+ objPaciente.paciente.nombre + `"></div>
                 <div class="col-12 col-xl-5 campo"><h4>TIS</h4><input type="text" class="form-control" id="TIS" disabled placeholder="`+ objPaciente.paciente.tis + `"></div>
                 </div>
@@ -191,15 +191,15 @@ function loadCitas(event, fechaSeleccionada) {
             if (comprobarCitaAnterior < hoy) {
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "none";
-            } else if (comprobarCitaAnterior > hoy && citas.objCentros == null){
+            } else if (comprobarCitaAnterior > hoy && citas.objCentros == null) {
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
             }
 
             document.getElementById("formCitas").innerHTML = newRow;
             document.getElementById("botonCancelarCita").addEventListener("click", cancelarCita);
         }).catch(error => console.error('Error status:', error));
-    }
-    
+}
+
 function cargarPaciente() {
     var data
     var TIS = objPaciente.paciente.tis;
@@ -252,13 +252,13 @@ function insertar(fechaInsertar, horaInsertar, centroInsertar, vacunaInsertar) {
                     .then(res => res.json()).then(result => {
                         console.log("mensaje error", result.error);
                         alert("La cita se ha insertado con éxito");
-                        location.reload()
+                        insertarHistorial(fechaInsertar, vacunaInsertar)
                     })
             } else {
                 alert("Deben pasar 6 meses desde su ultima dosis o PCR positiva")
             }
         } else {//Edad
-            alert("Ha alcanzado el numero máximo de citas. Citas pendientes: " + cantidadCitas +".")
+            alert("Ha alcanzado el numero máximo de citas. Citas pendientes: " + cantidadCitas + ".")
         }
     } else {//Campos
         alert("No has rellenado todos los campos")
@@ -327,7 +327,7 @@ function mostrarDiaSeleccionado() {
     fechaSeleccionada = anio[0].innerHTML + "-" + mesConvertido + "-" + diaConvertido;
     cargarPaciente()
     //loadCitas(event, fechaSeleccionada);
-    if (cantidadCitas > 0){
+    if (cantidadCitas > 0) {
         loadAllCitas()
     }
 }
@@ -408,4 +408,32 @@ function cancelarCita() {
 
     }
 
+}
+
+function insertarHistorial(fecha, vacuna) {
+    let nombreVacuna = "";
+    var info = { "cod_vacuna": vacuna }
+    fetch("controller/cGetVacuna.php", {
+        method: 'POST',
+        body: JSON.stringify(info),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(res => res.json()).then(result => {
+            nombreVacuna = result.vacuna.Tipo_Vacuna
+
+            console.log('nombreVacauna', nombreVacuna)
+            var tis = objPaciente.paciente.tis;
+            var url = "controller/cInsertHistorial.php";
+            var data = { "TIS": tis, "Num_Dosis": cantidadCitas + 1, "Fecha": fecha, "Tipo_vacuna": nombreVacuna };
+            console.log('data', data)
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(res => res.json()).then(result => {
+                    console.log("mensaje error", result.error);
+                    //   location.reload();
+                })
+        }) 
 }
