@@ -1,153 +1,137 @@
-@font-face {
-    font-family: champagne;
-    src: url("../fonts/Champagne\ &\ Limousines.ttf");
-}
-
 nav {
-    background-image: url(../images/bg.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .valid {
-    color: green;
+  color: green;
 }
 
 .valid:before {
-    position: relative;
-    content: "✔";
+  position: relative;
+  content: "✔";
 }
 
 .invalid {
-    color: red;
+  color: red;
 }
 
 .nuevosModelos span {
-    color: #262626;
-    overflow: hidden;   
-    border-right: .10em solid #FF8D8D;
-    white-space: nowrap;   
-    margin: 0 auto;   
-    letter-spacing: .4rem;   
-    font-size: 20px;
-  }
-
-  .nuevosModelosWhite span {
-    color: #fdf3f3;
-    overflow: hidden;   
-    border-right: .10em solid #FF8D8D;
-    white-space: nowrap;   
-    margin: 0 auto;   
-    letter-spacing: .4rem;   
-    font-size: 20px;
-  }
-
+  color: #262626;
+  overflow: hidden;
+  border-right: 0.1em solid #ff8d8d;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.4rem;
+  font-size: 20px;
+}
 .parallax {
-    height: 50%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: red;
-    text-align: center;
-    padding: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    background-image: url("../images/vacunacion.jpeg");
+  height: 50%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: red;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/vacunacion.jpeg");
+  -webkit-text-stroke: 0.5px black;
 }
 
 .paraCont {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30rem;
-    height: 20rem;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(5px);
-    font-family: text;
-    font-family: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  height: 20rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  font-family: text;
+  font-family: text;
 }
 
 .parallax a:hover {
-    display: block;
-    color: white;
+  display: block;
+  color: white;
 }
 
 .invalid:before {
-    position: relative;
-    content: "✖";
+  position: relative;
+  content: "✖";
 }
 
 .card-img-top {
-    height: 15vw;
-    object-fit: cover;
+  height: 15vw;
+  object-fit: cover;
 }
 
 .carousel-img {
-    height: 650px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  height: 650px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bg-light2 {
-    background-color: rgba(238, 238, 238, 0.493);
+  background-color: rgba(238, 238, 238, 0.493);
 }
 
 .pd {
-    font-family: text;
-    background-color: rgba(255, 255, 255, 0.247);
+  font-family: text;
+  background-color: rgba(255, 255, 255, 0.247);
 }
 
 .modal-footer {
-    justify-content: space-between;
+  justify-content: space-between;
 }
-
 
 /* mediaquery para distintos dispositivos */
-@media screen and (max-width: 1920px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 650px;
-    }
+@media screen and (max-width: 1920px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 650px;
+  }
 }
-@media screen and (max-width: 1250px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 550px;
-    }
+@media screen and (max-width: 1250px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 550px;
+  }
 }
-@media screen and (max-width: 1000px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 350px;
-    }
+@media screen and (max-width: 1000px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 350px;
+  }
 }
-@media screen and (max-width: 800px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 350px;
-    }
+@media screen and (max-width: 800px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 350px;
+  }
 }
-@media screen and (max-width: 770px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 250px;
-    }
+@media screen and (max-width: 770px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 250px;
+  }
 }
-@media screen and (max-width: 500px) and (min-width: 0px){
-    .carousel-img{
-        width: 100%;
-        height: 250px;
-    }
+@media screen and (max-width: 500px) and (min-width: 0px) {
+  .carousel-img {
+    width: 100%;
+    height: 250px;
+  }
 }
-@media screen and (max-width: 480px) and (min-width: 0px){
-    .carousel-img{
-        display: none;
-    }
+@media screen and (max-width: 480px) and (min-width: 0px) {
+  .carousel-img {
+    display: none;
+  }
 }

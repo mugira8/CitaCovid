@@ -6,7 +6,7 @@ class pacientesClass
     protected $Fecha_Nacimiento;
     protected $Nombre;
     protected $Apellido;
-    protected $Edad;
+    protected $Foto;
     protected $cod_centro;
 
     /**
@@ -130,41 +130,21 @@ class pacientesClass
     }
 
     /**
-     * Get the value of Perfil
+     * Get the value of Foto
      */ 
-    public function getPerfil()
+    public function getFoto()
     {
-        return $this->Perfil;
+        return $this->Foto;
     }
 
     /**
-     * Set the value of Perfil
+     * Set the value of Foto
      *
      * @return  self
      */ 
-    public function setPerfil($Perfil)
+    public function setFoto($Foto)
     {
-        $this->Perfil = $Perfil;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Edad
-     */ 
-    public function getEdad()
-    {
-        return $this->Edad;
-    }
-
-    /**
-     * Set the value of Edad
-     *
-     * @return  self
-     */ 
-    public function setEdad($Edad)
-    {
-        $this->Edad = $Edad;
+        $this->Foto = $Foto;
 
         return $this;
     }

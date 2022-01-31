@@ -53,11 +53,40 @@ class centrosModel extends centrosClass {
             $centro->Domingo = $row['Domingo'];
 
 
-            array_push($list, $centro);
+            array_push($list, get_object_vars($centro));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
         return $list;
+    }
+    
+    public function findCentroByCodCentro(){
+        $this->OpenConnect();
+        
+        $cod_centro=$this->cod_centro;
+        $sql="select * from centros where cod_centro=$cod_centro";
+        $result = $this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $this->cod_centro=$row["cod_centro"];
+            $this->Nombre=$row["Nombre"];
+            $this->Municipio=$row["Municipio"];
+            $this->Hora_apertura=$row["Hora_apertura"];
+            $this->Hora_cierre=$row["Hora_cierre"];
+            $this->Lunes=$row["Lunes"];
+            $this->Martes=$row["Martes"];
+            $this->Miercoles=$row["Miercoles"];
+            $this->Jueves=$row["Jueves"];
+            $this->Viernes=$row["Viernes"];
+            $this->Sabado=$row["Sabado"];
+            $this->Domingo=$row["Domingo"];
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+    
+    public function ObjVars()
+    {
+        return get_object_vars($this);
     }
 
 }//fin

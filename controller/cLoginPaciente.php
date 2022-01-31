@@ -15,7 +15,7 @@ if ($tis!=null){
 
     if ($paciente->findPaciente()){
         session_start();
-        $_SESSION['usuario']=$nombre;
+        $_SESSION['paciente']=$nombre;
         $_SESSION['id']=$paciente->tis;
         $response['error']="no error";
     }else{
