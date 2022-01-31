@@ -19,7 +19,7 @@
 <body>
 
     <!--NAVBAR-->
-    <div id="navbar"></div>
+    <div id="navbar" ng-include="'navbar.html'"></div>
 
     <!--CONTENEDOR-->
     <section class="container">
@@ -169,15 +169,17 @@
     </section>
 
     <!--FOOTER-->
-    <footer id="footer" class="bg-light2 mt-5"></footer>
+    <footer id="footer" class="bg-light2 mt-5" ng-include="'footer.html'"></footer>
 
     <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
-    <script src="view/js/insert.js"></script>
     <script src="view/js/jsFunctions.js"></script>
     <script src="view/js/contacto2.js"></script>
+    <script src="view/js/index.js"></script>
+    <script src="view/js/general.js"></script>
 
 
 </body>
