@@ -86,17 +86,13 @@ public function mostrarPacienteTIS()
         $Apellido=$this->Apellido;
         $Foto=$this->Foto;
 
-        if ($Foto == null){
-            { $Foto ="fotoPerfil.jpg"; }
-        } 
-
         $sql="UPDATE pacientes set Nombre='$Nombre', Apellido='$Apellido', Foto='$Foto' WHERE TIS='$tis'";
 
         if ($this->link->query($sql))
         {
-            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+            return 1;
         } else {
-            return "Error updating ". $sql ."   ". $this->link->error;
+            return 0;
         }
         $this->CloseConnect();
     }

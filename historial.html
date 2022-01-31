@@ -26,7 +26,7 @@
         <div class="modal-body" >
             <div class="container contenedor">
                     <div class="col-12 col-md-6 datosPerfil" ng-init="inactive=true">
-                        <div class="">
+                        <div>
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="nombre" placeholder="{{paciente.nombre}}">
                             <input type="text" ng-disabled="inactive" class="form-control datoPaciente" id="apellido" placeholder="{{paciente.apellido}}">
                             <input type="text" disabled class="form-control datoPaciente" id="edad" placeholder="{{paciente.fecha}}">
@@ -35,13 +35,13 @@
                             <div class="container">
                                 <div class="row">
                                     <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="inactive = !inactive">Editar Perfil</button>
-                                    <button type="button" class="btn btn-danger col-4 btnPerfil" ng-click="verHistorial()">Ver Historial</button>
+                                    <button type="button" class="btn btn-danger col-4 botonPerfil1" ng-click="verHistorial()">Ver Historial</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <div class="col-12 col-md-6">
-                    <!-- imagen del usuario -->
+                    <!-- imagen del usuario buenas -->
                     <img src="uploads/{{paciente.foto}}" class="img-thumbnail" id="fotoPerfil">
                     <div class="botonesFoto">
                         <input class="form-control" type="file" id="fotoInsertar" ng-value="{{paciente.foto}}">
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-    <!--Seccion Central-->
+    <!--Historial-->
     <div class="container" ng-show='ver == "si"'>
         <div class="seccionCentral col-12">
             <table>

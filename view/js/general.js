@@ -16,6 +16,7 @@ function sessionVarsView() {
             mostrarDiaSeleccionado()
         }
         if (result.error == "no error" && result.paciente.tis) {
+            console.log(result.paciente.foto)
             $("#iniciarSesion").css('display', 'none');
             $("#cerrarSesion").css('display', 'block');
             $("#btnEditarPerfil").css('display', 'block');
@@ -27,6 +28,7 @@ function sessionVarsView() {
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.paciente.nombre);
+            $("#navbarFoto").attr("src", "uploads/"+result.paciente.foto)
         } 
         
         if (result.error == "no error" && result.usuario.correo) {
@@ -35,14 +37,14 @@ function sessionVarsView() {
             $("#btnAdministrar").css('display', 'block');
             $("#btnCita").css('display', 'none');
             $("#btnHistorial").css('display', 'none');
-            $("#navbarIcon").css('display', 'none');
-            $("#navbarFoto").css('display', 'block');
+            $("#navbarIcon").css('display', 'block');
+            $("#navbarFoto").css('display', 'none');
             $('#usuario').removeAttr('data-bs-target');
             $('#administrar').removeAttr('data-bs-target');
             $("#usuario").text(result.usuario.correo);
         } 
 
-        if(result.error == "No estas loggeado" && !window.location.href.includes("index")){
+        if(!result.usuario.correo && !result.paciente.tis && !window.location.href.includes("index")){
             window.location.href = "index.html";
         }
     });
@@ -94,6 +96,7 @@ function loginPaciente() {
                 $('#usuario').removeAttr('data-bs-target');
                 $('#administrar').removeAttr('data-bs-target');
                 $("#usuario").text(result.nombre);
+                $("#navbarFoto").attr("src","uploads/"+result.foto)
                 break;
             case "incorrect user":
                 $("#errorLogin").html("El correo o contraseña introducido es incorrecto.</br>");

@@ -21,6 +21,8 @@
 }
 #navbarFoto{
   display: none;
+  max-width: 30px;
+  max-height: 30px;
 }
 
 /*Navbar*/

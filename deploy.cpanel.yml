@@ -1,0 +1,4 @@
+deployment:
+      tasks:
+        - rm -rf /home/bizerbit/public_html/*
+        - cp -Rf /home/bizerbit/repositories/CitaCovid/* /home/bizerbit/public_html/
