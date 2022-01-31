@@ -84,28 +84,27 @@
 
       </div>
       <div class="col-12 col-md-6 contenedor2" id="formCitas">
-        <div class="row">
-          <div class="col-12 col-xl-5 campo"><h4>Nombre paciente</h4> <input type="text" class="form-control" id="NombrePaciente" disabled></div>
-          <div class="col-12 col-xl-5 campo"><h4>TIS</h4><input type="text" class="form-control" id="TIS" disabled></div>
-        </div>
         <h2>Cita Actual</h2>
         <div class="row">
           <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Fecha" disabled></div>
           <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled></div>
         </div>
         <div class="row">
-          <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_centro" disabled></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled></div>
+          <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled></div>
         </div>
         <div class="row">
           <h4>Vacuna a administrar</h4>
           <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled></div>
         </div>
-        <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>
+        <div>
+          <button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button>
+      </div>
       </div>
     </div>
   
   
-    <!-- Modal -->
+    <!-- Modal solicitar citas-->
     <div class="modal fade" id="modalSolicitarCita" tabindex="-1" role="dialog"
       aria-labelledby="modalSolicitarCitaLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -141,6 +140,41 @@
       </div>
     </div>
     <!-- Fin modal -->
+
+        <!-- Modal mostrar todas las citas -->
+        <div class="modal fade" id="modalMostrarTodasCitas" tabindex="-1" role="dialog"
+        aria-labelledby="modalMostrarTodasCitasLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalMostrarTodasCitasLabel">Solicitar cita</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body container">
+              <div class="col-12 col-md-12 contenedor2" id="formTodasCitas">
+              <h4>º1 Cita</h4>
+              <div class="row">
+                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasFechas" disabled></div>
+                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasHoras" disabled></div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todosCentros" disabled></div>
+              </div>
+              <div class="row">
+                <h5>Vacuna a administrar</h5>
+                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasVacunas" disabled></div>
+              </div>
+            </div>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin modal -->
 
     <!-- boton para subir -->
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-danger"><svg

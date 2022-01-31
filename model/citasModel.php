@@ -83,12 +83,12 @@ class citasModel extends citasClass {
     public function findCitaByTIS() {
         $this->OpenConnect();
         
-        //$Fecha=$this->Fecha;
+        $Fecha=$this->Fecha;
         $TIS=$this->TIS;
         $sql="select citas.*,centros.nombre, vacunas.Tipo_Vacuna from citas 
             inner join centros on citas.cod_centro=centros.cod_centro
             inner join vacunas on citas.cod_vacuna=vacunas.cod_vacuna
-            where TIS=$TIS";
+            where TIS=$TIS and Fecha='$Fecha'";
         $result = $this->link->query($sql);
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $this->cod_cita=$row["cod_cita"];
@@ -110,7 +110,6 @@ class citasModel extends citasClass {
         mysqli_free_result($result);
        $this->CloseConnect();
     }
-
 
     public function delete(){
         $this->OpenConnect();  
