@@ -113,7 +113,7 @@ function loadCitas(event, fechaSeleccionada) {
     var data
     var Fecha = fechaSeleccionada;
     var TIS = objPaciente.paciente.tis;
-    data = { "TIS": TIS }
+    data = { "TIS": TIS, "Fecha": Fecha}
     var url = "controller/cLoadCitas.php";
 
     //CARGAR CITAS POR TIS Y FECHA
@@ -140,8 +140,8 @@ function loadCitas(event, fechaSeleccionada) {
             hoy = new Date();
             var comprobarCitaAnterior = new Date(fechaSeleccionada)
             console.log("HOY: ", hoy)
+            console.log("CITAS: ", citas)
             if (citas.objCentros != null) { //Comprueba si hay cita el dia seleccionado
-                console.log("CITAS: ", citas)
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "inline-block";
                 newRow =
@@ -325,7 +325,7 @@ function mostrarDiaSeleccionado() {
 
     fechaSeleccionada = anio[0].innerHTML + "-" + mesConvertido + "-" + diaConvertido;
     cargarPaciente()
-    //loadCitas(event, fechaSeleccionada);
+    loadCitas(event, fechaSeleccionada);
     if (cantidadCitas > 0) {
         loadAllCitas()
     }
