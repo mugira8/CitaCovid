@@ -31,7 +31,7 @@ public function mostrarPacienteTIS()
 
     $TIS=$this->TIS;
 
-    $sql = "SELECT `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Fecha_PCR_pos` FROM `pacientes` WHERE `TIS` = $TIS";
+    $sql = "SELECT `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Fecha_PCR_pos`, `Foto` FROM `pacientes` WHERE `TIS` = $TIS";
     $list = array();
 
     $result=$this->link->query($sql);
@@ -44,6 +44,7 @@ public function mostrarPacienteTIS()
         $pacientes->setApellido($row['Apellido']);
         $pacientes->setFecha_Nacimiento($row['Fecha_Nacimiento']);
         $pacientes->setFecha_PCR_pos($row["Fecha_PCR_pos"]);
+        $pacientes->setFoto($row["Foto"]);
 
         array_push($list, get_object_vars($pacientes));
         
@@ -67,6 +68,8 @@ public function mostrarPacienteTIS()
         if($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
             $this->nombre=$row['Nombre'];
+            $this->apellido=$row['Apellido'];
+            $this->foto=$row['foto'];
             $pacienteExists=true;
         }
         mysqli_free_result($result);
@@ -74,21 +77,22 @@ public function mostrarPacienteTIS()
 		return $pacienteExists;
     }
 
-    public function updateUsername(){
+    public function updatePaciente(){
 
         $this->OpenConnect();
 
-        $tis=$this->tis;
+        $tis=$this->TIS;
         $Nombre=$this->Nombre;
         $Apellido=$this->Apellido;
+        $Foto=$this->Foto;
 
-        $sql="UPDATE pacientes set Nombre=$Nombre, Apellido=$Apellido WHERE tis='$tis'";
+        $sql="UPDATE pacientes set Nombre='$Nombre', Apellido='$Apellido', Foto='$Foto' WHERE TIS='$tis'";
 
         if ($this->link->query($sql))
         {
-            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
+            return 1;
         } else {
-            return "Error updating ". $sql ."   ". $this->link->error;
+            return 0;
         }
         $this->CloseConnect();
     }
