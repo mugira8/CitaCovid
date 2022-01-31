@@ -34,26 +34,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("botonSolicitarCita").addEventListener("click", anadirCita);
     //Boton que realiza la solicitud con datos del formulario
     document.getElementById("botonRealizarSolicitud").addEventListener("click", realizarSolicitud);
+    //Boton que abre modal que muestra todas las citas
+    //document.getElementById("botonMostrarCitas").addEventListener("click", mostrarTodasCitas);
 
 
 
 })
 
-//Hace que el input solo admita numeros
-// function validate(evt) {
-//     var theEvent = evt || window.event;
-//     if (theEvent.type === 'paste') {
-//         key = event.clipboardData.getData('text/plain');
-//     } else {
-//         var key = theEvent.keyCode || theEvent.which;
-//         key = String.fromCharCode(key);
-//     }
-//     var regex = /[0-9]/;
-//     if (!regex.test(key)) {
-//         theEvent.returnValue = false;
-//         if (theEvent.preventDefault) theEvent.preventDefault();
-//     }
-// }
 
 function loadAllCitas() {
     var url = "controller/cLoadAllCitas.php";
@@ -98,8 +85,36 @@ function loadAllCitas() {
                 break;
             }
         }
-
     })
+}
+function mostrarTodasCitas(){
+
+    loadAllCitas()
+    if (cantidadCitas > 0) {
+        
+        for (let i = 0; i < todasCitas.list.length; i++) {
+            console.log("TODAS CITAS: ", todasCitas)
+            
+            var newRow =+ `
+            <h4>º`+(i+1)+` Cita</h4>
+            <div class="row">
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasFechas" placeholder="Fecha: `+ todasCitas.list[i].Fecha + `" disabled></div>
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasHoras" placeholder="Hora: `+ todasCitas.list[i].Horas.substring(0, 5) + `" disabled></div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todosCentros" placeholder="`+ todasCitas.centrosVacunas[i].objCentros.Nombre + `" disabled></div>
+            </div>
+            <div class="row">
+              <h5>Vacuna a administrar</h5>
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasVacunas" placeholder=`+ todasCitas.centrosVacunas[i].objVacunas.Tipo_vacuna + ` disabled></div>
+            </div>
+            `
+        }
+
+    } else {
+        var newRow = `<h2>No tiene ninguna cita concertada</h2>`
+    }
+    document.getElementById("formTodasCitas").innerHTML = newRow;
 }
 
 var codCita //Esta variable se pasa al boton de eliminar
@@ -148,17 +163,16 @@ function loadCitas(event, fechaSeleccionada) {
                 <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="Horas" disabled placeholder="Hora: `+ citas.Horas.substring(0, 5) + `"></div>
                 </div>
                 <div class="row">
-                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
-                <div class="col-12 col-xl-5 campo"><input type="text" class="form-control" id="TIS" disabled placeholder="TIS: `+ objPaciente.paciente.tis + `"></div>
+                <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_centro" disabled placeholder="`+ citas.objCentros.Nombre + `"></div>
                 </div>
                 <div class="row">
                 <h4>Vacuna a administrar</h4>
                 <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=`+ citas.objVacunas.Tipo_vacuna + `></div>
                 </div>
-                <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
-
-
+                <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button>
+                </div>`
                 codCita = citas.cod_cita
+                document.getElementById("formCitas").innerHTML = newRow
             } else {
                 newRow =
                     `<div class="row">
@@ -178,7 +192,9 @@ function loadCitas(event, fechaSeleccionada) {
                 <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=""></div>
                 </div>
                 <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
+                
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
+                document.getElementById("formCitas").innerHTML = newRow
                 document.getElementById("botonCancelarCita").style.display = "none";
             }
             if (comprobarCitaAnterior < hoy) {
@@ -188,9 +204,10 @@ function loadCitas(event, fechaSeleccionada) {
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
             }
             //Substring() limita la cantidad de caracteres se muestran
+            
+            document.getElementById("botonCancelarCita").addEventListener("click", cancelarCita);
 
-            document.getElementById("formCitas").innerHTML = newRow
-
+            
         }).catch(error => console.error('Error status:', error));
 }
 
