@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     carga = '<div style="font-size:50px;">Hola! La página esta cargando, un segundín</div>'
     document.getElementById("carga").innerHTML = carga
 
+    
+    sessionVarsView()
     //Comprobar la cantidad de citas
     var cantidadCitas;
     loadAllCitas();
-
-    sessionVarsView()
     $(window).on("load", function () {
 
         document.getElementById("mainContainer").style.display = "block"
@@ -89,11 +89,6 @@ function loadAllCitas() {
                 fechaAnteriorComprobar.getMonth(),
                 0);
             mesesHastaSiguienteCita.push(e)
-
-
-            console.log("Meses desde anterior cita: ", mesesDesdeAnteriorCita, " : ", "cod_cita: ", todasCitas.list[i].cod_cita, " , Fecha actual: ", fechaSeleccionada)
-            console.log("Meses hasta siguiente cita: ", mesesHastaSiguienteCita, " : ", "cod_cita: ", todasCitas.list[i].cod_cita, " , Fecha actual: ", fechaSeleccionada)
-
         }
         for (let i = 0; i < mesesDesdeAnteriorCita.length; i++) {
             if (mesesDesdeAnteriorCita[i] >= 6 || mesesHastaSiguienteCita[i] >= 6) {
@@ -103,8 +98,7 @@ function loadAllCitas() {
                 break;
             }
         }
-        loadCitas()
-        console.log("TIEMPO NECESARIO ENTRE VACUNAS: ", tiempoNecesarioEntreCitas)
+
     })
 }
 
@@ -139,7 +133,6 @@ function loadCitas(event, fechaSeleccionada) {
 
             hoy = new Date();
             var comprobarCitaAnterior = new Date(fechaSeleccionada)
-            console.log("HOY: ", hoy)
             console.log("CITAS: ", citas)
             if (citas.objCentros != null) { //Comprueba si hay cita el dia seleccionado
                 document.getElementById("botonSolicitarCita").style.display = "none";
@@ -196,6 +189,8 @@ function loadCitas(event, fechaSeleccionada) {
             }
             //Substring() limita la cantidad de caracteres se muestran
 
+            document.getElementById("formCitas").innerHTML = newRow
+
         }).catch(error => console.error('Error status:', error));
 }
 
@@ -219,7 +214,6 @@ function cargarPaciente() {
                 fechaComprobar.getMonth() -
                 FechaPcrPositiva.getMonth(),
                 0)
-            console.log("MESES DESDE PCR POSITIVA: ", mesesDesdePcrPos)
         })
 }
 
@@ -249,7 +243,6 @@ function insertar(fechaInsertar, horaInsertar, centroInsertar, vacunaInsertar) {
                     headers: { 'Content-Type': 'application/json' }
                 })
                     .then(res => res.json()).then(result => {
-                        console.log("mensaje error", result.error);
                         alert("La cita se ha insertado con éxito");
                         insertarHistorial(fechaInsertar, vacunaInsertar)
                     })
@@ -368,13 +361,6 @@ function anadirCita() {
         .catch(error => console.error('Error status:', error));
     //<div class="col-12 campo2">Tipo de vacuna<select class="form-control" id="SolicitarCod_vacuna" placeholder=""></select></div>
 
-    var dia = document.getElementsByClassName("table-date active-date");
-    var mes = document.getElementsByClassName("month active-month");
-    var anio = document.getElementsByClassName("year");
-    // console.log("Dia seleccionado: ", dia[0].innerHTML);
-    // console.log("Mes seleccionado: ", mes[0].innerHTML);
-    // console.log("Año seleccionado: ", anio[0].innerHTML);
-
 }
 
 function realizarSolicitud() {
@@ -397,8 +383,6 @@ function cancelarCita() {
             headers: { 'Content-Type': 'application/json' }  // input data
         })
             .then(res => res.json()).then(result => {
-
-                console.log(result.error);
                 alert("Cita cancelada con exito");
                 location.reload()
             })
@@ -419,8 +403,6 @@ function insertarHistorial(fecha, vacuna) {
     })
         .then(res => res.json()).then(result => {
             nombreVacuna = result.vacuna.Tipo_Vacuna
-
-            console.log('nombreVacauna', nombreVacuna)
             var tis = objPaciente.paciente.tis;
             var url = "controller/cInsertHistorial.php";
             var data = { "TIS": tis, "Num_Dosis": cantidadCitas + 1, "Fecha": fecha, "Tipo_vacuna": nombreVacuna };
@@ -432,7 +414,7 @@ function insertarHistorial(fecha, vacuna) {
             })
                 .then(res => res.json()).then(result => {
                     console.log("mensaje error", result.error);
-                    //   location.reload();
+                    location.reload();
                 })
         }) 
 }

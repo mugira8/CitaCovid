@@ -13,6 +13,7 @@ function sessionVarsView() {
         //Para citas
         objPaciente = result;
         if (window.location.href.includes("citaVacunacion")){
+            console.log("AUA")
             mostrarDiaSeleccionado()
         }
         if (result.error == "no error" && result.paciente.tis) {
