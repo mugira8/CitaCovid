@@ -29,8 +29,8 @@
             <div id="errorCentro" class="text-danger"></div>
             <div id="correctoCentro" class="text-success"></div>
             <select id="centros" class="form-select campo" aria-label="Default select example"
-                onchange="mostrar(this.value), habilitarBoton(this.value)">
-                <option value="seleccionado" selected disabled>Seleccione un centro</option>
+                onchange="mostrar(this.value)">
+                <option value="limpiar">Seleccione un centro</option>
                 <option value="nuevo">Nuevo</option>
                 <option ng-repeat="item in lista" ng-value="item.cod_centro">{{item.Nombre}}</option>
             </select>
@@ -102,9 +102,9 @@
             </div>
             </p>
         </div>
-        
-        <button type="button" class="btn btn-danger boton" onclick="deleteCentro(), refrescar()">Eliminar</button>
-        <button id="confirmar" type="button" class="btn btn-danger boton" onclick="confirmar(), refrescar()" disabled>Confirmar</button>
+
+        <button type="button" class="btn btn-danger boton" onclick="deleteCentro()">Eliminar</button>
+        <button id="confirmar" type="button" class="btn btn-danger boton" onclick="confirmar()">Confirmar</button>
     </div>
 
     </div>

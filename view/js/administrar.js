@@ -12,6 +12,8 @@ administrar.controller("miControlador", [
 
 // funcion para mostrar centro
 function mostrar(cod_centro) {
+  $("#correctoCentro").html("");
+  $("#errorCentro").html("");
   if (cod_centro != "nuevo") {
     var url = "controller/cGetCentro.php";
     var data = { cod_centro: cod_centro };
@@ -105,30 +107,36 @@ function crearCentro() {
   let apertura = $("#apertura").val();
   let cierre = $("#cierre").val();
 
-  let url = "controller/cInsertCentro.php";
-  let data = {
-    nombre: nombre,
-    municipio: municipio,
-    lunes: lunes,
-    martes: martes,
-    miercoles: miercoles,
-    jueves: jueves,
-    viernes: viernes,
-    sabado: sabado,
-    domingo: domingo,
-    apertura: apertura,
-    cierre: cierre,
-  };
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "content-type": "application/json" },
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-      $("#correctoCentro").html("Se ha AÑADIDO correctamente");
-    });
+  if(nombre.length > 0 && municipio.length > 0 && apertura.length > 0 && cierre.length > 0){
+    let url = "controller/cInsertCentro.php";
+    let data = {
+      nombre: nombre,
+      municipio: municipio,
+      lunes: lunes,
+      martes: martes,
+      miercoles: miercoles,
+      jueves: jueves,
+      viernes: viernes,
+      sabado: sabado,
+      domingo: domingo,
+      apertura: apertura,
+      cierre: cierre,
+    };
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        $("#correctoCentro").html("Se ha AÑADIDO correctamente");
+        location.reload()
+      });
+  }else{
+    $("#errorCentro").html("Introduce todos los datos que contengan la estrella (*)");
+  }
+ 
 }
 
 // funcion editar centro
@@ -192,15 +200,6 @@ function deleteCentro() {
 
       console.log(result);
       $("#correctoCentro").html("Se ha ELIMINADO correctamente");
+      location.reload()
     });
-}
-
-function habilitarBoton() {
-    if (Option.val != "seleccionado") {
-      $("#confirmar").removeAttr('disabled')
-    }
-}
-
-function refrescar() {
-    location.reload();
 }
