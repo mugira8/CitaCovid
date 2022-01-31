@@ -45,9 +45,29 @@ class vacunasModel extends vacunasClass {
         $this->CloseConnect();
         return $list;
     }
+
+    public function getVacuna(){
+        $this->OpenConnect();
+
+        $cod_vacuna=$this->cod_vacuna;
+
+        $sql="SELECT * FROM vacunas WHERE cod_vacuna='$cod_vacuna'";
+
+        $result = $this->link->query($sql);
+
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $historial = new vacunasClass();
+
+            $historial->cod_vacuna=$row['cod_vacuna'];
+            $historial->Tipo_Vacuna=$row['Tipo_Vacuna'];
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return get_object_vars($historial);
+    }
+
     public function ObjVars()
     {
         return get_object_vars($this);
     }
 }
-?>
