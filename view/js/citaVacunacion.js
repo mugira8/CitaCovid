@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("carga").innerHTML = carga
     
     //Comprobar la cantidad de citas
-    var cantidadCitas;
+    var todasCitas
     loadAllCitas();
 
     sessionVarsView()
@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("botonSolicitarCita").addEventListener("click", anadirCita);
     //Boton que realiza la solicitud con datos del formulario
     document.getElementById("botonRealizarSolicitud").addEventListener("click", realizarSolicitud);
+    //Boton que abre modal que muestra todas las citas
+    document.getElementById("botonMostrarCitas").addEventListener("click", mostrarTodasCitas);
 
 
 
@@ -106,6 +108,36 @@ function loadAllCitas() {
     })
 }
 
+function mostrarTodasCitas(){
+    loadAllCitas
+    if (cantidadCitas > 0) {
+        
+        for (let i = 0; i < todasCitas.list.length; i++) {
+            console.log("TODAS CITAS: ", todasCitas)
+            
+            var newRow = `
+            <h4>º`+(i+1)+` Cita</h4>
+            <div class="row">
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasFechas" placeholder="Fecha: `+ todasCitas.list[i].Fecha + `" disabled></div>
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasHoras" placeholder="Hora: `+ todasCitas.list[i].Horas.substring(0, 5) + `" disabled></div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todosCentros" placeholder="`+ todasCitas.centrosVacunas[i].objCentros.Nombre + `" disabled></div>
+            </div>
+            <div class="row">
+              <h5>Vacuna a administrar</h5>
+              <div class="col-12 col-xl-11 campo"><input type="text" class="form-control todasVacunas" placeholder=`+ todasCitas.centrosVacunas[i].objVacunas.Tipo_vacuna + ` disabled></div>
+            </div>
+            `
+
+        }
+
+    } else {
+        var newRow = `<h2>No tiene ninguna cita concertada</h2>`
+        document.getElementById("formTodasCitas").innerHTML = newRow;
+    }
+}
+
 var codCita //Esta variable se pasa al boton de eliminar
 function loadCitas(event, fechaSeleccionada) {
     var data
@@ -155,7 +187,10 @@ function loadCitas(event, fechaSeleccionada) {
                 <h4>Vacuna a administrar</h4>
                 <div class="col-12 col-xl-11 campo"><input type="text" class="form-control" id="cod_vacuna" disabled placeholder=`+ citas.objVacunas.Tipo_vacuna + `></div>
                 </div>
-                <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button></div>`
+                <div><button type="button" class="btn btn-danger coso" id="botonCancelarCita">Cancelar cita</button>
+                <button type="button" class="btn btn-danger coso" id="botonMostrarCitas" data-toggle="modal" data-target="#modalMostrarTodasCitas">Mostrar todas las citas</button>
+                </div>
+                `
 
                 document.getElementById("formCitas").innerHTML = newRow;
 
@@ -166,6 +201,7 @@ function loadCitas(event, fechaSeleccionada) {
                 document.getElementById("botonSolicitarCita").style.display = "inline-block";
                 document.getElementById("botonCancelarCita").style.display = "none";
             }
+            //Comprueba que el dia seleccionado sea anterior a hoy
             if (comprobarCitaAnterior < hoy) {
                 document.getElementById("botonSolicitarCita").style.display = "none";
                 document.getElementById("botonCancelarCita").style.display = "none";

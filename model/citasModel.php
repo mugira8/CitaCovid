@@ -32,7 +32,9 @@ class citasModel extends citasClass {
 
         $this->OpenConnect();
 
-        $sql = "select * from citas";
+        $sql = "select citas.*,centros.nombre, vacunas.Tipo_Vacuna from citas 
+            inner join centros on citas.cod_centro=centros.cod_centro
+            inner join vacunas on citas.cod_vacuna=vacunas.cod_vacuna";
 
         $list = array();
 
@@ -49,6 +51,13 @@ class citasModel extends citasClass {
             $citas->cod_centro = $row['cod_centro'];
             $citas->TIS = $row['TIS'];
 
+            $centros=new centrosModel();
+            $centros->setNombre($row["nombre"]);
+            $vacunas=new vacunasModel();
+            $vacunas->setTipo_vacuna($row["Tipo_Vacuna"]);
+
+            $this->objCentros=$centros->ObjVars();
+            $this->objVacunas=$vacunas->ObjVars();
 
             array_push($list, get_object_vars($citas));
         }
