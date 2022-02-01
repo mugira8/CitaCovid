@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2022 a las 09:06:32
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Tiempo de generación: 30-01-2022 a las 20:15:12
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `covidcitas_reto`
 --
-CREATE DATABASE IF NOT EXISTS `covidcitas_reto` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `covidcitas_reto`;
 
 -- --------------------------------------------------------
 
@@ -92,7 +90,7 @@ CREATE TABLE `pacientes` (
   `Fecha_Nacimiento` date NOT NULL,
   `Nombre` text NOT NULL,
   `Apellido` text NOT NULL,
-  `foto` longtext DEFAULT NULL,
+  `foto` longtext DEFAULT 'fotoPerfil.jpg',
   `cod_centro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,8 +99,8 @@ CREATE TABLE `pacientes` (
 --
 
 INSERT INTO `pacientes` (`TIS`, `Fecha_PCR_pos`, `Fecha_Nacimiento`, `Nombre`, `Apellido`, `foto`, `cod_centro`) VALUES
-(123, '2001-01-01', '0001-01-01', 'Aitor', 'Mugira', NULL, 1),
-(123456, NULL, '2001-10-07', 'Kevin', 'Stevens', NULL, 1);
+(123, '2001-01-01', '0001-01-01', 'Aitor', 'Mugira', 'foto de perfil.png', 1),
+(123456, NULL, '2001-10-07', 'Kevin', 'Stevens', 'fotoPerfil.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -160,9 +158,9 @@ ALTER TABLE `centros`
 --
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`cod_cita`),
-  ADD UNIQUE KEY `cod_centro` (`cod_centro`),
-  ADD UNIQUE KEY `TIS` (`TIS`),
-  ADD KEY `cod_vacuna` (`cod_vacuna`);
+  ADD KEY `cod_vacuna` (`cod_vacuna`),
+  ADD KEY `cod_centro` (`cod_centro`) USING BTREE,
+  ADD KEY `TIS` (`TIS`) USING BTREE;
 
 --
 -- Indices de la tabla `historial`
