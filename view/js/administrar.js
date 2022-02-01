@@ -203,3 +203,7 @@ function deleteCentro() {
       location.reload()
     });
 }
+
+function refrescar() {
+  location.reload();
+}
