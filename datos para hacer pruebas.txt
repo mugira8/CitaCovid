@@ -1,0 +1,8 @@
+paciente:
+	Usuario: 123
+	Contraseña: 01/01/0001
+
+
+Administrador:
+	Usuario: fake_email@yahoo.com
+	Contraseña: contrasena
