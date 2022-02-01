@@ -129,8 +129,7 @@ function crearCentro() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        $("#correctoCentro").html("Se ha AÑADIDO correctamente");
+        alert("Se ha AÑADIDO correctamente");
         location.reload()
       });
   }else{
@@ -154,7 +153,8 @@ function editarCentro() {
   let apertura = $("#apertura").val();
   let cierre = $("#cierre").val();
 
-  let url = "controller/cEditCentro.php";
+  if(nombre.length > 0 && municipio.length > 0 && apertura.length > 0 && cierre.length > 0){
+    let url = "controller/cEditCentro.php";
   let data = {
     id: id,
     nombre: nombre,
@@ -176,9 +176,11 @@ function editarCentro() {
   })
     .then((res) => res.json())
     .then((result) => {
-      console.log(result);
       $("#correctoCentro").html("Se ha EDITADO correctamente");
     });
+  }else{
+    $("#errorCentro").html("Introduce todos los datos que contengan la estrella (*)");
+  }
 }
 
 // funcion eliminar centro
@@ -196,14 +198,7 @@ function deleteCentro() {
   })
     .then((res) => res.json())
     .then((result) => {
-      console.log(result.error);
-
-      console.log(result);
-      $("#correctoCentro").html("Se ha ELIMINADO correctamente");
+      alert("Se ha ELIMINADO correctamente");
       location.reload()
     });
-}
-
-function refrescar() {
-  location.reload();
 }
